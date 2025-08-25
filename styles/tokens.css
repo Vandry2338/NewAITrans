@@ -1,0 +1,61 @@
+:root {
+  /* Typography */
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, "Helvetica Neue", Arial;
+  --fs-display: 28px;
+  --fs-title: 22px;
+  --fs-body: 14px;
+  --fs-small: 12px;
+  --lh-display: 1.25;
+  --lh-title: 1.3;
+  --lh-body: 1.45;
+
+  /* Spacing */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 24px;
+  --sp-6: 32px;
+  --sp-7: 48px;
+  --sp-8: 64px;
+
+  /* Neutrals (light) */
+  --bg: #ffffff;
+  --surface: #f6f8fb;
+  --text: #0b1220;
+  --text-muted: #5b6473;
+  --border: rgba(15, 18, 22, 0.12);
+
+  /* Blues (royal → navy) */
+  --blue-50: #eef3ff;
+  --blue-100: #d9e4ff;
+  --blue-200: #b5ccff;
+  --blue-300: #8fb2ff;
+  --blue-400: #6a98ff;
+  --blue-500: #3f7bff;
+  --blue-600: #1f67f2;
+  --blue-700: #153e93;
+  --blue-800: #0f2c6b;
+  --blue-900: #0b1b3f;
+
+  /* Gradients */
+  --grad-primary: linear-gradient(135deg, var(--blue-600) 0%, var(--blue-500) 40%, var(--blue-800) 100%);
+  --grad-cta: linear-gradient(135deg, var(--blue-500) 0%, var(--blue-700) 100%);
+
+  /* Radius, shadow, focus */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.06), 0 10px 30px rgba(0, 0, 0, 0.06);
+  --shadow-2: 0 2px 8px rgba(0, 0, 0, 0.08), 0 20px 50px rgba(0, 0, 0, 0.1);
+  --focus: color-mix(in srgb, var(--blue-600) 60%, white);
+}
+
+/* Dark mode */
+:root.dark {
+  --bg: #0b0c0f;
+  --surface: #12151b;
+  --text: #f5f7fa;
+  --text-muted: #a9b1bd;
+  --border: rgba(255, 255, 255, 0.12);
+}
