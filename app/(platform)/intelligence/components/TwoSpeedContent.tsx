@@ -3527,6 +3527,127 @@ export default function TwoSpeedContent({ activeSubTab }: { activeSubTab: string
           </div>
         )
 
+      case "requirements":
+        return (
+          <div className="space-y-6">
+            <div className="text-center mb-8">
+              <h3 className="text-2xl font-bold mb-4" style={{ color: "var(--brand-navy-900)" }}>
+                Requirements Gathering
+              </h3>
+              <p className="text-lg" style={{ color: "var(--text-primary)" }}>
+                Discovery, KPIs, and strategy—then auto-generate your Vision pack
+              </p>
+            </div>
+
+            <div className="space-y-6">
+              {/* Run Agent Section */}
+              <div className="flex justify-between items-center p-4 rounded-lg border" style={{ backgroundColor: "var(--surface)", borderColor: "var(--border)" }}>
+                <div>
+                  <h3 className="font-semibold text-lg mb-2" style={{ color: "var(--text)" }}>
+                    Run Agent
+                  </h3>
+                  <p style={{ color: "var(--text-muted)" }}>
+                    Automate requirements gathering and analysis
+                  </p>
+                </div>
+                <button
+                  className="px-6 py-3 rounded-lg text-white font-semibold hover:opacity-90 transition-opacity"
+                  style={{ background: "var(--grad-primary)" }}
+                >
+                  Run Agent
+                </button>
+              </div>
+
+              {/* Requirements Gathering Methods */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                {/* Surveys */}
+                <div className="p-6 rounded-xl border" style={{ backgroundColor: "var(--surface)", borderColor: "var(--border)" }}>
+                  <h3 className="font-bold text-lg mb-3" style={{ color: "var(--text)" }}>
+                    Surveys (Native)
+                  </h3>
+                  <p className="text-sm mb-4" style={{ color: "var(--text-muted)" }}>
+                    Design → Distribute → Analyze & Map
+                  </p>
+                  <p className="text-sm mb-4" style={{ color: "var(--text-muted)" }}>
+                    Build custom surveys with AI assistance for comprehensive requirements gathering
+                  </p>
+                  <div className="flex justify-between text-sm">
+                    <span style={{ color: "var(--text-muted)" }}>Responses:</span>
+                    <span style={{ color: "var(--text)" }}>3</span>
+                  </div>
+                  <div className="flex justify-between text-sm">
+                    <span style={{ color: "var(--text-muted)" }}>Completion:</span>
+                    <span style={{ color: "var(--text)" }}>127</span>
+                  </div>
+                </div>
+
+                {/* Executive Interviews */}
+                <div className="p-6 rounded-xl border" style={{ backgroundColor: "var(--surface)", borderColor: "var(--border)" }}>
+                  <h3 className="font-bold text-lg mb-3" style={{ color: "var(--text)" }}>
+                    Executive Interviews
+                  </h3>
+                  <p className="text-sm mb-4" style={{ color: "var(--text-muted)" }}>
+                    Prepare → Run → Summarize → Synthesize
+                  </p>
+                  <p className="text-sm mb-4" style={{ color: "var(--text-muted)" }}>
+                    4-step workspace for conducting structured executive interviews
+                  </p>
+                  <div className="flex justify-between text-sm">
+                    <span style={{ color: "var(--text-muted)" }}>Interviews:</span>
+                    <span style={{ color: "var(--text)" }}>12/20</span>
+                  </div>
+                  <div className="flex justify-between text-sm">
+                    <span style={{ color: "var(--text-muted)" }}>Coverage:</span>
+                    <span style={{ color: "var(--text)" }}>92%</span>
+                  </div>
+                </div>
+
+                {/* Stakeholder Mapping */}
+                <div className="p-6 rounded-xl border" style={{ backgroundColor: "var(--surface)", borderColor: "var(--border)" }}>
+                  <h3 className="font-bold text-lg mb-3" style={{ color: "var(--text)" }}>
+                    Stakeholder Mapping
+                  </h3>
+                  <p className="text-sm mb-4" style={{ color: "var(--text-muted)" }}>
+                    RACI + Influence Analysis
+                  </p>
+                  <p className="text-sm mb-4" style={{ color: "var(--text-muted)" }}>
+                    Agent proposes stakeholders and maps their roles and influence
+                  </p>
+                  <div className="flex justify-between text-sm">
+                    <span style={{ color: "var(--text-muted)" }}>Stakeholders:</span>
+                    <span style={{ color: "var(--text)" }}>18</span>
+                  </div>
+                  <div className="flex justify-between text-sm">
+                    <span style={{ color: "var(--text-muted)" }}>Coverage:</span>
+                    <span style={{ color: "var(--text)" }}>92%</span>
+                  </div>
+                </div>
+
+                {/* Workshop Mode */}
+                <div className="p-6 rounded-xl border" style={{ backgroundColor: "var(--surface)", borderColor: "var(--border)" }}>
+                  <h3 className="font-bold text-lg mb-3" style={{ color: "var(--text)" }}>
+                    Workshop Mode
+                  </h3>
+                  <p className="text-sm mb-4" style={{ color: "var(--text-muted)" }}>
+                    North Star Board
+                  </p>
+                  <p className="text-sm mb-4" style={{ color: "var(--text-muted)" }}>
+                    Premium sticky-wall experience for collaborative requirements workshops
+                  </p>
+                  <div className="flex justify-between text-sm">
+                    <span style={{ color: "var(--text-muted)" }}>Workshops:</span>
+                    <span style={{ color: "var(--text)" }}>24</span>
+                  </div>
+                  <div className="flex justify-between text-sm">
+                    <span style={{ color: "var(--text-muted)" }}>Success:</span>
+                    <span style={{ color: "var(--text)" }}>85%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )
+
       default:
         return null
     }

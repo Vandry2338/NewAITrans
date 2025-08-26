@@ -115,7 +115,7 @@ export default function SolutionsGalleryLandingPage() {
   return (
     <div className="relative min-h-screen" style={{ backgroundColor: "var(--bg)" }}>
       <div className="absolute inset-0 overflow-hidden">
-        <Ballpit className="w-full h-full opacity-30" followCursor={false} count={150} />
+        <Ballpit className="w-full h-full opacity-60" followCursor={false} count={100} />
       </div>
 
       {/* Content */}

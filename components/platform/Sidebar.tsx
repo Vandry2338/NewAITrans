@@ -16,15 +16,37 @@ const menuItems = [
     submenu: [
       {
         label: "KPI Catalog",
-        href: "/intelligence?tab=kpi-catalog",
+        href: "/intelligence?tab=kpis",
       },
       {
         label: "Know Your Business",
-        href: "/intelligence?tab=know-your-business",
+        href: "/intelligence?tab=kyb",
       },
       {
         label: "Two-Speed Transformation",
         href: "/intelligence?tab=two-speed-transformation",
+        submenu: [
+          {
+            label: "Industry Trends",
+            href: "/intelligence?tab=two-speed-transformation&sub=industry-trends",
+          },
+          {
+            label: "Pain Point Canvas",
+            href: "/intelligence?tab=two-speed-transformation&sub=pain-point-canvas",
+          },
+          {
+            label: "Strategic Initiatives",
+            href: "/intelligence?tab=two-speed-transformation&sub=strategic-initiatives",
+          },
+          {
+            label: "Solution Canvas",
+            href: "/intelligence?tab=two-speed-transformation&sub=solution-canvas",
+          },
+        ],
+      },
+      {
+        label: "Requirements Gathering",
+        href: "/intelligence?tab=requirements",
       },
       {
         label: "Summary",
@@ -59,21 +81,21 @@ const menuItems = [
       },
     ],
   },
-  {
-    label: "Release Guardrails",
-    description: "Fitness Functions, Policy Gates, LLMOps",
-    href: "/guard/fitness",
-  },
-  {
-    label: "Modernization Hub",
-    description: "Code Scans, Debt, Migration Plans",
-    href: "/modernize/scan",
-  },
-  {
-    label: "Control Tower",
-    description: "Run Metrics, FinOps, Value Tracking",
-    href: "/operate/roadmap",
-  },
+  // {
+  //   label: "Release Guardrails",
+  //   description: "Fitness Functions, Policy Gates, LLMOps",
+  //   href: "/guard/fitness",
+  // },
+  // {
+  //   label: "Modernization Hub",
+  //   description: "Code Scans, Debt, Migration Plans",
+  //   href: "/modernize/scan",
+  // },
+  // {
+  //   label: "Control Tower",
+  //   description: "Run Metrics, FinOps, Value Tracking",
+  //   href: "/operate/roadmap",
+  // },
   {
     label: "Solutions Gallery",
     description: "Reference architectures, patterns, accelerators",
@@ -95,10 +117,10 @@ const menuItems = [
         label: "AI Business",
         href: "/gallery/ai-business",
       },
-      {
-        label: "Generative AI Use Cases",
-        href: "/gallery/generative-ai",
-      },
+      // {
+      //   label: "Generative AI Use Cases",
+      //   href: "/gallery/generative-ai",
+      // },
       {
         label: "AI Agents",
         href: "/gallery/ai-agents",
@@ -124,6 +146,8 @@ export default function Sidebar({}: SidebarProps) {
   const toggleSubmenu = (label: string) => {
     setExpandedItems((prev) => (prev.includes(label) ? prev.filter((item) => item !== label) : [...prev, label]))
   }
+
+
 
   return (
     <aside
@@ -210,20 +234,58 @@ export default function Sidebar({}: SidebarProps) {
                     <ul className="mt-2 ml-4 space-y-1 max-h-64 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent">
                       {item.submenu.map((subItem) => {
                         const isSubActive = pathname === subItem.href
+                        const hasNestedSubmenu = subItem.submenu && subItem.submenu.length > 0
+                        const isNestedSubmenuExpanded = expandedItems.includes(`${item.label}-${subItem.label}`)
+                        
                         return (
                           <li key={subItem.href}>
-                            <Link
-                              href={subItem.href}
-                              className={`flex items-center px-3 py-2 rounded-lg text-sm transition-colors ${
-                                isSubActive ? "font-medium" : ""
-                              }`}
-                              style={{
-                                backgroundColor: isSubActive ? "var(--blue-100)" : "transparent",
-                                color: isSubActive ? "var(--blue-800)" : "var(--text-muted)",
-                              }}
-                            >
-                              {subItem.label}
-                            </Link>
+                            <div>
+                              <Link
+                                href={subItem.href}
+                                className={`flex items-center justify-between px-3 py-2 rounded-lg text-sm transition-colors ${
+                                  isSubActive ? "font-medium" : ""
+                                }`}
+                                style={{
+                                  backgroundColor: isSubActive ? "var(--blue-100)" : "transparent",
+                                  color: isSubActive ? "var(--blue-800)" : "var(--text-muted)",
+                                }}
+                                onClick={(e) => {
+                                  if (hasNestedSubmenu) {
+                                    e.preventDefault()
+                                    toggleSubmenu(`${item.label}-${subItem.label}`)
+                                  }
+                                }}
+                              >
+                                <span>{subItem.label}</span>
+                                {hasNestedSubmenu && (
+                                  <ChevronRightIcon className={`h-3 w-3 transition-transform ${isNestedSubmenuExpanded ? 'rotate-90' : ''}`} />
+                                )}
+                              </Link>
+                              
+                              {hasNestedSubmenu && isNestedSubmenuExpanded && (
+                                <ul className="mt-1 ml-4 space-y-1">
+                                  {subItem.submenu.map((nestedItem) => {
+                                    const isNestedActive = pathname === nestedItem.href
+                                    return (
+                                      <li key={nestedItem.href}>
+                                        <Link
+                                          href={nestedItem.href}
+                                          className={`flex items-center px-3 py-1.5 rounded text-sm transition-colors ${
+                                            isNestedActive ? "font-medium" : ""
+                                          }`}
+                                          style={{
+                                            backgroundColor: isNestedActive ? "var(--blue-50)" : "transparent",
+                                            color: isNestedActive ? "var(--blue-700)" : "var(--text-muted)",
+                                          }}
+                                        >
+                                          {nestedItem.label}
+                                        </Link>
+                                      </li>
+                                    )
+                                  })}
+                                </ul>
+                              )}
+                            </div>
                           </li>
                         )
                       })}

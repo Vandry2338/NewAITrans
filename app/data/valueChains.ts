@@ -95,6 +95,30 @@ export const sapValueChains = [
     retrieved_at: "2025-08-17T02:52:15Z",
     content_hash: "h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a7",
   },
+  {
+    id: "proc_digital_transformation",
+    key: "DT" as const,
+    name: "Digital Transformation",
+    description:
+      "Encompasses the strategic adoption and implementation of digital technologies to transform business operations, customer experiences, and organizational capabilities. This includes AI/ML integration, cloud migration, process automation, and digital innovation initiatives.",
+    sapLabel: "Digital Transformation",
+    synonyms: ["Digital Innovation", "Technology Transformation", "Digital Strategy"],
+    source_url: "https://hub.sap.com/transformation/processes",
+    retrieved_at: "2025-08-17T02:52:15Z",
+    content_hash: "i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a7b8",
+  },
+  {
+    id: "proc_innovation",
+    key: "INN" as const,
+    name: "Innovation",
+    description:
+      "Covers the end-to-end process of identifying, developing, and implementing innovative solutions, products, and services. This includes research and development, prototyping, testing, and commercialization of new ideas and technologies.",
+    sapLabel: "Innovation",
+    synonyms: ["R&D", "Innovation Management", "Product Innovation"],
+    source_url: "https://hub.sap.com/transformation/processes",
+    retrieved_at: "2025-08-17T02:52:15Z",
+    content_hash: "j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a7b8c9",
+  },
 ] as const
 
 export const valueChains = sapValueChains

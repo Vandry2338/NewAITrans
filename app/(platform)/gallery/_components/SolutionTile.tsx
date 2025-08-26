@@ -2,6 +2,7 @@
 
 import { PlayIcon, BookmarkIcon, ShareIcon, EllipsisHorizontalIcon } from "@heroicons/react/24/outline"
 import { useGalleryStore, type ReferencePackage } from "@/lib/store/gallery"
+import { useRouter } from "next/navigation"
 
 interface SolutionTileProps {
   item: ReferencePackage
@@ -9,9 +10,22 @@ interface SolutionTileProps {
 
 export default function SolutionTile({ item }: SolutionTileProps) {
   const { setSelectedItemId, industries, processes } = useGalleryStore()
+  const router = useRouter()
 
   const handleTileClick = () => {
-    setSelectedItemId(item.id)
+    // Navigate to specific page for certain tiles
+    if (item.slug === "genai-btp") {
+      router.push("/gallery/references/genai-btp")
+    } else if (item.slug === "joule-studio") {
+      router.push("/gallery/references/joule-studio")
+    } else if (item.slug === "event-driven-applications") {
+      router.push("/gallery/references/event-driven-applications")
+    } else if (item.slug === "sap-build-process-automation") {
+      router.push("/gallery/references/sap-build-process-automation")
+    } else {
+      // Default behavior - open overlay
+      setSelectedItemId(item.id)
+    }
   }
 
   const getTypeGradient = (type: string) => {
@@ -48,7 +62,6 @@ export default function SolutionTile({ item }: SolutionTileProps) {
         >
           {item.type}
         </span>
-        {item.version && <span className="text-xs text-gray-500">{item.version}</span>}
       </div>
 
       {/* Video Thumbnail */}
@@ -88,12 +101,6 @@ export default function SolutionTile({ item }: SolutionTileProps) {
             </span>
           ) : null
         })}
-        {item.complexity && (
-          <span className="px-2 py-1 rounded text-xs font-medium bg-gray-100 text-gray-800">{item.complexity}</span>
-        )}
-        {item.timeline && (
-          <span className="px-2 py-1 rounded text-xs font-medium bg-purple-100 text-purple-800">{item.timeline}</span>
-        )}
       </div>
 
       {/* Actions */}
