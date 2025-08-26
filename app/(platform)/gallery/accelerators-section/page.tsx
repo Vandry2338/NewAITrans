@@ -1,0 +1,133 @@
+"use client"
+import { SectionLayoutWrapper } from "@/components/gallery/SectionLayoutWrapper"
+import type { GalleryItem } from "@/lib/types/gallery"
+
+export default function AcceleratorsSectionPage() {
+  const acceleratorsContent: GalleryItem[] = [
+    {
+      id: "sap-btp-starter",
+      title: "SAP BTP Starter Kit",
+      summary: "Complete development environment setup for SAP BTP",
+      category: "Template",
+      vendor: "SAP",
+      version: "v3.1.0",
+      demo: { videoUrl: "/placeholder.svg?height=200&width=300" },
+      industries: ["technology", "manufacturing"],
+      valueChains: ["I2M", "P2F"],
+      processes: [{ e2e: "development" }, { e2e: "deployment" }],
+      capabilities: ["cloud-development", "platform-setup"],
+      fitScore: 88,
+      kpiIds: ["development-speed", "deployment-time"],
+      painPointIds: ["complex-setup", "environment-inconsistency"],
+      tags: ["BTP", "Development", "Template"],
+      complexity: "Medium",
+      maturity: "Production",
+    },
+    {
+      id: "microservices-template",
+      title: "Microservices Architecture Template",
+      summary: "Production-ready microservices boilerplate",
+      category: "Template",
+      vendor: "Open",
+      version: "v2.4.2",
+      demo: { videoUrl: "/placeholder.svg?height=200&width=300" },
+      industries: ["technology", "financial-services"],
+      valueChains: ["I2M", "L2C"],
+      processes: [{ e2e: "architecture-design" }, { e2e: "service-development" }],
+      capabilities: ["microservices", "containerization"],
+      fitScore: 92,
+      kpiIds: ["service-reliability", "deployment-frequency"],
+      painPointIds: ["monolithic-architecture", "scaling-challenges"],
+      tags: ["Microservices", "Architecture", "Scalability"],
+      complexity: "High",
+      maturity: "Production",
+    },
+    {
+      id: "ci-cd-pipeline",
+      title: "CI/CD Pipeline Generator",
+      summary: "Automated deployment pipeline configuration",
+      category: "Tool",
+      vendor: "Open",
+      version: "v1.8.1",
+      demo: { videoUrl: "/placeholder.svg?height=200&width=300" },
+      industries: ["technology", "manufacturing"],
+      valueChains: ["I2M", "P2F"],
+      processes: [{ e2e: "continuous-integration" }, { e2e: "deployment" }],
+      capabilities: ["automation", "pipeline-management"],
+      fitScore: 85,
+      kpiIds: ["deployment-frequency", "lead-time"],
+      painPointIds: ["manual-deployments", "deployment-errors"],
+      tags: ["CI/CD", "Automation", "DevOps"],
+      complexity: "Medium",
+      maturity: "Production",
+    },
+    {
+      id: "api-gateway-connector",
+      title: "API Gateway Connector",
+      summary: "Seamless API integration and management",
+      category: "Tool",
+      vendor: "SAP",
+      version: "v2.6.0",
+      demo: { videoUrl: "/placeholder.svg?height=200&width=300" },
+      industries: ["technology", "financial-services"],
+      valueChains: ["I2M", "L2C"],
+      processes: [{ e2e: "api-integration" }, { e2e: "api-management" }],
+      capabilities: ["api-gateway", "integration"],
+      fitScore: 90,
+      kpiIds: ["api-latency", "api-reliability"],
+      painPointIds: ["api-inconsistency", "api-security"],
+      tags: ["API Gateway", "Integration", "Security"],
+      complexity: "Medium",
+      maturity: "Production",
+    },
+    {
+      id: "data-migration-tool",
+      title: "Data Migration Accelerator",
+      summary: "Automated data migration and transformation",
+      category: "Tool",
+      vendor: "Open",
+      version: "v1.9.3",
+      demo: { videoUrl: "/placeholder.svg?height=200&width=300" },
+      industries: ["technology", "financial-services"],
+      valueChains: ["I2M", "L2C"],
+      processes: [{ e2e: "data-migration" }, { e2e: "data-transformation" }],
+      capabilities: ["data-migration", "data-integration"],
+      fitScore: 87,
+      kpiIds: ["migration-time", "data-integrity"],
+      painPointIds: ["manual-migration", "data-loss"],
+      tags: ["Data Migration", "Transformation", "Data Integrity"],
+      complexity: "High",
+      maturity: "Production",
+    },
+    {
+      id: "security-scanner",
+      title: "Security Vulnerability Scanner",
+      summary: "Automated security assessment and reporting",
+      category: "Tool",
+      vendor: "Open",
+      version: "v1.5.0",
+      demo: { videoUrl: "/placeholder.svg?height=200&width=300" },
+      industries: ["technology", "financial-services"],
+      valueChains: ["I2M", "L2C"],
+      processes: [{ e2e: "security-assessment" }, { e2e: "vulnerability-reporting" }],
+      capabilities: ["security-scanning", "vulnerability-management"],
+      fitScore: 89,
+      kpiIds: ["security-assessment-time", "vulnerability-resolution-time"],
+      painPointIds: ["manual-security-assessment", "vulnerability-overlook"],
+      tags: ["Security Scanner", "Assessment", "Vulnerability Management"],
+      complexity: "Medium",
+      maturity: "Production",
+    },
+  ]
+
+  return (
+    <SectionLayoutWrapper
+      title="Development Accelerators"
+      description="Templates, tools, and connectors to accelerate development workflows"
+      content={acceleratorsContent}
+      categoryColor="var(--yellow-100)"
+      searchPlaceholder="Search accelerators..."
+      basePath="/gallery/accelerators-section"
+    />
+  )
+}

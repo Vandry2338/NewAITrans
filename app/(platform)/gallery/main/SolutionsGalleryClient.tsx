@@ -1,7 +1,7 @@
 "use client"
 
-import { useEffect, useState } from "react"
-import { useSearchParams } from "next/navigation"
+import { useEffect } from "react"
+import { ReadonlyURLSearchParams } from "next/navigation"
 import { useGalleryStore } from "@/lib/store/gallery"
 import Hero from "../_components/Hero"
 import FilterBar from "../_components/FilterBar"
@@ -12,19 +12,20 @@ import ProcessesView from "../_components/ProcessesView"
 import ReferencesView from "../_components/ReferencesView"
 import BcmView from "../_components/BcmView"
 
-export default function SolutionsGalleryMainPage() {
-  const searchParams = useSearchParams()
+interface SolutionsGalleryClientProps {
+  searchParams: ReadonlyURLSearchParams
+}
+
+export default function SolutionsGalleryClient({ searchParams }: SolutionsGalleryClientProps) {
   const { selectedItemId, setSelectedItemId, view, setView } = useGalleryStore()
-  const [mounted, setMounted] = useState(false)
 
   // Initialize view from searchParams on mount
   useEffect(() => {
-    setMounted(true)
     const viewParam = searchParams.get("view") as "industries" | "processes" | "references" | "bcm" | null
     if (viewParam && viewParam !== view) {
       setView(viewParam)
     }
-  }, [searchParams, setView])
+  }, [searchParams, view, setView])
 
   const handleCloseOverlay = () => {
     setSelectedItemId(null)
@@ -66,15 +67,6 @@ export default function SolutionsGalleryMainPage() {
       default:
         return <IndustriesView />
     }
-  }
-
-  // Don't render until mounted to avoid hydration mismatch
-  if (!mounted) {
-    return (
-      <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: "var(--bg)" }}>
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2" style={{ borderColor: "var(--primary)" }}></div>
-      </div>
-    )
   }
 
   return (

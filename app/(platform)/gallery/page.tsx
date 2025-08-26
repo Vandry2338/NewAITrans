@@ -15,7 +15,7 @@ export default function SolutionsGalleryLandingPage() {
       label: "Infosys Topaz Explorer",
       description: "AI-powered solution discovery and recommendation engine",
       icon: Sparkles,
-      path: "/gallery/topaz-explorer",
+      path: "/gallery/topaz",
       gradient: "from-purple-500 to-pink-500",
     },
     {
@@ -23,7 +23,7 @@ export default function SolutionsGalleryLandingPage() {
       label: "Industries & Value Chains",
       description: "Explore solutions by industry sectors and value chains",
       icon: Building2,
-      path: "/gallery/industries",
+      path: "/gallery/main?view=industries",
       gradient: "from-blue-500 to-cyan-500",
     },
     {
@@ -31,7 +31,7 @@ export default function SolutionsGalleryLandingPage() {
       label: "End-to-End Processes & Subprocesses",
       description: "Browse E2E processes and business modules",
       icon: Workflow,
-      path: "/gallery/processes",
+      path: "/gallery/main?view=processes",
       gradient: "from-green-500 to-emerald-500",
     },
     {
@@ -39,7 +39,7 @@ export default function SolutionsGalleryLandingPage() {
       label: "Reference Architectures & Blueprints",
       description: "Solution packages, templates and artifacts",
       icon: FileText,
-      path: "/gallery/references",
+      path: "/gallery/main?view=references",
       gradient: "from-orange-500 to-red-500",
     },
     {
@@ -47,7 +47,7 @@ export default function SolutionsGalleryLandingPage() {
       label: "Business Capability Model (BCM) Categories",
       description: "Capability domains and business areas",
       icon: Grid3X3,
-      path: "/gallery/bcm",
+      path: "/gallery/main?view=bcm",
       gradient: "from-indigo-500 to-purple-500",
     },
     {
@@ -76,7 +76,7 @@ export default function SolutionsGalleryLandingPage() {
     },
     {
       key: "generative-ai",
-      label: "Generative AI Use Cases",
+      label: "Generative AI Use Cases", 
       description: "Generative AI applications and implementation patterns",
       icon: Zap,
       path: "/gallery/generative-ai-use-cases",
@@ -103,7 +103,7 @@ export default function SolutionsGalleryLandingPage() {
       label: "Development Accelerators",
       description: "Development tools, templates and accelerators",
       icon: Rocket,
-      path: "/gallery/accelerators-enhanced",
+      path: "/gallery/accelerators-section",
       gradient: "from-emerald-500 to-green-500",
     },
   ]

@@ -1,8 +1,8 @@
 import { create } from "zustand"
 import { devtools } from "zustand/middleware"
-import { sapIndustries } from "../data/industries"
-import { sapValueChains } from "../data/valueChains"
-import { processFacetsData, type ProcessFacets, getProcessFacets } from "../data/processFacets"
+import { sapIndustries } from "../../app/data/industries"
+import { sapValueChains } from "../../app/data/valueChains"
+import { processFacetsData, type ProcessFacets, getProcessFacets } from "../../app/data/processFacets"
 
 // Transform the data structure to match the store types
 const transformIndustries = (rawIndustries: any[]) => {
