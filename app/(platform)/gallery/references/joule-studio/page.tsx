@@ -114,8 +114,8 @@ export default function JouleStudioPage() {
   }
 
   const handleOpenInDrawIO = () => {
-    // Open the draw.io diagram directly
-    window.open(`https://embed.diagrams.net/?embed=1&spin=1&modified=unsavedChanges&proto=json#R${encodeURIComponent('/diagrams/joule-studio.drawio')}`, '_blank')
+    // Open the local diagram file directly
+    window.open(`/diagrams/joule-studio.drawio`, '_blank')
   }
 
   return (

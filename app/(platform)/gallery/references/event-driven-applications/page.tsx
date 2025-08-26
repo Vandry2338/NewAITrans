@@ -107,8 +107,8 @@ export default function EventDrivenApplicationsPage() {
   }
 
   const handleOpenInDrawIO = () => {
-    // Open the draw.io diagram directly
-    window.open(`https://embed.diagrams.net/?embed=1&spin=1&modified=unsavedChanges&proto=json#R${encodeURIComponent('/diagrams/event-driven-applications.drawio')}`, '_blank')
+    // Open the local diagram file directly
+    window.open(`/diagrams/vent-driven-apps.drawio`, '_blank')
   }
 
   return (

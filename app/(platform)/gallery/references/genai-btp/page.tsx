@@ -94,8 +94,8 @@ export default function GenAIBTPPage() {
   }
 
   const handleOpenInDrawIO = () => {
-    // Open the draw.io diagram directly
-    window.open(`https://embed.diagrams.net/?embed=1&spin=1&modified=unsavedChanges&proto=json#R${encodeURIComponent('/diagrams/genai-btp.drawio')}`, '_blank')
+    // Open the local diagram file directly
+    window.open(`/diagrams/genai-btp.drawio`, '_blank')
   }
 
   return (
