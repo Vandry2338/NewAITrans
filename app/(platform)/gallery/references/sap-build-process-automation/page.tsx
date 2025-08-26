@@ -83,6 +83,7 @@ const pageData = {
 export default function SAPBuildProcessAutomationPage() {
   const [selectedFile, setSelectedFile] = useState<File | null>(null)
   const [fileUrl, setFileUrl] = useState<string | null>(null)
+  const [videoExpanded, setVideoExpanded] = useState(false)
   const viewerRef = useRef<HTMLDivElement>(null)
 
   const handleFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -121,26 +122,8 @@ export default function SAPBuildProcessAutomationPage() {
     <div className="min-h-screen" style={{ backgroundColor: "var(--bg)", fontFamily: "var(--font-sap-72)" }}>
       {/* Hero Section */}
       <div className="relative h-96 bg-gradient-to-br from-red-600 via-orange-500 to-red-700 overflow-hidden">
-        {pageData.heroVideo ? (
-          <video
-            className="w-full h-full object-cover"
-            autoPlay
-            muted
-            loop
-            src={pageData.heroVideo}
-          />
-        ) : (
-          <div className="w-full h-full bg-gradient-to-br from-red-600 via-orange-500 to-red-700 flex items-center justify-center">
-            <div className="text-center text-white">
-              <ArrowUpTrayIcon className="w-16 h-16 mx-auto mb-4 opacity-50" />
-              <p className="text-lg opacity-75">Hero Video Placeholder</p>
-            </div>
-          </div>
-        )}
-        
-        {/* Hero Overlay */}
-        <div className="absolute bottom-0 left-0 p-8 text-white bg-gradient-to-t from-black/60 to-transparent w-full">
-          <div className="max-w-4xl">
+        <div className="w-full h-full bg-gradient-to-br from-red-600 via-orange-500 to-red-700 flex items-center justify-center">
+          <div className="text-center text-white">
             <h1 className="text-4xl font-bold mb-3" style={{ fontFamily: "var(--font-sap-72)", lineHeight: "1.1" }}>
               {pageData.title}
             </h1>
@@ -306,6 +289,42 @@ export default function SAPBuildProcessAutomationPage() {
                 Click to open the reference architecture diagram in draw.io
               </p>
             </div>
+          </div>
+        </div>
+
+        {/* Video Section - Collapsible */}
+        <div className="mt-12">
+          <div className="bg-white rounded-xl border shadow-sm p-5" style={{ borderColor: "var(--border)" }}>
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-xl font-bold" style={{ color: "var(--text)", fontFamily: "var(--font-sap-72)" }}>
+                Demo Video
+              </h2>
+              <button
+                onClick={() => setVideoExpanded(!videoExpanded)}
+                className="px-3 py-1.5 bg-red-50 text-red-700 rounded-lg font-medium text-sm hover:bg-red-100 transition-colors"
+                style={{ fontFamily: "var(--font-sap-72)" }}
+              >
+                {videoExpanded ? 'Collapse' : 'Expand'}
+              </button>
+            </div>
+            
+            {videoExpanded && pageData.heroVideo && (
+              <div className="mt-4">
+                <div className="relative rounded-lg overflow-hidden bg-black/20 border border-gray-200">
+                  <video 
+                    className="w-full h-64 object-cover"
+                    controls 
+                    preload="metadata"
+                  >
+                    <source src={pageData.heroVideo} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+                <p className="text-xs text-center mt-2" style={{ color: "var(--text-muted)", fontFamily: "var(--font-sap-72)" }}>
+                  {pageData.title} - Demo Video
+                </p>
+              </div>
+            )}
           </div>
         </div>
       </div>
