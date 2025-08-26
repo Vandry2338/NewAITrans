@@ -1,284 +1,247 @@
 "use client"
 
-import { SectionLayout } from "@/components/gallery/SectionLayout"
-import type { GalleryItem } from "@/lib/types/gallery"
+import { useState } from "react"
+import { Cog, Workflow, BarChart3, Users, Building, Target, Zap } from "lucide-react"
 
 export default function SignavioPage() {
-  const signavioContent: GalleryItem[] = [
-    {
-      id: "process-mining-starter",
-      title: "Process Mining Starter",
-      description: "Quick setup for process discovery and analysis",
-      category: "Template",
-      version: "v2.1.0",
-      demoVideo: "/placeholder.svg?height=200&width=300",
-      industries: ["manufacturing", "financial-services"],
-      valueChains: ["S2P", "R2R"],
-      processes: ["procurement", "accounts-payable"],
-      capabilities: ["process-discovery", "compliance-monitoring"],
-      fitScore: 85,
-      linkedKPIs: ["cycle-time", "cost-per-transaction"],
-      linkedPainPoints: ["manual-processes", "compliance-gaps"],
-      businessValue: "Reduce process discovery time by 60% and improve compliance visibility",
-      implementationSteps: [
-        "Connect to source systems",
-        "Configure process mining algorithms",
-        "Set up dashboards and alerts",
-        "Train users on insights interpretation",
-      ],
-    },
-    {
-      id: "bpmn-workflow-designer",
-      title: "BPMN Workflow Designer",
-      description: "Visual workflow modeling and automation",
-      category: "Tool",
-      version: "v3.0.2",
-      demoVideo: "/placeholder.svg?height=200&width=300",
-      industries: ["healthcare", "retail"],
-      valueChains: ["L2C", "P2F"],
-      processes: ["order-fulfillment", "customer-onboarding"],
-      capabilities: ["workflow-automation", "process-modeling"],
-      fitScore: 92,
-      linkedKPIs: ["automation-rate", "process-efficiency"],
-      linkedPainPoints: ["manual-handoffs", "process-inconsistency"],
-      businessValue: "Automate 70% of routine workflows and standardize process execution",
-      implementationSteps: [
-        "Map current state processes",
-        "Design future state workflows",
-        "Configure automation rules",
-        "Deploy and monitor workflows",
-      ],
-    },
-    {
-      id: "compliance-dashboard",
-      title: "Compliance Dashboard",
-      description: "Real-time compliance monitoring and reporting",
-      category: "Dashboard",
-      version: "v1.5.1",
-      demoVideo: "/placeholder.svg?height=200&width=300",
-      industries: ["financial-services", "pharmaceuticals"],
-      valueChains: ["R2R", "GOV"],
-      processes: ["regulatory-reporting", "audit-management"],
-      capabilities: ["compliance-monitoring", "risk-assessment"],
-      fitScore: 78,
-      linkedKPIs: ["compliance-score", "audit-findings"],
-      linkedPainPoints: ["regulatory-complexity", "audit-preparation"],
-      businessValue: "Achieve 95% compliance score and reduce audit preparation time by 50%",
-      implementationSteps: [
-        "Define compliance requirements",
-        "Set up monitoring rules",
-        "Configure alerts and reports",
-        "Establish governance workflows",
-      ],
-    },
-    {
-      id: "process-optimization",
-      title: "Process Optimization Kit",
-      description: "AI-powered process improvement recommendations",
-      category: "AI Tool",
-      version: "v2.3.0",
-      demoVideo: "/placeholder.svg?height=200&width=300",
-      industries: ["manufacturing", "financial-services"],
-      valueChains: ["S2P", "R2R"],
-      processes: ["procurement", "accounts-payable"],
-      capabilities: ["process-discovery", "compliance-monitoring"],
-      fitScore: 85,
-      linkedKPIs: ["cycle-time", "cost-per-transaction"],
-      linkedPainPoints: ["manual-processes", "compliance-gaps"],
-      businessValue: "Reduce process discovery time by 60% and improve compliance visibility",
-      implementationSteps: [
-        "Connect to source systems",
-        "Configure process mining algorithms",
-        "Set up dashboards and alerts",
-        "Train users on insights interpretation",
-      ],
-    },
-    {
-      id: "task-automation",
-      title: "Task Automation Engine",
-      description: "Automated task execution and monitoring",
-      category: "Engine",
-      version: "v1.8.0",
-      demoVideo: "/placeholder.svg?height=200&width=300",
-      industries: ["healthcare", "retail"],
-      valueChains: ["L2C", "P2F"],
-      processes: ["order-fulfillment", "customer-onboarding"],
-      capabilities: ["workflow-automation", "process-modeling"],
-      fitScore: 92,
-      linkedKPIs: ["automation-rate", "process-efficiency"],
-      linkedPainPoints: ["manual-handoffs", "process-inconsistency"],
-      businessValue: "Automate 70% of routine workflows and standardize process execution",
-      implementationSteps: [
-        "Map current state processes",
-        "Design future state workflows",
-        "Configure automation rules",
-        "Deploy and monitor workflows",
-      ],
-    },
-    {
-      id: "analytics-suite",
-      title: "Process Analytics Suite",
-      description: "Advanced analytics for process performance",
-      category: "Analytics",
-      version: "v2.0.1",
-      demoVideo: "/placeholder.svg?height=200&width=300",
-      industries: ["financial-services", "pharmaceuticals"],
-      valueChains: ["R2R", "GOV"],
-      processes: ["regulatory-reporting", "audit-management"],
-      capabilities: ["compliance-monitoring", "risk-assessment"],
-      fitScore: 78,
-      linkedKPIs: ["compliance-score", "audit-findings"],
-      linkedPainPoints: ["regulatory-complexity", "audit-preparation"],
-      businessValue: "Achieve 95% compliance score and reduce audit preparation time by 50%",
-      implementationSteps: [
-        "Define compliance requirements",
-        "Set up monitoring rules",
-        "Configure alerts and reports",
-        "Establish governance workflows",
-      ],
-    },
-    {
-      id: "integration-hub",
-      title: "SAP Integration Hub",
-      description: "Seamless SAP system integration",
-      category: "Integration",
-      version: "v1.9.2",
-      demoVideo: "/placeholder.svg?height=200&width=300",
-      industries: ["manufacturing", "financial-services"],
-      valueChains: ["S2P", "R2R"],
-      processes: ["procurement", "accounts-payable"],
-      capabilities: ["process-discovery", "compliance-monitoring"],
-      fitScore: 85,
-      linkedKPIs: ["cycle-time", "cost-per-transaction"],
-      linkedPainPoints: ["manual-processes", "compliance-gaps"],
-      businessValue: "Reduce process discovery time by 60% and improve compliance visibility",
-      implementationSteps: [
-        "Connect to source systems",
-        "Configure process mining algorithms",
-        "Set up dashboards and alerts",
-        "Train users on insights interpretation",
-      ],
-    },
-    {
-      id: "mobile-app",
-      title: "Mobile Process App",
-      description: "Mobile interface for process management",
-      category: "Mobile",
-      version: "v1.4.0",
-      demoVideo: "/placeholder.svg?height=200&width=300",
-      industries: ["healthcare", "retail"],
-      valueChains: ["L2C", "P2F"],
-      processes: ["order-fulfillment", "customer-onboarding"],
-      capabilities: ["workflow-automation", "process-modeling"],
-      fitScore: 92,
-      linkedKPIs: ["automation-rate", "process-efficiency"],
-      linkedPainPoints: ["manual-handoffs", "process-inconsistency"],
-      businessValue: "Automate 70% of routine workflows and standardize process execution",
-      implementationSteps: [
-        "Map current state processes",
-        "Design future state workflows",
-        "Configure automation rules",
-        "Deploy and monitor workflows",
-      ],
-    },
-    {
-      id: "reporting-engine",
-      title: "Advanced Reporting Engine",
-      description: "Customizable reports and visualizations",
-      category: "Reporting",
-      version: "v2.2.0",
-      demoVideo: "/placeholder.svg?height=200&width=300",
-      industries: ["financial-services", "pharmaceuticals"],
-      valueChains: ["R2R", "GOV"],
-      processes: ["regulatory-reporting", "audit-management"],
-      capabilities: ["compliance-monitoring", "risk-assessment"],
-      fitScore: 78,
-      linkedKPIs: ["compliance-score", "audit-findings"],
-      linkedPainPoints: ["regulatory-complexity", "audit-preparation"],
-      businessValue: "Achieve 95% compliance score and reduce audit preparation time by 50%",
-      implementationSteps: [
-        "Define compliance requirements",
-        "Set up monitoring rules",
-        "Configure alerts and reports",
-        "Establish governance workflows",
-      ],
-    },
-    {
-      id: "workflow-templates",
-      title: "Workflow Templates Library",
-      description: "Pre-built templates for common processes",
-      category: "Templates",
-      version: "v1.6.0",
-      demoVideo: "/placeholder.svg?height=200&width=300",
-      industries: ["manufacturing", "financial-services"],
-      valueChains: ["S2P", "R2R"],
-      processes: ["procurement", "accounts-payable"],
-      capabilities: ["process-discovery", "compliance-monitoring"],
-      fitScore: 85,
-      linkedKPIs: ["cycle-time", "cost-per-transaction"],
-      linkedPainPoints: ["manual-processes", "compliance-gaps"],
-      businessValue: "Reduce process discovery time by 60% and improve compliance visibility",
-      implementationSteps: [
-        "Connect to source systems",
-        "Configure process mining algorithms",
-        "Set up dashboards and alerts",
-        "Train users on insights interpretation",
-      ],
-    },
-    {
-      id: "api-connector",
-      title: "API Connector Suite",
-      description: "Connect external systems via APIs",
-      category: "Connector",
-      version: "v2.1.1",
-      demoVideo: "/placeholder.svg?height=200&width=300",
-      industries: ["healthcare", "retail"],
-      valueChains: ["L2C", "P2F"],
-      processes: ["order-fulfillment", "customer-onboarding"],
-      capabilities: ["workflow-automation", "process-modeling"],
-      fitScore: 92,
-      linkedKPIs: ["automation-rate", "process-efficiency"],
-      linkedPainPoints: ["manual-handoffs", "process-inconsistency"],
-      businessValue: "Automate 70% of routine workflows and standardize process execution",
-      implementationSteps: [
-        "Map current state processes",
-        "Design future state workflows",
-        "Configure automation rules",
-        "Deploy and monitor workflows",
-      ],
-    },
-    {
-      id: "security-module",
-      title: "Security & Governance Module",
-      description: "Enhanced security and governance controls",
-      category: "Security",
-      version: "v1.7.0",
-      demoVideo: "/placeholder.svg?height=200&width=300",
-      industries: ["financial-services", "pharmaceuticals"],
-      valueChains: ["R2R", "GOV"],
-      processes: ["regulatory-reporting", "audit-management"],
-      capabilities: ["compliance-monitoring", "risk-assessment"],
-      fitScore: 78,
-      linkedKPIs: ["compliance-score", "audit-findings"],
-      linkedPainPoints: ["regulatory-complexity", "audit-preparation"],
-      businessValue: "Achieve 95% compliance score and reduce audit preparation time by 50%",
-      implementationSteps: [
-        "Define compliance requirements",
-        "Set up monitoring rules",
-        "Configure alerts and reports",
-        "Establish governance workflows",
-      ],
-    },
+  const [activeTab, setActiveTab] = useState("overview")
+
+  const tabs = [
+    { id: "overview", label: "Overview", icon: Cog },
+    { id: "process-mining", label: "Process Mining", icon: Workflow },
+    { id: "bpm", label: "Business Process Management", icon: BarChart3 },
+    { id: "collaboration", label: "Collaboration", icon: Users },
+    { id: "analytics", label: "Analytics", icon: Target },
   ]
 
   return (
-    <SectionLayout
-      title="Signavio Solutions"
-      description="Process mining, workflow automation, and business process management tools"
-      content={signavioContent}
-      categoryColor="var(--blue-100)"
-      searchPlaceholder="Search Signavio solutions..."
-      basePath="/gallery/signavio"
-    />
+    <div className="min-h-screen" style={{ backgroundColor: "var(--bg)" }}>
+      <div className="max-w-7xl mx-auto px-4 py-8">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <div className="p-3 rounded-full bg-gradient-to-r from-teal-500 to-blue-500">
+              <Cog className="h-8 w-8 text-white" />
+            </div>
+            <h1 className="text-4xl font-bold" style={{ color: "var(--text-default)" }}>
+              Signavio
+            </h1>
+          </div>
+          <p className="text-xl max-w-3xl mx-auto" style={{ color: "var(--text-muted)" }}>
+            Process mining and business process management solutions for enterprise transformation
+          </p>
+        </div>
+
+        {/* Navigation Tabs */}
+        <div className="flex justify-center mb-8">
+          <div className="flex gap-2 p-1 rounded-lg" style={{ background: "rgba(255, 255, 255, 0.1)" }}>
+            {tabs.map((tab) => {
+              const Icon = tab.icon
+              const isActive = activeTab === tab.id
+              return (
+                <button
+                  key={tab.id}
+                  className={`flex items-center gap-2 px-4 py-2 rounded-md transition-all duration-200 ${
+                    isActive
+                      ? "text-white shadow-lg"
+                      : "text-gray-300 hover:text-white hover:bg-white/10"
+                  }`}
+                  style={{
+                    background: isActive ? "var(--grad-primary)" : "transparent",
+                  }}
+                  onClick={() => setActiveTab(tab.id)}
+                >
+                  <Icon className="h-4 w-4" />
+                  {tab.label}
+                </button>
+              )
+            })}
+          </div>
+        </div>
+
+        {/* Content */}
+        <div className="space-y-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="p-6 rounded-xl backdrop-blur-md border hover:shadow-lg transition-all duration-300" style={{ background: "rgba(255, 255, 255, 0.08)", borderColor: "rgba(255, 255, 255, 0.1)" }}>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="p-2 rounded-lg bg-gradient-to-r from-teal-500 to-blue-500">
+                  <Workflow className="h-5 w-5 text-white" />
+                </div>
+                <h3 className="text-lg font-semibold" style={{ color: "var(--text-default)" }}>
+                  Process Mining
+                </h3>
+              </div>
+              <p className="text-sm mb-4" style={{ color: "var(--text-muted)" }}>
+                Discover, analyze, and optimize business processes with AI-powered insights
+              </p>
+              <ul className="space-y-2">
+                <li className="flex items-center gap-2 text-sm">
+                  <div className="w-1.5 h-1.5 rounded-full bg-teal-500"></div>
+                  <span style={{ color: "var(--text-default)" }}>Process discovery</span>
+                </li>
+                <li className="flex items-center gap-2 text-sm">
+                  <div className="w-1.5 h-1.5 rounded-full bg-teal-500"></div>
+                  <span style={{ color: "var(--text-default)" }}>Performance analysis</span>
+                </li>
+                <li className="flex items-center gap-2 text-sm">
+                  <div className="w-1.5 h-1.5 rounded-full bg-teal-500"></div>
+                  <span style={{ color: "var(--text-default)" }}>Bottleneck identification</span>
+                </li>
+                <li className="flex items-center gap-2 text-sm">
+                  <div className="w-1.5 h-1.5 rounded-full bg-teal-500"></div>
+                  <span style={{ color: "var(--text-default)" }}>Compliance monitoring</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="p-6 rounded-xl backdrop-blur-md border hover:shadow-lg transition-all duration-300" style={{ background: "rgba(255, 255, 255, 0.08)", borderColor: "rgba(255, 255, 255, 0.1)" }}>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="p-2 rounded-lg bg-gradient-to-r from-teal-500 to-blue-500">
+                  <BarChart3 className="h-5 w-5 text-white" />
+                </div>
+                <h3 className="text-lg font-semibold" style={{ color: "var(--text-default)" }}>
+                  Business Process Management
+                </h3>
+              </div>
+              <p className="text-sm mb-4" style={{ color: "var(--text-muted)" }}>
+                Design, model, and execute business processes with visual tools
+              </p>
+              <ul className="space-y-2">
+                <li className="flex items-center gap-2 text-sm">
+                  <div className="w-1.5 h-1.5 rounded-full bg-teal-500"></div>
+                  <span style={{ color: "var(--text-default)" }}>Visual process modeling</span>
+                </li>
+                <li className="flex items-center gap-2 text-sm">
+                  <div className="w-1.5 h-1.5 rounded-full bg-teal-500"></div>
+                  <span style={{ color: "var(--text-default)" }}>Workflow automation</span>
+                </li>
+                <li className="flex items-center gap-2 text-sm">
+                  <div className="w-1.5 h-1.5 rounded-full bg-teal-500"></div>
+                  <span style={{ color: "var(--text-default)" }}>Process governance</span>
+                </li>
+                <li className="flex items-center gap-2 text-sm">
+                  <div className="w-1.5 h-1.5 rounded-full bg-teal-500"></div>
+                  <span style={{ color: "var(--text-default)" }}>Version control</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="p-6 rounded-xl backdrop-blur-md border hover:shadow-lg transition-all duration-300" style={{ background: "rgba(255, 255, 255, 0.08)", borderColor: "rgba(255, 255, 255, 0.1)" }}>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="p-2 rounded-lg bg-gradient-to-r from-teal-500 to-blue-500">
+                  <Users className="h-5 w-5 text-white" />
+                </div>
+                <h3 className="text-lg font-semibold" style={{ color: "var(--text-default)" }}>
+                  Collaboration Tools
+                </h3>
+              </div>
+              <p className="text-sm mb-4" style={{ color: "var(--text-muted)" }}>
+                Enable teams to work together on process improvement initiatives
+              </p>
+              <ul className="space-y-2">
+                <li className="flex items-center gap-2 text-sm">
+                  <div className="w-1.5 h-1.5 rounded-full bg-teal-500"></div>
+                  <span style={{ color: "var(--text-default)" }}>Real-time collaboration</span>
+                </li>
+                <li className="flex items-center gap-2 text-sm">
+                  <div className="w-1.5 h-1.5 rounded-full bg-teal-500"></div>
+                  <span style={{ color: "var(--text-default)" }}>Comment and feedback</span>
+                </li>
+                <li className="flex items-center gap-2 text-sm">
+                  <div className="w-1.5 h-1.5 rounded-full bg-teal-500"></div>
+                  <span style={{ color: "var(--text-default)" }}>Approval workflows</span>
+                </li>
+                <li className="flex items-center gap-2 text-sm">
+                  <div className="w-1.5 h-1.5 rounded-full bg-teal-500"></div>
+                  <span style={{ color: "var(--text-default)" }}>Team management</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="p-6 rounded-xl backdrop-blur-md border hover:shadow-lg transition-all duration-300" style={{ background: "rgba(255, 255, 255, 0.08)", borderColor: "rgba(255, 255, 255, 0.1)" }}>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="p-2 rounded-lg bg-gradient-to-r from-teal-500 to-blue-500">
+                  <Target className="h-5 w-5 text-white" />
+                </div>
+                <h3 className="text-lg font-semibold" style={{ color: "var(--text-default)" }}>
+                  Advanced Analytics
+                </h3>
+              </div>
+              <p className="text-sm mb-4" style={{ color: "var(--text-muted)" }}>
+                Gain insights into process performance and optimization opportunities
+              </p>
+              <ul className="space-y-2">
+                <li className="flex items-center gap-2 text-sm">
+                  <div className="w-1.5 h-1.5 rounded-full bg-teal-500"></div>
+                  <span style={{ color: "var(--text-default)" }}>Performance metrics</span>
+                </li>
+                <li className="flex items-center gap-2 text-sm">
+                  <div className="w-1.5 h-1.5 rounded-full bg-teal-500"></div>
+                  <span style={{ color: "var(--text-default)" }}>Trend analysis</span>
+                </li>
+                <li className="flex items-center gap-2 text-sm">
+                  <div className="w-1.5 h-1.5 rounded-full bg-teal-500"></div>
+                  <span style={{ color: "var(--text-default)" }}>Predictive insights</span>
+                </li>
+                <li className="flex items-center gap-2 text-sm">
+                  <div className="w-1.5 h-1.5 rounded-full bg-teal-500"></div>
+                  <span style={{ color: "var(--text-default)" }}>Custom dashboards</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Industry Use Cases */}
+          <div className="mt-12">
+            <h2 className="text-2xl font-bold mb-6 text-center" style={{ color: "var(--text-default)" }}>
+              Industry Use Cases
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="p-6 rounded-xl backdrop-blur-md border text-center" style={{ background: "rgba(255, 255, 255, 0.08)", borderColor: "rgba(255, 255, 255, 0.1)" }}>
+                <h3 className="text-lg font-semibold mb-3" style={{ color: "var(--text-default)" }}>
+                  Manufacturing
+                </h3>
+                <p className="text-sm mb-4" style={{ color: "var(--text-muted)" }}>
+                  Optimize production processes and reduce cycle times
+                </p>
+                <div className="space-y-2">
+                  <div className="text-xs px-3 py-1 rounded-full" style={{ background: "rgba(0, 255, 0, 0.1)", color: "#10b981" }}>15% cycle time reduction</div>
+                  <div className="text-xs px-3 py-1 rounded-full" style={{ background: "rgba(0, 255, 0, 0.1)", color: "#10b981" }}>20% efficiency improvement</div>
+                  <div className="text-xs px-3 py-1 rounded-full" style={{ background: "rgba(0, 255, 0, 0.1)", color: "#10b981" }}>30% cost savings</div>
+                </div>
+              </div>
+
+              <div className="p-6 rounded-xl backdrop-blur-md border text-center" style={{ background: "rgba(255, 255, 255, 0.08)", borderColor: "rgba(255, 255, 255, 0.1)" }}>
+                <h3 className="text-lg font-semibold mb-3" style={{ color: "var(--text-default)" }}>
+                  Healthcare
+                </h3>
+                <p className="text-sm mb-4" style={{ color: "var(--text-muted)" }}>
+                  Streamline patient care workflows and improve outcomes
+                </p>
+                <div className="space-y-2">
+                  <div className="text-xs px-3 py-1 rounded-full" style={{ background: "rgba(0, 255, 0, 0.1)", color: "#10b981" }}>25% faster patient processing</div>
+                  <div className="text-xs px-3 py-1 rounded-full" style={{ background: "rgba(0, 255, 0, 0.1)", color: "#10b981" }}>40% reduction in wait times</div>
+                  <div className="text-xs px-3 py-1 rounded-full" style={{ background: "rgba(0, 255, 0, 0.1)", color: "#10b981" }}>Improved compliance</div>
+                </div>
+              </div>
+
+              <div className="p-6 rounded-xl backdrop-blur-md border text-center" style={{ background: "rgba(255, 255, 255, 0.08)", borderColor: "rgba(255, 255, 255, 0.1)" }}>
+                <h3 className="text-lg font-semibold mb-3" style={{ color: "var(--text-default)" }}>
+                  Financial Services
+                </h3>
+                <p className="text-sm mb-4" style={{ color: "var(--text-muted)" }}>
+                  Automate compliance processes and reduce operational risk
+                </p>
+                <div className="space-y-2">
+                  <div className="text-xs px-3 py-1 rounded-full" style={{ background: "rgba(0, 255, 0, 0.1)", color: "#10b981" }}>50% faster compliance checks</div>
+                  <div className="text-xs px-3 py-1 rounded-full" style={{ background: "rgba(0, 255, 0, 0.1)", color: "#10b981" }}>90% error reduction</div>
+                  <div className="text-xs px-3 py-1 rounded-full" style={{ background: "rgba(0, 255, 0, 0.1)", color: "#10b981" }}>Real-time monitoring</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   )
 }

@@ -1,307 +1,247 @@
 "use client"
-import { SectionLayout } from "@/components/gallery/SectionLayout"
-import type { GalleryItem } from "@/lib/types/gallery"
+
+import { useState } from "react"
+import { Zap, FileText, Image, Video, Code, MessageSquare, Building } from "lucide-react"
 
 export default function GenerativeAIUseCasesPage() {
-  const generativeAIContent: GalleryItem[] = [
-    {
-      id: "content-generation",
-      title: "AI Content Generation Suite",
-      description: "Generate marketing copy, documentation, and creative content",
-      category: "Content Creation",
-      version: "v2.4.0",
-      demoVideo: "/placeholder.svg?height=200&width=300",
-      industries: ["technology", "marketing"],
-      valueChains: ["L2C", "I2M"],
-      processes: ["content-creation", "marketing-campaigns"],
-      capabilities: ["content-generation", "natural-language-processing"],
-      fitScore: 89,
-      linkedKPIs: ["content-quality", "creation-speed"],
-      linkedPainPoints: ["manual-content-creation", "inconsistent-messaging"],
-      businessValue: "Reduce content creation time by 70% and improve consistency by 85%",
-      implementationSteps: [
-        "Define content templates and guidelines",
-        "Train AI models on brand voice",
-        "Set up content approval workflows",
-        "Deploy and monitor content quality",
-      ],
-      requirements: ["Content management system", "Brand guidelines", "AI platform"],
-      tags: ["Content Generation", "AI", "Marketing"],
-    },
-    {
-      id: "code-assistant",
-      title: "AI Code Assistant",
-      description: "Intelligent code generation and development support",
-      category: "Development",
-      version: "v3.1.2",
-      demoVideo: "/placeholder.svg?height=200&width=300",
-      industries: ["technology", "financial-services"],
-      valueChains: ["I2M", "P2F"],
-      processes: ["software-development", "code-review"],
-      capabilities: ["code-generation", "automated-testing"],
-      fitScore: 94,
-      linkedKPIs: ["development-speed", "code-quality"],
-      linkedPainPoints: ["slow-development", "code-inconsistency"],
-      businessValue: "Accelerate development by 60% and reduce bugs by 40%",
-      implementationSteps: [
-        "Integrate with development environment",
-        "Configure coding standards",
-        "Set up automated code review",
-        "Train team on AI assistance",
-      ],
-      requirements: ["IDE integration", "Code repository", "Development standards"],
-      tags: ["Code Generation", "Development", "AI Assistant"],
-    },
-    {
-      id: "design-generator",
-      title: "AI Design Generator",
-      description: "Automated UI/UX design creation and optimization",
-      category: "Design",
-      version: "v1.8.0",
-      demoVideo: "/placeholder.svg?height=200&width=300",
-      industries: ["technology", "e-commerce"],
-      valueChains: ["I2M", "P2F"],
-      processes: ["design-creation", "ui-optimization"],
-      capabilities: ["design-generation", "machine-learning"],
-      fitScore: 91,
-      linkedKPIs: ["design-quality", "optimization-speed"],
-      linkedPainPoints: ["manual-design", "inefficient-optimization"],
-      businessValue: "Enhance design quality by 80% and speed up optimization by 65%",
-      implementationSteps: [
-        "Define design templates and guidelines",
-        "Train AI models on design aesthetics",
-        "Set up design approval workflows",
-        "Deploy and monitor design quality",
-      ],
-      requirements: ["Design management system", "Design guidelines", "AI platform"],
-      tags: ["Design Generation", "AI", "UI/UX"],
-    },
-    {
-      id: "data-synthesis",
-      title: "Synthetic Data Generator",
-      description: "Generate realistic test data for development and training",
-      category: "Data Generation",
-      version: "v2.2.1",
-      demoVideo: "/placeholder.svg?height=200&width=300",
-      industries: ["technology", "financial-services"],
-      valueChains: ["I2M", "P2F"],
-      processes: ["data-generation", "testing"],
-      capabilities: ["data-synthesis", "randomization"],
-      fitScore: 85,
-      linkedKPIs: ["test-coverage", "data-quality"],
-      linkedPainPoints: ["limited-test-data", "inconsistent-data"],
-      businessValue: "Increase test coverage by 90% and ensure data consistency by 95%",
-      implementationSteps: [
-        "Define data generation rules and templates",
-        "Train AI models on data patterns",
-        "Set up data validation workflows",
-        "Deploy and monitor data quality",
-      ],
-      requirements: ["Data management system", "Data patterns", "AI platform"],
-      tags: ["Data Generation", "AI", "Testing"],
-    },
-    {
-      id: "report-automation",
-      title: "AI Report Generator",
-      description: "Automated business report creation and insights",
-      category: "Reporting",
-      version: "v1.9.3",
-      demoVideo: "/placeholder.svg?height=200&width=300",
-      industries: ["technology", "financial-services"],
-      valueChains: ["I2M", "P2F"],
-      processes: ["report-creation", "data-analysis"],
-      capabilities: ["report-generation", "data-insights"],
-      fitScore: 92,
-      linkedKPIs: ["report-accuracy", "analysis-speed"],
-      linkedPainPoints: ["manual-reporting", "slow-analysis"],
-      businessValue: "Improve report accuracy by 90% and speed up analysis by 75%",
-      implementationSteps: [
-        "Define report templates and guidelines",
-        "Train AI models on data interpretation",
-        "Set up report approval workflows",
-        "Deploy and monitor report accuracy",
-      ],
-      requirements: ["Reporting system", "Data interpretation", "AI platform"],
-      tags: ["Report Generation", "AI", "Data Analysis"],
-    },
-    {
-      id: "translation-engine",
-      title: "Multi-Language AI Translator",
-      description: "Real-time translation and localization services",
-      category: "Translation",
-      version: "v2.6.0",
-      demoVideo: "/placeholder.svg?height=200&width=300",
-      industries: ["technology", "global-commerce"],
-      valueChains: ["I2M", "P2F"],
-      processes: ["translation", "localization"],
-      capabilities: ["real-time-translation", "multi-language-support"],
-      fitScore: 88,
-      linkedKPIs: ["translation-accuracy", "localization-speed"],
-      linkedPainPoints: ["slow-translation", "inconsistent-localization"],
-      businessValue: "Enhance translation accuracy by 85% and speed up localization by 70%",
-      implementationSteps: [
-        "Define translation and localization rules",
-        "Train AI models on language nuances",
-        "Set up translation approval workflows",
-        "Deploy and monitor translation accuracy",
-      ],
-      requirements: ["Translation system", "Language nuances", "AI platform"],
-      tags: ["Translation", "AI", "Localization"],
-    },
-    {
-      id: "image-generation",
-      title: "AI Image Creator",
-      description: "Generate custom images and graphics from text prompts",
-      category: "Image Generation",
-      version: "v3.0.1",
-      demoVideo: "/placeholder.svg?height=200&width=300",
-      industries: ["technology", "creative-industries"],
-      valueChains: ["I2M", "P2F"],
-      processes: ["image-creation", "graphic-design"],
-      capabilities: ["image-generation", "deep-learning"],
-      fitScore: 90,
-      linkedKPIs: ["image-quality", "creation-speed"],
-      linkedPainPoints: ["manual-image-creation", "slow-graphic-design"],
-      businessValue: "Improve image quality by 80% and speed up creation by 60%",
-      implementationSteps: [
-        "Define image creation templates and guidelines",
-        "Train AI models on design aesthetics",
-        "Set up image approval workflows",
-        "Deploy and monitor image quality",
-      ],
-      requirements: ["Image management system", "Design guidelines", "AI platform"],
-      tags: ["Image Generation", "AI", "Graphic Design"],
-    },
-    {
-      id: "chatbot-builder",
-      title: "Conversational AI Builder",
-      description: "Create intelligent chatbots and virtual assistants",
-      category: "Conversational AI",
-      version: "v2.7.2",
-      demoVideo: "/placeholder.svg?height=200&width=300",
-      industries: ["technology", "customer-service"],
-      valueChains: ["I2M", "P2F"],
-      processes: ["chatbot-creation", "customer-service"],
-      capabilities: ["conversational-ai", "natural-language-processing"],
-      fitScore: 93,
-      linkedKPIs: ["customer-satisfaction", "response-time"],
-      linkedPainPoints: ["slow-response", "inconsistent-interactions"],
-      businessValue: "Boost customer satisfaction by 85% and reduce response time by 50%",
-      implementationSteps: [
-        "Define chatbot interaction rules and templates",
-        "Train AI models on customer service scenarios",
-        "Set up chatbot approval workflows",
-        "Deploy and monitor customer satisfaction",
-      ],
-      requirements: ["Chatbot management system", "Customer service scenarios", "AI platform"],
-      tags: ["Conversational AI", "AI", "Customer Service"],
-    },
-    {
-      id: "email-composer",
-      title: "AI Email Composer",
-      description: "Generate personalized emails and responses",
-      category: "Communication",
-      version: "v1.5.1",
-      demoVideo: "/placeholder.svg?height=200&width=300",
-      industries: ["technology", "marketing"],
-      valueChains: ["I2M", "P2F"],
-      processes: ["email-creation", "communication"],
-      capabilities: ["email-composition", "personalization"],
-      fitScore: 87,
-      linkedKPIs: ["email-engagement", "personalization-quality"],
-      linkedPainPoints: ["manual-email-composition", "low-engagement"],
-      businessValue: "Increase email engagement by 75% and improve personalization by 80%",
-      implementationSteps: [
-        "Define email templates and guidelines",
-        "Train AI models on brand voice",
-        "Set up email approval workflows",
-        "Deploy and monitor email engagement",
-      ],
-      requirements: ["Email management system", "Brand guidelines", "AI platform"],
-      tags: ["Email Composition", "AI", "Communication"],
-    },
-    {
-      id: "presentation-maker",
-      title: "AI Presentation Generator",
-      description: "Create professional presentations from outlines",
-      category: "Presentations",
-      version: "v2.1.0",
-      demoVideo: "/placeholder.svg?height=200&width=300",
-      industries: ["technology", "business"],
-      valueChains: ["I2M", "P2F"],
-      processes: ["presentation-creation", "professional-design"],
-      capabilities: ["presentation-generation", "design-automation"],
-      fitScore: 86,
-      linkedKPIs: ["presentation-quality", "creation-speed"],
-      linkedPainPoints: ["manual-presentation-creation", "inefficient-design"],
-      businessValue: "Enhance presentation quality by 80% and speed up creation by 60%",
-      implementationSteps: [
-        "Define presentation templates and guidelines",
-        "Train AI models on design aesthetics",
-        "Set up presentation approval workflows",
-        "Deploy and monitor presentation quality",
-      ],
-      requirements: ["Presentation management system", "Design guidelines", "AI platform"],
-      tags: ["Presentation Generation", "AI", "Professional Design"],
-    },
-    {
-      id: "video-creator",
-      title: "AI Video Generator",
-      description: "Generate video content from scripts and storyboards",
-      category: "Video Creation",
-      version: "v1.3.2",
-      demoVideo: "/placeholder.svg?height=200&width=300",
-      industries: ["technology", "media"],
-      valueChains: ["I2M", "P2F"],
-      processes: ["video-creation", "content-production"],
-      capabilities: ["video-generation", "script-analysis"],
-      fitScore: 84,
-      linkedKPIs: ["video-quality", "production-speed"],
-      linkedPainPoints: ["slow-video-production", "inconsistent-quality"],
-      businessValue: "Improve video quality by 85% and speed up production by 65%",
-      implementationSteps: [
-        "Define video creation templates and guidelines",
-        "Train AI models on video production techniques",
-        "Set up video approval workflows",
-        "Deploy and monitor video quality",
-      ],
-      requirements: ["Video management system", "Production techniques", "AI platform"],
-      tags: ["Video Generation", "AI", "Content Production"],
-    },
-    {
-      id: "music-composer",
-      title: "AI Music Composer",
-      description: "Generate original music and soundtracks",
-      category: "Audio Generation",
-      version: "v1.7.0",
-      demoVideo: "/placeholder.svg?height=200&width=300",
-      industries: ["technology", "entertainment"],
-      valueChains: ["I2M", "P2F"],
-      processes: ["music-composition", "soundtrack-creation"],
-      capabilities: ["music-generation", "soundtrack-composition"],
-      fitScore: 83,
-      linkedKPIs: ["music-quality", "composition-speed"],
-      linkedPainPoints: ["slow-music-composition", "inconsistent-quality"],
-      businessValue: "Enhance music quality by 80% and speed up composition by 60%",
-      implementationSteps: [
-        "Define music composition templates and guidelines",
-        "Train AI models on musical styles",
-        "Set up music approval workflows",
-        "Deploy and monitor music quality",
-      ],
-      requirements: ["Music management system", "Musical styles", "AI platform"],
-      tags: ["Music Generation", "AI", "Soundtrack Composition"],
-    },
+  const [activeTab, setActiveTab] = useState("overview")
+
+  const tabs = [
+    { id: "overview", label: "Overview", icon: Zap },
+    { id: "text-generation", label: "Text Generation", icon: FileText },
+    { id: "image-generation", label: "Image Generation", icon: Image },
+    { id: "code-generation", label: "Code Generation", icon: Code },
+    { id: "multimodal", label: "Multimodal AI", icon: Video },
   ]
 
   return (
-    <SectionLayout
-      title="Generative AI Use Cases"
-      description="Practical applications of generative AI across business functions"
-      content={generativeAIContent}
-      categoryColor="var(--orange-100)"
-      searchPlaceholder="Search generative AI use cases..."
-      basePath="/gallery/generative-ai-use-cases"
-    />
+    <div className="min-h-screen" style={{ backgroundColor: "var(--bg)" }}>
+      <div className="max-w-7xl mx-auto px-4 py-8">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <div className="p-3 rounded-full bg-gradient-to-r from-violet-500 to-purple-500">
+              <Zap className="h-8 w-8 text-white" />
+            </div>
+            <h1 className="text-4xl font-bold" style={{ color: "var(--text-default)" }}>
+              Generative AI Use Cases
+            </h1>
+          </div>
+          <p className="text-xl max-w-3xl mx-auto" style={{ color: "var(--text-muted)" }}>
+            Generative AI applications and implementation patterns for enterprise innovation
+          </p>
+        </div>
+
+        {/* Navigation Tabs */}
+        <div className="flex justify-center mb-8">
+          <div className="flex gap-2 p-1 rounded-lg" style={{ background: "rgba(255, 255, 255, 0.1)" }}>
+            {tabs.map((tab) => {
+              const Icon = tab.icon
+              const isActive = activeTab === tab.id
+              return (
+                <button
+                  key={tab.id}
+                  className={`flex items-center gap-2 px-4 py-2 rounded-md transition-all duration-200 ${
+                    isActive
+                      ? "text-white shadow-lg"
+                      : "text-gray-300 hover:text-white hover:bg-white/10"
+                  }`}
+                  style={{
+                    background: isActive ? "var(--grad-primary)" : "transparent",
+                  }}
+                  onClick={() => setActiveTab(tab.id)}
+                >
+                  <Icon className="h-4 w-4" />
+                  {tab.label}
+                </button>
+              )
+            })}
+          </div>
+        </div>
+
+        {/* Content */}
+        <div className="space-y-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="p-6 rounded-xl backdrop-blur-md border hover:shadow-lg transition-all duration-300" style={{ background: "rgba(255, 255, 255, 0.08)", borderColor: "rgba(255, 255, 255, 0.1)" }}>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="p-2 rounded-lg bg-gradient-to-r from-violet-500 to-purple-500">
+                  <FileText className="h-5 w-5 text-white" />
+                </div>
+                <h3 className="text-lg font-semibold" style={{ color: "var(--text-default)" }}>
+                  Text Generation
+                </h3>
+              </div>
+              <p className="text-sm mb-4" style={{ color: "var(--text-muted)" }}>
+                Create high-quality content for various business applications
+              </p>
+              <ul className="space-y-2">
+                <li className="flex items-center gap-2 text-sm">
+                  <div className="w-1.5 h-1.5 rounded-full bg-purple-500"></div>
+                  <span style={{ color: "var(--text-default)" }}>Content creation</span>
+                </li>
+                <li className="flex items-center gap-2 text-sm">
+                  <div className="w-1.5 h-1.5 rounded-full bg-purple-500"></div>
+                  <span style={{ color: "var(--text-default)" }}>Document generation</span>
+                </li>
+                <li className="flex items-center gap-2 text-sm">
+                  <div className="w-1.5 h-1.5 rounded-full bg-purple-500"></div>
+                  <span style={{ color: "var(--text-default)" }}>Email automation</span>
+                </li>
+                <li className="flex items-center gap-2 text-sm">
+                  <div className="w-1.5 h-1.5 rounded-full bg-purple-500"></div>
+                  <span style={{ color: "var(--text-default)" }}>Report writing</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="p-6 rounded-xl backdrop-blur-md border hover:shadow-lg transition-all duration-300" style={{ background: "rgba(255, 255, 255, 0.08)", borderColor: "rgba(255, 255, 255, 0.1)" }}>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="p-2 rounded-lg bg-gradient-to-r from-violet-500 to-purple-500">
+                  <Image className="h-5 w-5 text-white" />
+                </div>
+                <h3 className="text-lg font-semibold" style={{ color: "var(--text-default)" }}>
+                  Image Generation
+                </h3>
+              </div>
+              <p className="text-sm mb-4" style={{ color: "var(--text-muted)" }}>
+                Generate custom images for marketing and design purposes
+              </p>
+              <ul className="space-y-2">
+                <li className="flex items-center gap-2 text-sm">
+                  <div className="w-1.5 h-1.5 rounded-full bg-purple-500"></div>
+                  <span style={{ color: "var(--text-default)" }}>Marketing visuals</span>
+                </li>
+                <li className="flex items-center gap-2 text-sm">
+                  <div className="w-1.5 h-1.5 rounded-full bg-purple-500"></div>
+                  <span style={{ color: "var(--text-default)" }}>Product mockups</span>
+                </li>
+                <li className="flex items-center gap-2 text-sm">
+                  <div className="w-1.5 h-1.5 rounded-full bg-purple-500"></div>
+                  <span style={{ color: "var(--text-default)" }}>Design concepts</span>
+                </li>
+                <li className="flex items-center gap-2 text-sm">
+                  <div className="w-1.5 h-1.5 rounded-full bg-purple-500"></div>
+                  <span style={{ color: "var(--text-default)" }}>Brand assets</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="p-6 rounded-xl backdrop-blur-md border hover:shadow-lg transition-all duration-300" style={{ background: "rgba(255, 255, 255, 0.08)", borderColor: "rgba(255, 255, 255, 0.1)" }}>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="p-2 rounded-lg bg-gradient-to-r from-violet-500 to-purple-500">
+                  <Code className="h-5 w-5 text-white" />
+                </div>
+                <h3 className="text-lg font-semibold" style={{ color: "var(--text-default)" }}>
+                  Code Generation
+                </h3>
+              </div>
+              <p className="text-sm mb-4" style={{ color: "var(--text-muted)" }}>
+                Accelerate development with AI-generated code and automation
+              </p>
+              <ul className="space-y-2">
+                <li className="flex items-center gap-2 text-sm">
+                  <div className="w-1.5 h-1.5 rounded-full bg-purple-500"></div>
+                  <span style={{ color: "var(--text-default)" }}>Code snippets</span>
+                </li>
+                <li className="flex items-center gap-2 text-sm">
+                  <div className="w-1.5 h-1.5 rounded-full bg-purple-500"></div>
+                  <span style={{ color: "var(--text-default)" }}>API generation</span>
+                </li>
+                <li className="flex items-center gap-2 text-sm">
+                  <div className="w-1.5 h-1.5 rounded-full bg-purple-500"></div>
+                  <span style={{ color: "var(--text-default)" }}>Test automation</span>
+                </li>
+                <li className="flex items-center gap-2 text-sm">
+                  <div className="w-1.5 h-1.5 rounded-full bg-purple-500"></div>
+                  <span style={{ color: "var(--text-default)" }}>Documentation</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="p-6 rounded-xl backdrop-blur-md border hover:shadow-lg transition-all duration-300" style={{ background: "rgba(255, 255, 255, 0.08)", borderColor: "rgba(255, 255, 255, 0.1)" }}>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="p-2 rounded-lg bg-gradient-to-r from-violet-500 to-purple-500">
+                  <Video className="h-5 w-5 text-white" />
+                </div>
+                <h3 className="text-lg font-semibold" style={{ color: "var(--text-default)" }}>
+                  Multimodal AI
+                </h3>
+              </div>
+              <p className="text-sm mb-4" style={{ color: "var(--text-muted)" }}>
+                Combine multiple AI modalities for enhanced capabilities
+              </p>
+              <ul className="space-y-2">
+                <li className="flex items-center gap-2 text-sm">
+                  <div className="w-1.5 h-1.5 rounded-full bg-purple-500"></div>
+                  <span style={{ color: "var(--text-default)" }}>Text-to-image</span>
+                </li>
+                <li className="flex items-center gap-2 text-sm">
+                  <div className="w-1.5 h-1.5 rounded-full bg-purple-500"></div>
+                  <span style={{ color: "var(--text-default)" }}>Image-to-text</span>
+                </li>
+                <li className="flex items-center gap-2 text-sm">
+                  <div className="w-1.5 h-1.5 rounded-full bg-purple-500"></div>
+                  <span style={{ color: "var(--text-default)" }}>Video generation</span>
+                </li>
+                <li className="flex items-center gap-2 text-sm">
+                  <div className="w-1.5 h-1.5 rounded-full bg-purple-500"></div>
+                  <span style={{ color: "var(--text-default)" }}>Cross-modal search</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Industry Use Cases */}
+          <div className="mt-12">
+            <h2 className="text-2xl font-bold mb-6 text-center" style={{ color: "var(--text-default)" }}>
+              Industry Use Cases
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="p-6 rounded-xl backdrop-blur-md border text-center" style={{ background: "rgba(255, 255, 255, 0.08)", borderColor: "rgba(255, 255, 255, 0.1)" }}>
+                <h3 className="text-lg font-semibold mb-3" style={{ color: "var(--text-default)" }}>
+                  Marketing & Advertising
+                </h3>
+                <p className="text-sm mb-4" style={{ color: "var(--text-muted)" }}>
+                  Create compelling content and visual assets
+                </p>
+                <div className="space-y-2">
+                  <div className="text-xs px-3 py-1 rounded-full" style={{ background: "rgba(0, 255, 0, 0.1)", color: "#10b981" }}>50% faster content creation</div>
+                  <div className="text-xs px-3 py-1 rounded-full" style={{ background: "rgba(0, 255, 0, 0.1)", color: "#10b981" }}>30% increase in engagement</div>
+                  <div className="text-xs px-3 py-1 rounded-full" style={{ background: "rgba(0, 255, 0, 0.1)", color: "#10b981" }}>Personalized campaigns</div>
+                </div>
+              </div>
+
+              <div className="p-6 rounded-xl backdrop-blur-md border text-center" style={{ background: "rgba(255, 255, 255, 0.08)", borderColor: "rgba(255, 255, 255, 0.1)" }}>
+                <h3 className="text-lg font-semibold mb-3" style={{ color: "var(--text-default)" }}>
+                  Software Development
+                </h3>
+                <p className="text-sm mb-4" style={{ color: "var(--text-muted)" }}>
+                  Accelerate coding and testing processes
+                </p>
+                <div className="space-y-2">
+                  <div className="text-xs px-3 py-1 rounded-full" style={{ background: "rgba(0, 255, 0, 0.1)", color: "#10b981" }}>40% faster development</div>
+                  <div className="text-xs px-3 py-1 rounded-full" style={{ background: "rgba(0, 255, 0, 0.1)", color: "#10b981" }}>Automated testing</div>
+                  <div className="text-xs px-3 py-1 rounded-full" style={{ background: "rgba(0, 255, 0, 0.1)", color: "#10b981" }}>Code quality improvement</div>
+                </div>
+              </div>
+
+              <div className="p-6 rounded-xl backdrop-blur-md border text-center" style={{ background: "rgba(255, 255, 255, 0.08)", borderColor: "rgba(255, 255, 255, 0.1)" }}>
+                <h3 className="text-lg font-semibold mb-3" style={{ color: "var(--text-default)" }}>
+                  Content Creation
+                </h3>
+                <p className="text-sm mb-4" style={{ color: "var(--text-muted)" }}>
+                  Generate high-quality content at scale
+                </p>
+                <div className="space-y-2">
+                  <div className="text-xs px-3 py-1 rounded-full" style={{ background: "rgba(0, 255, 0, 0.1)", color: "#10b981" }}>10x content production</div>
+                  <div className="text-xs px-3 py-1 rounded-full" style={{ background: "rgba(0, 255, 0, 0.1)", color: "#10b981" }}>Consistent quality</div>
+                  <div className="text-xs px-3 py-1 rounded-full" style={{ background: "rgba(0, 255, 0, 0.1)", color: "#10b981" }}>Multilingual support</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   )
 }

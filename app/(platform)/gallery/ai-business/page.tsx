@@ -1,308 +1,247 @@
 "use client"
 
-import { SectionLayout } from "@/components/gallery/SectionLayout"
-import type { GalleryItem } from "@/lib/types/gallery"
+import { useState } from "react"
+import { Brain, Target, BarChart3, Zap, Users, Building } from "lucide-react"
 
 export default function AIBusinessPage() {
-  const aiBusinessContent: GalleryItem[] = [
-    {
-      id: "intelligent-automation",
-      title: "Intelligent Process Automation",
-      description: "AI-powered business process automation and optimization",
-      category: "Automation",
-      version: "v4.1.0",
-      demoVideo: "/placeholder.svg?height=200&width=300",
-      industries: ["Manufacturing", "Financial Services", "Healthcare"],
-      valueChains: ["Operations", "Process Excellence"],
-      processes: ["Process Automation", "Workflow Optimization"],
-      capabilities: ["RPA", "AI/ML", "Process Mining"],
-      fitScore: 92,
-      linkedKPIs: ["Process Efficiency", "Cost Reduction", "Error Rate"],
-      linkedPainPoints: ["Manual processes", "High operational costs", "Process inconsistency"],
-      businessValue: "Reduce manual effort by 70% and improve process efficiency by 50%",
-      implementationSteps: [
-        "Process discovery and mapping",
-        "AI model training and validation",
-        "Automation deployment",
-        "Performance monitoring and optimization",
-      ],
-      requirements: ["Process documentation", "System integrations", "AI platform access"],
-      tags: ["Automation", "AI", "Process Excellence"],
-    },
-    {
-      id: "predictive-analytics",
-      title: "Predictive Business Analytics",
-      description: "Machine learning models for business forecasting",
-      category: "Analytics",
-      version: "v3.5.2",
-      demoVideo: "/placeholder.svg?height=200&width=300",
-      industries: ["Retail", "Manufacturing", "Financial Services"],
-      valueChains: ["Data & Analytics", "Strategic Planning"],
-      processes: ["Demand Forecasting", "Risk Assessment"],
-      capabilities: ["Predictive Modeling", "Data Science", "Business Intelligence"],
-      fitScore: 88,
-      linkedKPIs: ["Forecast Accuracy", "Revenue Growth", "Risk Mitigation"],
-      linkedPainPoints: ["Inaccurate forecasting", "Reactive decision making", "Data silos"],
-      businessValue: "Improve forecast accuracy by 35% and reduce planning cycles by 60%",
-      implementationSteps: [
-        "Data integration and preparation",
-        "Model development and training",
-        "Validation and testing",
-        "Production deployment and monitoring",
-      ],
-      requirements: ["Historical data", "Analytics platform", "Data science expertise"],
-      tags: ["Predictive Analytics", "Machine Learning", "Forecasting"],
-    },
-    {
-      id: "customer-insights",
-      title: "AI Customer Insights Platform",
-      description: "Deep customer behavior analysis and segmentation",
-      category: "Customer Intelligence",
-      version: "v2.8.1",
-      demoVideo: "/placeholder.svg?height=200&width=300",
-      industries: ["Retail", "Financial Services", "Technology"],
-      valueChains: ["Customer Experience", "Marketing & Sales"],
-      processes: ["Customer Segmentation", "Behavior Analysis"],
-      capabilities: ["Customer Analytics", "Personalization", "Journey Mapping"],
-      fitScore: 85,
-      linkedKPIs: ["Customer Satisfaction", "Retention Rate", "CLV"],
-      linkedPainPoints: ["Poor customer understanding", "Generic experiences", "Low retention"],
-      businessValue: "Increase customer retention by 25% and improve satisfaction scores by 40%",
-      implementationSteps: [
-        "Customer data integration",
-        "Segmentation model development",
-        "Insight dashboard creation",
-        "Personalization engine deployment",
-      ],
-      requirements: ["Customer data", "Analytics platform", "Marketing automation tools"],
-      tags: ["Customer Intelligence", "Segmentation", "Personalization"],
-    },
-    {
-      id: "supply-chain-ai",
-      title: "Supply Chain AI Optimizer",
-      description: "AI-driven supply chain optimization and planning",
-      category: "Supply Chain",
-      version: "v3.2.0",
-      demoVideo: "/placeholder.svg?height=200&width=300",
-      industries: ["Manufacturing", "Retail", "Automotive"],
-      valueChains: ["Supply Chain", "Operations"],
-      processes: ["Supply Planning", "Inventory Optimization"],
-      capabilities: ["Supply Chain Analytics", "Demand Planning", "Inventory Management"],
-      fitScore: 90,
-      linkedKPIs: ["Inventory Turnover", "Supply Chain Costs", "Service Level"],
-      linkedPainPoints: ["Excess inventory", "Supply disruptions", "Poor visibility"],
-      businessValue: "Reduce inventory costs by 20% and improve service levels by 30%",
-      implementationSteps: [
-        "Supply chain data integration",
-        "Optimization model development",
-        "Scenario planning setup",
-        "Continuous monitoring implementation",
-      ],
-      requirements: ["Supply chain data", "ERP integration", "Planning tools"],
-      tags: ["Supply Chain", "Optimization", "Planning"],
-    },
-    {
-      id: "financial-ai",
-      title: "Financial AI Assistant",
-      description: "Automated financial analysis and reporting",
-      category: "Finance",
-      version: "v2.6.3",
-      demoVideo: "/placeholder.svg?height=200&width=300",
-      industries: ["Financial Services", "Manufacturing", "Technology"],
-      valueChains: ["Finance & Accounting", "Risk Management"],
-      processes: ["Financial Planning", "Risk Assessment"],
-      capabilities: ["Financial Analytics", "Automated Reporting", "Risk Modeling"],
-      fitScore: 87,
-      linkedKPIs: ["Financial Accuracy", "Reporting Speed", "Risk Exposure"],
-      linkedPainPoints: ["Manual reporting", "Delayed insights", "Risk blind spots"],
-      businessValue: "Reduce reporting time by 80% and improve financial accuracy by 95%",
-      implementationSteps: [
-        "Financial data integration",
-        "AI model training",
-        "Automated report setup",
-        "Risk monitoring deployment",
-      ],
-      requirements: ["Financial systems access", "Historical data", "Compliance frameworks"],
-      tags: ["Finance", "Automation", "Risk Management"],
-    },
-    {
-      id: "hr-intelligence",
-      title: "HR Intelligence Suite",
-      description: "AI-powered talent management and workforce analytics",
-      category: "Human Resources",
-      version: "v1.9.1",
-      demoVideo: "/placeholder.svg?height=200&width=300",
-      industries: ["Technology", "Financial Services", "Healthcare"],
-      valueChains: ["Human Resources", "Talent Management"],
-      processes: ["Talent Acquisition", "Performance Management"],
-      capabilities: ["HR Analytics", "Talent Intelligence", "Workforce Planning"],
-      fitScore: 83,
-      linkedKPIs: ["Employee Retention", "Time to Hire", "Performance Scores"],
-      linkedPainPoints: ["High turnover", "Slow hiring", "Poor performance visibility"],
-      businessValue: "Reduce turnover by 30% and improve hiring efficiency by 50%",
-      implementationSteps: [
-        "HR data integration",
-        "Talent analytics setup",
-        "Predictive model development",
-        "Dashboard and alerts configuration",
-      ],
-      requirements: ["HRIS access", "Performance data", "Compliance requirements"],
-      tags: ["HR Analytics", "Talent Management", "Workforce Planning"],
-    },
-    {
-      id: "sales-ai",
-      title: "Sales AI Accelerator",
-      description: "AI-driven sales forecasting and lead scoring",
-      category: "Sales",
-      version: "v3.1.2",
-      demoVideo: "/placeholder.svg?height=200&width=300",
-      industries: ["Technology", "Manufacturing", "Financial Services"],
-      valueChains: ["Sales & Marketing", "Customer Acquisition"],
-      processes: ["Lead Management", "Sales Forecasting"],
-      capabilities: ["Sales Analytics", "Lead Scoring", "Pipeline Management"],
-      fitScore: 89,
-      linkedKPIs: ["Sales Conversion", "Pipeline Velocity", "Revenue Growth"],
-      linkedPainPoints: ["Poor lead quality", "Inaccurate forecasts", "Long sales cycles"],
-      businessValue: "Increase conversion rates by 40% and improve forecast accuracy by 60%",
-      implementationSteps: [
-        "CRM data integration",
-        "Lead scoring model training",
-        "Sales dashboard deployment",
-        "Performance tracking setup",
-      ],
-      requirements: ["CRM system", "Sales data", "Marketing automation"],
-      tags: ["Sales Analytics", "Lead Scoring", "Revenue Growth"],
-    },
-    {
-      id: "risk-management",
-      title: "AI Risk Management Platform",
-      description: "Intelligent risk assessment and mitigation",
-      category: "Risk Management",
-      version: "v2.4.0",
-      demoVideo: "/placeholder.svg?height=200&width=300",
-      industries: ["Financial Services", "Healthcare", "Manufacturing"],
-      valueChains: ["Risk Management", "Compliance"],
-      processes: ["Risk Assessment", "Compliance Monitoring"],
-      capabilities: ["Risk Analytics", "Predictive Risk Modeling", "Compliance Automation"],
-      fitScore: 91,
-      linkedKPIs: ["Risk Exposure", "Compliance Rate", "Incident Reduction"],
-      linkedPainPoints: ["Unidentified risks", "Compliance gaps", "Reactive risk management"],
-      businessValue: "Reduce risk incidents by 45% and improve compliance by 85%",
-      implementationSteps: [
-        "Risk data aggregation",
-        "Risk model development",
-        "Monitoring system setup",
-        "Compliance automation deployment",
-      ],
-      requirements: ["Risk data sources", "Regulatory frameworks", "Monitoring tools"],
-      tags: ["Risk Management", "Compliance", "Predictive Analytics"],
-    },
-    {
-      id: "document-intelligence",
-      title: "Document Intelligence Engine",
-      description: "AI-powered document processing and extraction",
-      category: "Document Processing",
-      version: "v1.7.2",
-      demoVideo: "/placeholder.svg?height=200&width=300",
-      industries: ["Financial Services", "Healthcare", "Legal"],
-      valueChains: ["Operations", "Knowledge Management"],
-      processes: ["Document Processing", "Data Extraction"],
-      capabilities: ["OCR", "NLP", "Document Classification"],
-      fitScore: 86,
-      linkedKPIs: ["Processing Speed", "Accuracy Rate", "Cost Reduction"],
-      linkedPainPoints: ["Manual document processing", "Data entry errors", "Slow turnaround"],
-      businessValue: "Reduce document processing time by 90% and improve accuracy by 98%",
-      implementationSteps: [
-        "Document type analysis",
-        "AI model training",
-        "Extraction workflow setup",
-        "Quality assurance implementation",
-      ],
-      requirements: ["Document samples", "OCR technology", "Workflow systems"],
-      tags: ["Document Processing", "OCR", "Automation"],
-    },
-    {
-      id: "market-intelligence",
-      title: "Market Intelligence Platform",
-      description: "AI-driven market analysis and competitive intelligence",
-      category: "Market Research",
-      version: "v2.3.1",
-      demoVideo: "/placeholder.svg?height=200&width=300",
-      industries: ["Technology", "Retail", "Financial Services"],
-      valueChains: ["Strategic Planning", "Market Research"],
-      processes: ["Market Analysis", "Competitive Intelligence"],
-      capabilities: ["Market Analytics", "Competitive Analysis", "Trend Identification"],
-      fitScore: 84,
-      linkedKPIs: ["Market Share", "Competitive Position", "Revenue Growth"],
-      linkedPainPoints: ["Limited market visibility", "Competitive blind spots", "Reactive strategy"],
-      businessValue: "Improve market positioning by 35% and accelerate strategic decisions by 50%",
-      implementationSteps: [
-        "Data source integration",
-        "Market model development",
-        "Competitive analysis setup",
-        "Intelligence dashboard deployment",
-      ],
-      requirements: ["Market data sources", "Competitive intelligence tools", "Analytics platform"],
-      tags: ["Market Intelligence", "Competitive Analysis", "Strategic Planning"],
-    },
-    {
-      id: "operations-ai",
-      title: "Operations AI Dashboard",
-      description: "Real-time operational insights and optimization",
-      category: "Operations",
-      version: "v3.0.0",
-      demoVideo: "/placeholder.svg?height=200&width=300",
-      industries: ["Manufacturing", "Healthcare", "Retail"],
-      valueChains: ["Operations", "Performance Management"],
-      processes: ["Operations Management", "Performance Monitoring"],
-      capabilities: ["Operations Analytics", "Real-time Monitoring", "Performance Optimization"],
-      fitScore: 88,
-      linkedKPIs: ["Operational Efficiency", "Downtime Reduction", "Cost Optimization"],
-      linkedPainPoints: ["Poor operational visibility", "Reactive maintenance", "Inefficient processes"],
-      businessValue: "Improve operational efficiency by 40% and reduce downtime by 60%",
-      implementationSteps: [
-        "Operations data integration",
-        "Real-time monitoring setup",
-        "Analytics dashboard creation",
-        "Optimization recommendations deployment",
-      ],
-      requirements: ["Operational systems", "IoT sensors", "Analytics platform"],
-      tags: ["Operations Analytics", "Real-time Monitoring", "Optimization"],
-    },
-    {
-      id: "compliance-ai",
-      title: "AI Compliance Monitor",
-      description: "Automated compliance monitoring and reporting",
-      category: "Compliance",
-      version: "v1.5.3",
-      demoVideo: "/placeholder.svg?height=200&width=300",
-      industries: ["Financial Services", "Healthcare", "Manufacturing"],
-      valueChains: ["Compliance", "Risk Management"],
-      processes: ["Compliance Monitoring", "Regulatory Reporting"],
-      capabilities: ["Compliance Analytics", "Automated Monitoring", "Regulatory Reporting"],
-      fitScore: 87,
-      linkedKPIs: ["Compliance Rate", "Audit Findings", "Regulatory Risk"],
-      linkedPainPoints: ["Manual compliance checks", "Regulatory gaps", "Audit failures"],
-      businessValue: "Achieve 99% compliance rate and reduce audit preparation time by 75%",
-      implementationSteps: [
-        "Regulatory framework mapping",
-        "Compliance monitoring setup",
-        "Automated reporting configuration",
-        "Audit trail implementation",
-      ],
-      requirements: ["Regulatory requirements", "Compliance data", "Monitoring systems"],
-      tags: ["Compliance", "Regulatory", "Automated Monitoring"],
-    },
+  const [activeTab, setActiveTab] = useState("overview")
+
+  const tabs = [
+    { id: "overview", label: "Overview", icon: Brain },
+    { id: "intelligent-automation", label: "Intelligent Automation", icon: Zap },
+    { id: "predictive-analytics", label: "Predictive Analytics", icon: BarChart3 },
+    { id: "customer-intelligence", label: "Customer Intelligence", icon: Users },
+    { id: "business-optimization", label: "Business Optimization", icon: Target },
   ]
 
   return (
-    <SectionLayout
-      title="AI Business Solutions"
-      description="Enterprise AI solutions for business transformation and optimization"
-      content={aiBusinessContent}
-      categoryColor="var(--purple-100)"
-      searchPlaceholder="Search AI business solutions..."
-      basePath="/gallery/ai-business"
-    />
+    <div className="min-h-screen" style={{ backgroundColor: "var(--bg)" }}>
+      <div className="max-w-7xl mx-auto px-4 py-8">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <div className="p-3 rounded-full bg-gradient-to-r from-rose-500 to-pink-500">
+              <Brain className="h-8 w-8 text-white" />
+            </div>
+            <h1 className="text-4xl font-bold" style={{ color: "var(--text-default)" }}>
+              AI Business
+            </h1>
+          </div>
+          <p className="text-xl max-w-3xl mx-auto" style={{ color: "var(--text-muted)" }}>
+            Business-focused AI solutions and use cases for enterprise transformation
+          </p>
+        </div>
+
+        {/* Navigation Tabs */}
+        <div className="flex justify-center mb-8">
+          <div className="flex gap-2 p-1 rounded-lg" style={{ background: "rgba(255, 255, 255, 0.1)" }}>
+            {tabs.map((tab) => {
+              const Icon = tab.icon
+              const isActive = activeTab === tab.id
+              return (
+                <button
+                  key={tab.id}
+                  className={`flex items-center gap-2 px-4 py-2 rounded-md transition-all duration-200 ${
+                    isActive
+                      ? "text-white shadow-lg"
+                      : "text-gray-300 hover:text-white hover:bg-white/10"
+                  }`}
+                  style={{
+                    background: isActive ? "var(--grad-primary)" : "transparent",
+                  }}
+                  onClick={() => setActiveTab(tab.id)}
+                >
+                  <Icon className="h-4 w-4" />
+                  {tab.label}
+                </button>
+              )
+            })}
+          </div>
+        </div>
+
+        {/* Content */}
+        <div className="space-y-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="p-6 rounded-xl backdrop-blur-md border hover:shadow-lg transition-all duration-300" style={{ background: "rgba(255, 255, 255, 0.08)", borderColor: "rgba(255, 255, 255, 0.1)" }}>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="p-2 rounded-lg bg-gradient-to-r from-rose-500 to-pink-500">
+                  <Zap className="h-5 w-5 text-white" />
+                </div>
+                <h3 className="text-lg font-semibold" style={{ color: "var(--text-default)" }}>
+                  Intelligent Automation
+                </h3>
+              </div>
+              <p className="text-sm mb-4" style={{ color: "var(--text-muted)" }}>
+                Automate complex business processes with AI-powered decision making
+              </p>
+              <ul className="space-y-2">
+                <li className="flex items-center gap-2 text-sm">
+                  <div className="w-1.5 h-1.5 rounded-full bg-pink-500"></div>
+                  <span style={{ color: "var(--text-default)" }}>Process automation</span>
+                </li>
+                <li className="flex items-center gap-2 text-sm">
+                  <div className="w-1.5 h-1.5 rounded-full bg-pink-500"></div>
+                  <span style={{ color: "var(--text-default)" }}>Smart workflows</span>
+                </li>
+                <li className="flex items-center gap-2 text-sm">
+                  <div className="w-1.5 h-1.5 rounded-full bg-pink-500"></div>
+                  <span style={{ color: "var(--text-default)" }}>Decision automation</span>
+                </li>
+                <li className="flex items-center gap-2 text-sm">
+                  <div className="w-1.5 h-1.5 rounded-full bg-pink-500"></div>
+                  <span style={{ color: "var(--text-default)" }}>Cognitive RPA</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="p-6 rounded-xl backdrop-blur-md border hover:shadow-lg transition-all duration-300" style={{ background: "rgba(255, 255, 255, 0.08)", borderColor: "rgba(255, 255, 255, 0.1)" }}>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="p-2 rounded-lg bg-gradient-to-r from-rose-500 to-pink-500">
+                  <BarChart3 className="h-5 w-5 text-white" />
+                </div>
+                <h3 className="text-lg font-semibold" style={{ color: "var(--text-default)" }}>
+                  Predictive Analytics
+                </h3>
+              </div>
+              <p className="text-sm mb-4" style={{ color: "var(--text-muted)" }}>
+                Forecast trends and make data-driven business decisions
+              </p>
+              <ul className="space-y-2">
+                <li className="flex items-center gap-2 text-sm">
+                  <div className="w-1.5 h-1.5 rounded-full bg-pink-500"></div>
+                  <span style={{ color: "var(--text-default)" }}>Trend forecasting</span>
+                </li>
+                <li className="flex items-center gap-2 text-sm">
+                  <div className="w-1.5 h-1.5 rounded-full bg-pink-500"></div>
+                  <span style={{ color: "var(--text-default)" }}>Risk assessment</span>
+                </li>
+                <li className="flex items-center gap-2 text-sm">
+                  <div className="w-1.5 h-1.5 rounded-full bg-pink-500"></div>
+                  <span style={{ color: "var(--text-default)" }}>Demand prediction</span>
+                </li>
+                <li className="flex items-center gap-2 text-sm">
+                  <div className="w-1.5 h-1.5 rounded-full bg-pink-500"></div>
+                  <span style={{ color: "var(--text-default)" }}>Performance optimization</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="p-6 rounded-xl backdrop-blur-md border hover:shadow-lg transition-all duration-300" style={{ background: "rgba(255, 255, 255, 0.08)", borderColor: "rgba(255, 255, 255, 0.1)" }}>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="p-2 rounded-lg bg-gradient-to-r from-rose-500 to-pink-500">
+                  <Users className="h-5 w-5 text-white" />
+                </div>
+                <h3 className="text-lg font-semibold" style={{ color: "var(--text-default)" }}>
+                  Customer Intelligence
+                </h3>
+              </div>
+              <p className="text-sm mb-4" style={{ color: "var(--text-muted)" }}>
+                Understand customer behavior and personalize experiences
+              </p>
+              <ul className="space-y-2">
+                <li className="flex items-center gap-2 text-sm">
+                  <div className="w-1.5 h-1.5 rounded-full bg-pink-500"></div>
+                  <span style={{ color: "var(--text-default)" }}>Behavioral analysis</span>
+                </li>
+                <li className="flex items-center gap-2 text-sm">
+                  <div className="w-1.5 h-1.5 rounded-full bg-pink-500"></div>
+                  <span style={{ color: "var(--text-default)" }}>Personalization</span>
+                </li>
+                <li className="flex items-center gap-2 text-sm">
+                  <div className="w-1.5 h-1.5 rounded-full bg-pink-500"></div>
+                  <span style={{ color: "var(--text-default)" }}>Sentiment analysis</span>
+                </li>
+                <li className="flex items-center gap-2 text-sm">
+                  <div className="w-1.5 h-1.5 rounded-full bg-pink-500"></div>
+                  <span style={{ color: "var(--text-default)" }}>Churn prediction</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="p-6 rounded-xl backdrop-blur-md border hover:shadow-lg transition-all duration-300" style={{ background: "rgba(255, 255, 255, 0.08)", borderColor: "rgba(255, 255, 255, 0.1)" }}>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="p-2 rounded-lg bg-gradient-to-r from-rose-500 to-pink-500">
+                  <Target className="h-5 w-5 text-white" />
+                </div>
+                <h3 className="text-lg font-semibold" style={{ color: "var(--text-default)" }}>
+                  Business Optimization
+                </h3>
+              </div>
+              <p className="text-sm mb-4" style={{ color: "var(--text-muted)" }}>
+                Optimize business operations and resource allocation
+              </p>
+              <ul className="space-y-2">
+                <li className="flex items-center gap-2 text-sm">
+                  <div className="w-1.5 h-1.5 rounded-full bg-pink-500"></div>
+                  <span style={{ color: "var(--text-default)" }}>Resource optimization</span>
+                </li>
+                <li className="flex items-center gap-2 text-sm">
+                  <div className="w-1.5 h-1.5 rounded-full bg-pink-500"></div>
+                  <span style={{ color: "var(--text-default)" }}>Cost reduction</span>
+                </li>
+                <li className="flex items-center gap-2 text-sm">
+                  <div className="w-1.5 h-1.5 rounded-full bg-pink-500"></div>
+                  <span style={{ color: "var(--text-default)" }}>Efficiency improvement</span>
+                </li>
+                <li className="flex items-center gap-2 text-sm">
+                  <div className="w-1.5 h-1.5 rounded-full bg-pink-500"></div>
+                  <span style={{ color: "var(--text-default)" }}>Quality enhancement</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Industry Use Cases */}
+          <div className="mt-12">
+            <h2 className="text-2xl font-bold mb-6 text-center" style={{ color: "var(--text-default)" }}>
+              Industry Use Cases
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="p-6 rounded-xl backdrop-blur-md border text-center" style={{ background: "rgba(255, 255, 255, 0.08)", borderColor: "rgba(255, 255, 255, 0.1)" }}>
+                <h3 className="text-lg font-semibold mb-3" style={{ color: "var(--text-default)" }}>
+                  Retail & E-commerce
+                </h3>
+                <p className="text-sm mb-4" style={{ color: "var(--text-muted)" }}>
+                  Personalize shopping experiences and optimize inventory
+                </p>
+                <div className="space-y-2">
+                  <div className="text-xs px-3 py-1 rounded-full" style={{ background: "rgba(0, 255, 0, 0.1)", color: "#10b981" }}>30% increase in conversion</div>
+                  <div className="text-xs px-3 py-1 rounded-full" style={{ background: "rgba(0, 255, 0, 0.1)", color: "#10b981" }}>25% reduction in inventory costs</div>
+                  <div className="text-xs px-3 py-1 rounded-full" style={{ background: "rgba(0, 255, 0, 0.1)", color: "#10b981" }}>40% improvement in customer satisfaction</div>
+                </div>
+              </div>
+
+              <div className="p-6 rounded-xl backdrop-blur-md border text-center" style={{ background: "rgba(255, 255, 255, 0.08)", borderColor: "rgba(255, 255, 255, 0.1)" }}>
+                <h3 className="text-lg font-semibold mb-3" style={{ color: "var(--text-default)" }}>
+                  Manufacturing
+                </h3>
+                <p className="text-sm mb-4" style={{ color: "var(--text-muted)" }}>
+                  Optimize production processes and predict maintenance needs
+                </p>
+                <div className="space-y-2">
+                  <div className="text-xs px-3 py-1 rounded-full" style={{ background: "rgba(0, 255, 0, 0.1)", color: "#10b981" }}>20% increase in productivity</div>
+                  <div className="text-xs px-3 py-1 rounded-full" style={{ background: "rgba(0, 255, 0, 0.1)", color: "#10b981" }}>35% reduction in downtime</div>
+                  <div className="text-xs px-3 py-1 rounded-full" style={{ background: "rgba(0, 255, 0, 0.1)", color: "#10b981" }}>Predictive maintenance</div>
+                </div>
+              </div>
+
+              <div className="p-6 rounded-xl backdrop-blur-md border text-center" style={{ background: "rgba(255, 255, 255, 0.08)", borderColor: "rgba(255, 255, 255, 0.1)" }}>
+                <h3 className="text-lg font-semibold mb-3" style={{ color: "var(--text-default)" }}>
+                  Financial Services
+                </h3>
+                <p className="text-sm mb-4" style={{ color: "var(--text-muted)" }}>
+                  Enhance risk management and fraud detection
+                </p>
+                <div className="space-y-2">
+                  <div className="text-xs px-3 py-1 rounded-full" style={{ background: "rgba(0, 255, 0, 0.1)", color: "#10b981" }}>90% fraud detection accuracy</div>
+                  <div className="text-xs px-3 py-1 rounded-full" style={{ background: "rgba(0, 255, 0, 0.1)", color: "#10b981" }}>60% faster risk assessment</div>
+                  <div className="text-xs px-3 py-1 rounded-full" style={{ background: "rgba(0, 255, 0, 0.1)", color: "#10b981" }}>Real-time monitoring</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   )
 }

@@ -1,17 +1,17 @@
 "use client"
 
 import { useState } from "react"
-import { Bot, Zap, Target, BarChart3, Users, Building } from "lucide-react"
+import { Brain, Zap, Target, BarChart3, Users, Building } from "lucide-react"
 
-export default function AIAgentsPage() {
+export default function SAPJoulePage() {
   const [activeTab, setActiveTab] = useState("overview")
 
   const tabs = [
-    { id: "overview", label: "Overview", icon: Bot },
-    { id: "autonomous-agents", label: "Autonomous Agents", icon: Zap },
-    { id: "task-automation", label: "Task Automation", icon: Target },
-    { id: "intelligent-workflows", label: "Intelligent Workflows", icon: BarChart3 },
-    { id: "collaboration", label: "Human-AI Collaboration", icon: Users },
+    { id: "overview", label: "Overview", icon: Brain },
+    { id: "intelligent-automation", label: "Intelligent Automation", icon: Zap },
+    { id: "business-insights", label: "Business Insights", icon: Target },
+    { id: "user-experience", label: "User Experience", icon: Users },
+    { id: "integration", label: "SAP Integration", icon: Building },
   ]
 
   return (
@@ -20,15 +20,15 @@ export default function AIAgentsPage() {
         {/* Header */}
         <div className="text-center mb-12">
           <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="p-3 rounded-full bg-gradient-to-r from-cyan-500 to-teal-500">
-              <Bot className="h-8 w-8 text-white" />
+            <div className="p-3 rounded-full bg-gradient-to-r from-indigo-500 to-blue-500">
+              <Brain className="h-8 w-8 text-white" />
             </div>
             <h1 className="text-4xl font-bold" style={{ color: "var(--text-default)" }}>
-              AI Agents
+              SAP Joule
             </h1>
           </div>
           <p className="text-xl max-w-3xl mx-auto" style={{ color: "var(--text-muted)" }}>
-            Autonomous AI agents and intelligent automation for enterprise transformation
+            SAP's AI copilot for intelligent enterprise automation and business transformation
           </p>
         </div>
 
@@ -64,128 +64,128 @@ export default function AIAgentsPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="p-6 rounded-xl backdrop-blur-md border hover:shadow-lg transition-all duration-300" style={{ background: "rgba(255, 255, 255, 0.08)", borderColor: "rgba(255, 255, 255, 0.1)" }}>
               <div className="flex items-center gap-3 mb-4">
-                <div className="p-2 rounded-lg bg-gradient-to-r from-cyan-500 to-teal-500">
+                <div className="p-2 rounded-lg bg-gradient-to-r from-indigo-500 to-blue-500">
                   <Zap className="h-5 w-5 text-white" />
                 </div>
                 <h3 className="text-lg font-semibold" style={{ color: "var(--text-default)" }}>
-                  Autonomous Agents
+                  Intelligent Automation
                 </h3>
               </div>
               <p className="text-sm mb-4" style={{ color: "var(--text-muted)" }}>
-                Self-directed AI agents that operate independently to achieve goals
+                Automate complex business processes with AI-powered decision making
               </p>
               <ul className="space-y-2">
                 <li className="flex items-center gap-2 text-sm">
-                  <div className="w-1.5 h-1.5 rounded-full bg-teal-500"></div>
-                  <span style={{ color: "var(--text-default)" }}>Goal-oriented behavior</span>
-                </li>
-                <li className="flex items-center gap-2 text-sm">
-                  <div className="w-1.5 h-1.5 rounded-full bg-teal-500"></div>
-                  <span style={{ color: "var(--text-default)" }}>Decision making</span>
-                </li>
-                <li className="flex items-center gap-2 text-sm">
-                  <div className="w-1.5 h-1.5 rounded-full bg-teal-500"></div>
-                  <span style={{ color: "var(--text-default)" }}>Learning capabilities</span>
-                </li>
-                <li className="flex items-center gap-2 text-sm">
-                  <div className="w-1.5 h-1.5 rounded-full bg-teal-500"></div>
-                  <span style={{ color: "var(--text-default)" }}>Adaptive responses</span>
-                </li>
-              </ul>
-            </div>
-
-            <div className="p-6 rounded-xl backdrop-blur-md border hover:shadow-lg transition-all duration-300" style={{ background: "rgba(255, 255, 255, 0.08)", borderColor: "rgba(255, 255, 255, 0.1)" }}>
-              <div className="flex items-center gap-3 mb-4">
-                <div className="p-2 rounded-lg bg-gradient-to-r from-cyan-500 to-teal-500">
-                  <Target className="h-5 w-5 text-white" />
-                </div>
-                <h3 className="text-lg font-semibold" style={{ color: "var(--text-default)" }}>
-                  Task Automation
-                </h3>
-              </div>
-              <p className="text-sm mb-4" style={{ color: "var(--text-muted)" }}>
-                Automate complex workflows and repetitive business processes
-              </p>
-              <ul className="space-y-2">
-                <li className="flex items-center gap-2 text-sm">
-                  <div className="w-1.5 h-1.5 rounded-full bg-teal-500"></div>
+                  <div className="w-1.5 h-1.5 rounded-full bg-blue-500"></div>
                   <span style={{ color: "var(--text-default)" }}>Process automation</span>
                 </li>
                 <li className="flex items-center gap-2 text-sm">
-                  <div className="w-1.5 h-1.5 rounded-full bg-teal-500"></div>
-                  <span style={{ color: "var(--text-default)" }}>Workflow orchestration</span>
+                  <div className="w-1.5 h-1.5 rounded-full bg-blue-500"></div>
+                  <span style={{ color: "var(--text-default)" }}>Workflow optimization</span>
                 </li>
                 <li className="flex items-center gap-2 text-sm">
-                  <div className="w-1.5 h-1.5 rounded-full bg-teal-500"></div>
-                  <span style={{ color: "var(--text-default)" }}>Error handling</span>
+                  <div className="w-1.5 h-1.5 rounded-full bg-blue-500"></div>
+                  <span style={{ color: "var(--text-default)" }}>Smart routing</span>
                 </li>
                 <li className="flex items-center gap-2 text-sm">
-                  <div className="w-1.5 h-1.5 rounded-full bg-teal-500"></div>
-                  <span style={{ color: "var(--text-default)" }}>Performance optimization</span>
+                  <div className="w-1.5 h-1.5 rounded-full bg-blue-500"></div>
+                  <span style={{ color: "var(--text-default)" }}>Exception handling</span>
                 </li>
               </ul>
             </div>
 
             <div className="p-6 rounded-xl backdrop-blur-md border hover:shadow-lg transition-all duration-300" style={{ background: "rgba(255, 255, 255, 0.08)", borderColor: "rgba(255, 255, 255, 0.1)" }}>
               <div className="flex items-center gap-3 mb-4">
-                <div className="p-2 rounded-lg bg-gradient-to-r from-cyan-500 to-teal-500">
-                  <BarChart3 className="h-5 w-5 text-white" />
+                <div className="p-2 rounded-lg bg-gradient-to-r from-indigo-500 to-blue-500">
+                  <Target className="h-5 w-5 text-white" />
                 </div>
                 <h3 className="text-lg font-semibold" style={{ color: "var(--text-default)" }}>
-                  Intelligent Workflows
+                  Business Insights
                 </h3>
               </div>
               <p className="text-sm mb-4" style={{ color: "var(--text-muted)" }}>
-                Smart workflow systems that adapt and optimize based on data
+                Generate actionable insights from business data and processes
               </p>
               <ul className="space-y-2">
                 <li className="flex items-center gap-2 text-sm">
-                  <div className="w-1.5 h-1.5 rounded-full bg-teal-500"></div>
-                  <span style={{ color: "var(--text-default)" }}>Dynamic routing</span>
+                  <div className="w-1.5 h-1.5 rounded-full bg-blue-500"></div>
+                  <span style={{ color: "var(--text-default)" }}>Data analysis</span>
                 </li>
                 <li className="flex items-center gap-2 text-sm">
-                  <div className="w-1.5 h-1.5 rounded-full bg-teal-500"></div>
+                  <div className="w-1.5 h-1.5 rounded-full bg-blue-500"></div>
+                  <span style={{ color: "var(--text-default)" }}>Trend identification</span>
+                </li>
+                <li className="flex items-center gap-2 text-sm">
+                  <div className="w-1.5 h-1.5 rounded-full bg-blue-500"></div>
+                  <span style={{ color: "var(--text-default)" }}>Performance metrics</span>
+                </li>
+                <li className="flex items-center gap-2 text-sm">
+                  <div className="w-1.5 h-1.5 rounded-full bg-blue-500"></div>
                   <span style={{ color: "var(--text-default)" }}>Predictive analytics</span>
-                </li>
-                <li className="flex items-center gap-2 text-sm">
-                  <div className="w-1.5 h-1.5 rounded-full bg-teal-500"></div>
-                  <span style={{ color: "var(--text-default)" }}>Resource allocation</span>
-                </li>
-                <li className="flex items-center gap-2 text-sm">
-                  <div className="w-1.5 h-1.5 rounded-full bg-teal-500"></div>
-                  <span style={{ color: "var(--text-default)" }}>Continuous improvement</span>
                 </li>
               </ul>
             </div>
 
             <div className="p-6 rounded-xl backdrop-blur-md border hover:shadow-lg transition-all duration-300" style={{ background: "rgba(255, 255, 255, 0.08)", borderColor: "rgba(255, 255, 255, 0.1)" }}>
               <div className="flex items-center gap-3 mb-4">
-                <div className="p-2 rounded-lg bg-gradient-to-r from-cyan-500 to-teal-500">
+                <div className="p-2 rounded-lg bg-gradient-to-r from-indigo-500 to-blue-500">
                   <Users className="h-5 w-5 text-white" />
                 </div>
                 <h3 className="text-lg font-semibold" style={{ color: "var(--text-default)" }}>
-                  Human-AI Collaboration
+                  User Experience
                 </h3>
               </div>
               <p className="text-sm mb-4" style={{ color: "var(--text-muted)" }}>
-                Seamless collaboration between human workers and AI agents
+                Enhance user productivity with intuitive AI-powered interfaces
               </p>
               <ul className="space-y-2">
                 <li className="flex items-center gap-2 text-sm">
-                  <div className="w-1.5 h-1.5 rounded-full bg-teal-500"></div>
-                  <span style={{ color: "var(--text-default)" }}>Augmented intelligence</span>
+                  <div className="w-1.5 h-1.5 rounded-full bg-blue-500"></div>
+                  <span style={{ color: "var(--text-default)" }}>Natural language interaction</span>
                 </li>
                 <li className="flex items-center gap-2 text-sm">
-                  <div className="w-1.5 h-1.5 rounded-full bg-teal-500"></div>
-                  <span style={{ color: "var(--text-default)" }}>Shared decision making</span>
+                  <div className="w-1.5 h-1.5 rounded-full bg-blue-500"></div>
+                  <span style={{ color: "var(--text-default)" }}>Context-aware assistance</span>
                 </li>
                 <li className="flex items-center gap-2 text-sm">
-                  <div className="w-1.5 h-1.5 rounded-full bg-teal-500"></div>
-                  <span style={{ color: "var(--text-default)" }}>Transparent operations</span>
+                  <div className="w-1.5 h-1.5 rounded-full bg-blue-500"></div>
+                  <span style={{ color: "var(--text-default)" }}>Personalized recommendations</span>
                 </li>
                 <li className="flex items-center gap-2 text-sm">
-                  <div className="w-1.5 h-1.5 rounded-full bg-teal-500"></div>
-                  <span style={{ color: "var(--text-default)" }}>Continuous learning</span>
+                  <div className="w-1.5 h-1.5 rounded-full bg-blue-500"></div>
+                  <span style={{ color: "var(--text-default)" }}>Proactive suggestions</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="p-6 rounded-xl backdrop-blur-md border hover:shadow-lg transition-all duration-300" style={{ background: "rgba(255, 255, 255, 0.08)", borderColor: "rgba(255, 255, 255, 0.1)" }}>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="p-2 rounded-lg bg-gradient-to-r from-indigo-500 to-blue-500">
+                  <Building className="h-5 w-5 text-white" />
+                </div>
+                <h3 className="text-lg font-semibold" style={{ color: "var(--text-default)" }}>
+                  SAP Integration
+                </h3>
+              </div>
+              <p className="text-sm mb-4" style={{ color: "var(--text-muted)" }}>
+                Seamlessly integrate with SAP systems and business processes
+              </p>
+              <ul className="space-y-2">
+                <li className="flex items-center gap-2 text-sm">
+                  <div className="w-1.5 h-1.5 rounded-full bg-blue-500"></div>
+                  <span style={{ color: "var(--text-default)" }}>SAP S/4HANA integration</span>
+                </li>
+                <li className="flex items-center gap-2 text-sm">
+                  <div className="w-1.5 h-1.5 rounded-full bg-blue-500"></div>
+                  <span style={{ color: "var(--text-default)" }}>Business process automation</span>
+                </li>
+                <li className="flex items-center gap-2 text-sm">
+                  <div className="w-1.5 h-1.5 rounded-full bg-blue-500"></div>
+                  <span style={{ color: "var(--text-default)" }}>Data synchronization</span>
+                </li>
+                <li className="flex items-center gap-2 text-sm">
+                  <div className="w-1.5 h-1.5 rounded-full bg-blue-500"></div>
+                  <span style={{ color: "var(--text-default)" }}>Real-time updates</span>
                 </li>
               </ul>
             </div>
@@ -199,43 +199,43 @@ export default function AIAgentsPage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="p-6 rounded-xl backdrop-blur-md border text-center" style={{ background: "rgba(255, 255, 255, 0.08)", borderColor: "rgba(255, 255, 255, 0.1)" }}>
                 <h3 className="text-lg font-semibold mb-3" style={{ color: "var(--text-default)" }}>
-                  Customer Service
+                  Manufacturing
                 </h3>
                 <p className="text-sm mb-4" style={{ color: "var(--text-muted)" }}>
-                  Intelligent customer support and issue resolution
+                  Optimize production processes and supply chain operations
                 </p>
                 <div className="space-y-2">
-                  <div className="text-xs px-3 py-1 rounded-full" style={{ background: "rgba(0, 255, 0, 0.1)", color: "#10b981" }}>24/7 availability</div>
-                  <div className="text-xs px-3 py-1 rounded-full" style={{ background: "rgba(0, 255, 0, 0.1)", color: "#10b981" }}>Instant responses</div>
-                  <div className="text-xs px-3 py-1 rounded-full" style={{ background: "rgba(0, 255, 0, 0.1)", color: "#10b981" }}>Escalation handling</div>
+                  <div className="text-xs px-3 py-1 rounded-full" style={{ background: "rgba(0, 255, 0, 0.1)", color: "#10b981" }}>25% efficiency improvement</div>
+                  <div className="text-xs px-3 py-1 rounded-full" style={{ background: "rgba(0, 255, 0, 0.1)", color: "#10b981" }}>30% cost reduction</div>
+                  <div className="text-xs px-3 py-1 rounded-full" style={{ background: "rgba(0, 255, 0, 0.1)", color: "#10b981" }}>Predictive maintenance</div>
                 </div>
               </div>
 
               <div className="p-6 rounded-xl backdrop-blur-md border text-center" style={{ background: "rgba(255, 255, 255, 0.08)", borderColor: "rgba(255, 255, 255, 0.1)" }}>
                 <h3 className="text-lg font-semibold mb-3" style={{ color: "var(--text-default)" }}>
-                  Supply Chain
+                  Financial Services
                 </h3>
                 <p className="text-sm mb-4" style={{ color: "var(--text-muted)" }}>
-                  Optimize logistics and inventory management
+                  Enhance risk management and compliance processes
                 </p>
                 <div className="space-y-2">
-                  <div className="text-xs px-3 py-1 rounded-full" style={{ background: "rgba(0, 255, 0, 0.1)", color: "#10b981" }}>Demand forecasting</div>
-                  <div className="text-xs px-3 py-1 rounded-full" style={{ background: "rgba(0, 255, 0, 0.1)", color: "#10b981" }}>Route optimization</div>
-                  <div className="text-xs px-3 py-1 rounded-full" style={{ background: "rgba(0, 255, 0, 0.1)", color: "#10b981" }}>Inventory control</div>
+                  <div className="text-xs px-3 py-1 rounded-full" style={{ background: "rgba(0, 255, 0, 0.1)", color: "#10b981" }}>90% compliance accuracy</div>
+                  <div className="text-xs px-3 py-1 rounded-full" style={{ background: "rgba(0, 255, 0, 0.1)", color: "#10b981" }}>60% faster risk assessment</div>
+                  <div className="text-xs px-3 py-1 rounded-full" style={{ background: "rgba(0, 255, 0, 0.1)", color: "#10b981" }}>Real-time monitoring</div>
                 </div>
               </div>
 
               <div className="p-6 rounded-xl backdrop-blur-md border text-center" style={{ background: "rgba(255, 255, 255, 0.08)", borderColor: "rgba(255, 255, 255, 0.1)" }}>
                 <h3 className="text-lg font-semibold mb-3" style={{ color: "var(--text-default)" }}>
-                  Financial Operations
+                  Retail & E-commerce
                 </h3>
                 <p className="text-sm mb-4" style={{ color: "var(--text-muted)" }}>
-                  Automate financial processes and risk management
+                  Personalize customer experiences and optimize operations
                 </p>
                 <div className="space-y-2">
-                  <div className="text-xs px-3 py-1 rounded-full" style={{ background: "rgba(0, 255, 0, 0.1)", color: "#10b981" }}>Fraud detection</div>
-                  <div className="text-xs px-3 py-1 rounded-full" style={{ background: "rgba(0, 255, 0, 0.1)", color: "#10b981" }}>Risk assessment</div>
-                  <div className="text-xs px-3 py-1 rounded-full" style={{ background: "rgba(0, 255, 0, 0.1)", color: "#10b981" }}>Compliance monitoring</div>
+                  <div className="text-xs px-3 py-1 rounded-full" style={{ background: "rgba(0, 255, 0, 0.1)", color: "#10b981" }}>35% increase in sales</div>
+                  <div className="text-xs px-3 py-1 rounded-full" style={{ background: "rgba(0, 255, 0, 0.1)", color: "#10b981" }}>40% improvement in CX</div>
+                  <div className="text-xs px-3 py-1 rounded-full" style={{ background: "rgba(0, 255, 0, 0.1)", color: "#10b981" }}>Inventory optimization</div>
                 </div>
               </div>
             </div>

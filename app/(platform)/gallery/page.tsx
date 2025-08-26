@@ -23,7 +23,7 @@ export default function SolutionsGalleryLandingPage() {
       label: "Industries & Value Chains",
       description: "Explore solutions by industry sectors and value chains",
       icon: Building2,
-      path: "/gallery/main?view=industries",
+      path: "/gallery/industries",
       gradient: "from-blue-500 to-cyan-500",
     },
     {
@@ -31,7 +31,7 @@ export default function SolutionsGalleryLandingPage() {
       label: "End-to-End Processes & Subprocesses",
       description: "Browse E2E processes and business modules",
       icon: Workflow,
-      path: "/gallery/main?view=processes",
+      path: "/gallery/processes",
       gradient: "from-green-500 to-emerald-500",
     },
     {
@@ -39,7 +39,7 @@ export default function SolutionsGalleryLandingPage() {
       label: "Reference Architectures & Blueprints",
       description: "Solution packages, templates and artifacts",
       icon: FileText,
-      path: "/gallery/main?view=references",
+      path: "/gallery/references",
       gradient: "from-orange-500 to-red-500",
     },
     {
@@ -47,7 +47,7 @@ export default function SolutionsGalleryLandingPage() {
       label: "Business Capability Model (BCM) Categories",
       description: "Capability domains and business areas",
       icon: Grid3X3,
-      path: "/gallery/main?view=bcm",
+      path: "/gallery/bcm",
       gradient: "from-indigo-500 to-purple-500",
     },
     {
@@ -79,7 +79,7 @@ export default function SolutionsGalleryLandingPage() {
       label: "Generative AI Use Cases",
       description: "Generative AI applications and implementation patterns",
       icon: Zap,
-      path: "/gallery/generative-ai",
+      path: "/gallery/generative-ai-use-cases",
       gradient: "from-violet-500 to-purple-500",
     },
     {
@@ -89,6 +89,14 @@ export default function SolutionsGalleryLandingPage() {
       icon: Bot,
       path: "/gallery/ai-agents",
       gradient: "from-cyan-500 to-teal-500",
+    },
+    {
+      key: "joule",
+      label: "SAP Joule",
+      description: "SAP's AI copilot for intelligent enterprise automation",
+      icon: Brain,
+      path: "/gallery/joule",
+      gradient: "from-indigo-500 to-blue-500",
     },
     {
       key: "accelerators-enhanced",

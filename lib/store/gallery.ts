@@ -1,8 +1,21 @@
 import { create } from "zustand"
 import { devtools } from "zustand/middleware"
-import { sapIndustries } from "../../data/industries"
-import { sapValueChains } from "../../data/valueChains"
-import { processFacetsData, type ProcessFacets, getProcessFacets } from "../../data/processFacets"
+import { sapIndustries } from "../data/industries"
+import { sapValueChains } from "../data/valueChains"
+import { processFacetsData, type ProcessFacets, getProcessFacets } from "../data/processFacets"
+
+// Transform the data structure to match the store types
+const transformIndustries = (rawIndustries: any[]) => {
+  return rawIndustries.map(industry => ({
+    id: industry.id,
+    name: industry.name,
+    slug: industry.slug,
+    icon: industry.iconUrl,
+    description: industry.description,
+    valueChainProcessIds: industry.processKeys || [],
+    tags: []
+  }))
+}
 
 type ID = string
 
@@ -20,6 +33,7 @@ export type ProcessLevel = "E2E" | "Module" | "Subprocess"
 
 export type Process = {
   id: ID
+  key: string // Short key like "S2P", "L2C" for E2E processes
   name: string
   slug: string
   level: ProcessLevel
@@ -87,12 +101,14 @@ export type ReferencePackage = {
   id: ID
   title: string
   slug: string
+  type: string // Reference type like "Use Case", "Pattern", etc.
   version?: string
   summary: string
   industries: ID[]
   processes: ID[]
   capabilities: ID[]
   products?: string[]
+  complexity?: "Low" | "Medium" | "High"
   maturity?: "Concept" | "Preview" | "GA"
   artifacts: ID[] // Artifact ids
   businessValue?: string[]
@@ -123,6 +139,7 @@ export type GalleryState = {
     processIds: ID[]
     capabilityIds: ID[]
     products: string[]
+    types: string[]
     complexity?: ("Low" | "Medium" | "High")[]
     timeline?: ("1-2 weeks" | "1-2 months" | "3-6 months")[]
     maturity?: ("Concept" | "Preview" | "GA")[]
@@ -142,6 +159,8 @@ export type GalleryActions = {
   setSelectedItemId(id: string | null): void
   // Derived selectors
   itemsByView(): ReferencePackage[] // for "references" grid
+  visibleItems(): ReferencePackage[] // filtered and paginated items
+  filteredItems(): ReferencePackage[] // filtered but not paginated
   industriesWithCounts(): Array<Industry & { solutionCount: number }>
   processesTree(): Process[] // E2E roots with children
   bcmTree(): Array<CapabilityDomain & { areas: Array<CapabilityArea & { capabilities: Capability[] }> }>
@@ -432,7 +451,7 @@ const sampleArtifacts: Artifact[] = [
   },
 ]
 
-const sampleReferences: ReferencePackage[] = [
+const sampleReferences: any[] = [
   {
     id: "ref_intelligent_procurement",
     title: "Intelligent Procurement Automation",
@@ -556,7 +575,7 @@ export const useGalleryStore = create<GalleryState & GalleryActions>()(
   devtools(
     (set, get) => ({
       // Initial state
-      industries: sapIndustries,
+      industries: transformIndustries(sapIndustries),
       processes: sapValueChains,
       domains: sampleDomains,
       areas: sampleAreas,
@@ -572,6 +591,7 @@ export const useGalleryStore = create<GalleryState & GalleryActions>()(
         processIds: [],
         capabilityIds: [],
         products: [],
+        types: [],
         complexity: [],
         timeline: [],
         maturity: [],
@@ -608,6 +628,7 @@ export const useGalleryStore = create<GalleryState & GalleryActions>()(
             processIds: [],
             capabilityIds: [],
             products: [],
+            types: [],
             complexity: [],
             timeline: [],
             maturity: [],
@@ -672,6 +693,18 @@ export const useGalleryStore = create<GalleryState & GalleryActions>()(
         })
       },
 
+      filteredItems: () => {
+        return get().itemsByView()
+      },
+
+      visibleItems: () => {
+        const { pageIndex, pageSize } = get()
+        const filtered = get().filteredItems()
+        const start = pageIndex * pageSize
+        const end = start + pageSize
+        return filtered.slice(start, end)
+      },
+
       industriesWithCounts: () => {
         const { industries, references } = get()
         return industries.map((industry) => ({
@@ -732,7 +765,7 @@ export const useGalleryStore = create<GalleryState & GalleryActions>()(
           maturity: (params.get("maturity")?.split(",").filter(Boolean) as ("Concept" | "Preview" | "GA")[]) || [],
         }
 
-        set({ query, view, filters, selectedItemId })
+        set({ query, view, filters: { ...filters, types: [] }, selectedItemId })
       },
 
       syncToUrl: () => {

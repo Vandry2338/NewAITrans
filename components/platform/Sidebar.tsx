@@ -175,7 +175,7 @@ export default function Sidebar({}: SidebarProps) {
                     }}
                     onClick={(e) => {
                       if (hasSubmenu && isExpanded) {
-                        e.preventDefault()
+                        // Allow navigation to main page, but also toggle submenu
                         toggleSubmenu(item.label)
                       }
                     }}
