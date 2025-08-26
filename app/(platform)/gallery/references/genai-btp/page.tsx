@@ -6,13 +6,13 @@ import { ChevronDownIcon, ArrowDownTrayIcon, ArrowTopRightOnSquareIcon, ArrowUpT
 // Page data - this would come from your data source
 const pageData = {
   "title": "Generative AI on SAP BTP",
-  "subtitle": "CAP backend • HANA Cloud (Vector Engine) • Generative AI Hub",
+  "subtitle": "CAP + HANA Cloud (Vector) + Generative AI Hub for enterprise AI applications.",
   "tags": ["Amazon Web Services", "Microsoft Azure", "Google Cloud Platform", "Generative AI"],
   "updated": {
     "date": "May 20, 2025",
     "by": "kay-schmitteckert"
   },
-  "heroVideo": null,
+  "heroVideo": "/videos/SAP BTP AI Best Practices 1 Access to Generative AI Models Intro.mp4",
   "overview": [
     "Harness the power of Generative AI (GenAI) in your applications on SAP BTP, providing a robust framework for optimizing AI-driven application development and data management.",
     "This Reference Architecture uses a CAP-based backend for application logic, SAP HANA Cloud (including embeddings for similarity search via the Vector Engine), and the Generative AI Hub as a central access point to foundation models and LLMs. It integrates LLMs via the Generative AI Hub in SAP AI Core, enabling patterns such as Retrieval Augmented Generation (RAG) with embeddings. The architecture supports both Cloud Foundry and Kyma runtimes."
@@ -146,59 +146,59 @@ export default function GenAIBTPPage() {
       </div>
 
       {/* Main Content Grid */}
-      <div className="max-w-7xl mx-auto px-8 py-12">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
+      <div className="max-w-6xl mx-auto px-6 py-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Left Column - Content */}
-          <div className="lg:col-span-2 space-y-8">
+          <div className="lg:col-span-2 space-y-6">
             {/* Overview Card */}
-            <div className="bg-white rounded-2xl border shadow-sm p-6" style={{ borderColor: "var(--border)" }}>
-              <h2 className="text-2xl font-bold mb-6" style={{ color: "var(--text)", fontFamily: "var(--font-sap-72)" }}>
+            <div className="bg-white rounded-xl border shadow-sm p-5" style={{ borderColor: "var(--border)" }}>
+              <h2 className="text-xl font-bold mb-4" style={{ color: "var(--text)", fontFamily: "var(--font-sap-72)" }}>
                 Overview
               </h2>
               {pageData.overview.map((paragraph, index) => (
-                <p key={index} className="mb-4 text-base leading-relaxed" style={{ color: "var(--text-muted)", fontFamily: "var(--font-sap-72)" }}>
+                <p key={index} className="mb-3 text-sm leading-relaxed" style={{ color: "var(--text-muted)", fontFamily: "var(--font-sap-72)" }}>
                   {paragraph}
                 </p>
               ))}
             </div>
 
             {/* Key Services & Roles Card */}
-            <div className="bg-white rounded-2xl border shadow-sm p-6" style={{ borderColor: "var(--border)" }}>
-              <h2 className="text-2xl font-bold mb-6" style={{ color: "var(--text)", fontFamily: "var(--font-sap-72)" }}>
+            <div className="bg-white rounded-xl border shadow-sm p-5" style={{ borderColor: "var(--border)" }}>
+              <h2 className="text-xl font-bold mb-4" style={{ color: "var(--text)", fontFamily: "var(--font-sap-72)" }}>
                 Key Services & Roles
               </h2>
               
               {/* CAP Section */}
-              <div className="mb-6">
-                <h3 className="text-xl font-semibold mb-3" style={{ color: "var(--text)", fontFamily: "var(--font-sap-72)" }}>
+              <div className="mb-4">
+                <h3 className="text-lg font-semibold mb-2" style={{ color: "var(--text)", fontFamily: "var(--font-sap-72)" }}>
                   CAP
                 </h3>
-                <p className="text-sm mb-4" style={{ color: "var(--text-muted)", fontFamily: "var(--font-sap-72)" }}>
+                <p className="text-xs mb-3" style={{ color: "var(--text-muted)", fontFamily: "var(--font-sap-72)" }}>
                   {pageData.servicesAndRoles.cap}
                 </p>
               </div>
 
               {/* Generative AI Hub Section */}
-              <div className="mb-6">
-                <h3 className="text-xl font-semibold mb-3" style={{ color: "var(--text)", fontFamily: "var(--font-sap-72)" }}>
+              <div className="mb-4">
+                <h3 className="text-lg font-semibold mb-2" style={{ color: "var(--text)", fontFamily: "var(--font-sap-72)" }}>
                   Generative AI Hub
                 </h3>
-                <p className="text-sm mb-4" style={{ color: "var(--text-muted)", fontFamily: "var(--font-sap-72)" }}>
+                <p className="text-xs mb-3" style={{ color: "var(--text-muted)", fontFamily: "var(--font-sap-72)" }}>
                   {pageData.servicesAndRoles.genaiHub}
                 </p>
                 
-                <h4 className="text-lg font-semibold mb-2" style={{ color: "var(--text)", fontFamily: "var(--font-sap-72)" }}>
+                <h4 className="text-base font-semibold mb-2" style={{ color: "var(--text)", fontFamily: "var(--font-sap-72)" }}>
                   Orchestration Capabilities
                 </h4>
-                <ul className="space-y-2">
+                <ul className="space-y-1.5">
                   {pageData.servicesAndRoles.orchestration.map((item, index) => (
                     <li key={index} className="flex items-start">
-                      <span className="w-2 h-2 bg-red-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                      <span className="w-1.5 h-1.5 bg-red-500 rounded-full mt-2 mr-2 flex-shrink-0"></span>
                       <div>
-                        <span className="font-semibold text-sm" style={{ color: "var(--text)", fontFamily: "var(--font-sap-72)" }}>
+                        <span className="font-semibold text-xs" style={{ color: "var(--text)", fontFamily: "var(--font-sap-72)" }}>
                           {item.name}:
                         </span>
-                        <span className="text-sm ml-2" style={{ color: "var(--text-muted)", fontFamily: "var(--font-sap-72)" }}>
+                        <span className="text-xs ml-1" style={{ color: "var(--text-muted)", fontFamily: "var(--font-sap-72)" }}>
                           {item.desc}
                         </span>
                       </div>
@@ -209,30 +209,30 @@ export default function GenAIBTPPage() {
 
               {/* HANA Cloud Section */}
               <div>
-                <h3 className="text-xl font-semibold mb-3" style={{ color: "var(--text)", fontFamily: "var(--font-sap-72)" }}>
+                <h3 className="text-lg font-semibold mb-2" style={{ color: "var(--text)", fontFamily: "var(--font-sap-72)" }}>
                   HANA Cloud
                 </h3>
                 
-                <h4 className="text-lg font-semibold mb-2" style={{ color: "var(--text)", fontFamily: "var(--font-sap-72)" }}>
+                <h4 className="text-base font-semibold mb-2" style={{ color: "var(--text)", fontFamily: "var(--font-sap-72)" }}>
                   Vector Engine
                 </h4>
-                <ul className="space-y-2 mb-4">
+                <ul className="space-y-1.5 mb-3">
                   {pageData.servicesAndRoles.hana.vectorEngine.map((item, index) => (
                     <li key={index} className="flex items-start">
-                      <span className="w-2 h-2 bg-orange-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                      <span className="text-sm" style={{ color: "var(--text-muted)", fontFamily: "var(--font-sap-72)" }}>{item}</span>
+                      <span className="w-1.5 h-1.5 bg-orange-500 rounded-full mt-2 mr-2 flex-shrink-0"></span>
+                      <span className="text-xs" style={{ color: "var(--text-muted)", fontFamily: "var(--font-sap-72)" }}>{item}</span>
                     </li>
                   ))}
                 </ul>
                 
-                <h4 className="text-lg font-semibold mb-2" style={{ color: "var(--text)", fontFamily: "var(--font-sap-72)" }}>
+                <h4 className="text-base font-semibold mb-2" style={{ color: "var(--text)", fontFamily: "var(--font-sap-72)" }}>
                   Knowledge Graph Engine
                 </h4>
-                <ul className="space-y-2">
+                <ul className="space-y-1.5">
                   {pageData.servicesAndRoles.hana.knowledgeGraphEngine.map((item, index) => (
                     <li key={index} className="flex items-start">
-                      <span className="w-2 h-2 bg-red-600 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                      <span className="text-sm" style={{ color: "var(--text-muted)", fontFamily: "var(--font-sap-72)" }}>{item}</span>
+                      <span className="w-1.5 h-1.5 bg-red-600 rounded-full mt-2 mr-2 flex-shrink-0"></span>
+                      <span className="text-xs" style={{ color: "var(--text-muted)", fontFamily: "var(--font-sap-72)" }}>{item}</span>
                     </li>
                   ))}
                 </ul>
@@ -240,30 +240,30 @@ export default function GenAIBTPPage() {
             </div>
 
             {/* Scenarios Card */}
-            <div className="bg-white rounded-2xl border shadow-sm p-6" style={{ borderColor: "var(--border)" }}>
-              <h2 className="text-2xl font-bold mb-6" style={{ color: "var(--text)", fontFamily: "var(--font-sap-72)" }}>
+            <div className="bg-white rounded-xl border shadow-sm p-5" style={{ borderColor: "var(--border)" }}>
+              <h2 className="text-xl font-bold mb-4" style={{ color: "var(--text)", fontFamily: "var(--font-sap-72)" }}>
                 Scenarios
               </h2>
-              <ul className="space-y-2">
+              <ul className="space-y-1.5">
                 {pageData.scenarios.map((scenario, index) => (
                   <li key={index} className="flex items-start">
-                    <span className="w-1.5 h-1.5 bg-red-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                    <span className="text-sm" style={{ color: "var(--text-muted)", fontFamily: "var(--font-sap-72)" }}>{scenario}</span>
+                    <span className="w-1 h-1 bg-red-500 rounded-full mt-2 mr-2 flex-shrink-0"></span>
+                    <span className="text-xs" style={{ color: "var(--text-muted)", fontFamily: "var(--font-sap-72)" }}>{scenario}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
             {/* Examples Card */}
-            <div className="bg-white rounded-2xl border shadow-sm p-6" style={{ borderColor: "var(--border)" }}>
-              <h2 className="text-2xl font-bold mb-6" style={{ color: "var(--text)", fontFamily: "var(--font-sap-72)" }}>
+            <div className="bg-white rounded-xl border shadow-sm p-5" style={{ borderColor: "var(--border)" }}>
+              <h2 className="text-xl font-bold mb-4" style={{ color: "var(--text)", fontFamily: "var(--font-sap-72)" }}>
                 Examples
               </h2>
-              <ul className="space-y-2">
+              <ul className="space-y-1.5">
                 {pageData.examples.map((example, index) => (
                   <li key={index} className="flex items-start">
-                    <span className="w-1.5 h-1.5 bg-orange-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                    <span className="text-sm" style={{ color: "var(--text-muted)", fontFamily: "var(--font-sap-72)" }}>{example}</span>
+                    <span className="w-1 h-1 bg-orange-500 rounded-full mt-2 mr-2 flex-shrink-0"></span>
+                    <span className="text-xs" style={{ color: "var(--text-muted)", fontFamily: "var(--font-sap-72)" }}>{example}</span>
                   </li>
                 ))}
               </ul>
@@ -272,20 +272,20 @@ export default function GenAIBTPPage() {
 
           {/* Right Column - Generate/View Card */}
           <div className="lg:col-span-1">
-            <div className="bg-white rounded-2xl border shadow-sm p-6 sticky top-8" style={{ borderColor: "var(--border)" }}>
-              <h3 className="text-xl font-bold mb-6" style={{ color: "var(--text)", fontFamily: "var(--font-sap-72)" }}>
+            <div className="bg-white rounded-xl border shadow-sm p-5 sticky top-8" style={{ borderColor: "var(--border)" }}>
+              <h3 className="text-lg font-bold mb-4" style={{ color: "var(--text)", fontFamily: "var(--font-sap-72)" }}>
                 Generate / View
               </h3>
               
               <button
                 onClick={handleOpenInDrawIO}
-                className="w-full px-6 py-3 text-white font-bold rounded-lg hover:shadow-lg transition-all duration-200 mb-6 text-base"
+                className="w-full px-4 py-2.5 text-white font-bold rounded-lg hover:shadow-lg transition-all duration-200 mb-4 text-sm"
                 style={{ background: "linear-gradient(135deg, #dc2626 0%, #ea580c 50%, #dc2626 100%)", fontFamily: "var(--font-sap-72)" }}
               >
                 {pageData.viewer.buttonLabel}
               </button>
               
-              <p className="text-sm text-center" style={{ color: "var(--text-muted)", fontFamily: "var(--font-sap-72)" }}>
+              <p className="text-xs text-center" style={{ color: "var(--text-muted)", fontFamily: "var(--font-sap-72)" }}>
                 Click to open the reference architecture diagram in draw.io
               </p>
             </div>

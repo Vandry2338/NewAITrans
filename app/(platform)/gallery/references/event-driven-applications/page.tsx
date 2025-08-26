@@ -6,13 +6,13 @@ import { ChevronDownIcon, ArrowDownTrayIcon, ArrowTopRightOnSquareIcon, ArrowUpT
 // Page data - this would come from your data source
 const pageData = {
   "title": "Reference Architecture for Event-Driven Applications",
-  "subtitle": "EDA with SAP Integration Suite (Event Mesh / Advanced Event Mesh), CAP, HANA Cloud, and Private Link",
-  "tags": ["Microsoft Azure", "Amazon Web Services", "Generative AI", "Integration", "Application Development & Automation", "Event-Driven Architecture"],
+  "subtitle": "EDA with SAP Integration Suite (Event Mesh / Advanced Event Mesh), CAP, HANA Cloud, and Private Link.",
+  "tags": ["SAP BTP", "Event Mesh", "CAP", "HANA Cloud"],
   "updated": {
-    "date": "May 10, 2025",
-    "by": "anbazhagan-uma"
+    "date": "June 15, 2025",
+    "by": "sap-team"
   },
-  "heroVideo": null,
+  "heroVideo": null, // No specific video available yet
 
   "overview": [
     "Enterprises are adopting API-First and Event-First strategies to achieve real-time responsiveness and automation alongside SAP ERP. This reference architecture explains how to build event-driven applications on SAP BTP.",
@@ -159,40 +159,40 @@ export default function EventDrivenApplicationsPage() {
       </div>
 
       {/* Main Content Grid */}
-      <div className="max-w-7xl mx-auto px-8 py-12">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
+      <div className="max-w-6xl mx-auto px-6 py-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Left Column - Content */}
-          <div className="lg:col-span-2 space-y-8">
+          <div className="lg:col-span-2 space-y-6">
             {/* Overview Card */}
-            <div className="bg-white rounded-2xl border shadow-sm p-6" style={{ borderColor: "var(--border)" }}>
-              <h2 className="text-2xl font-bold mb-6" style={{ color: "var(--text)", fontFamily: "var(--font-sap-72)" }}>
+            <div className="bg-white rounded-xl border shadow-sm p-5" style={{ borderColor: "var(--border)" }}>
+              <h2 className="text-xl font-bold mb-4" style={{ color: "var(--text)", fontFamily: "var(--font-sap-72)" }}>
                 Overview
               </h2>
               {pageData.overview.map((paragraph, index) => (
-                <p key={index} className="mb-4 text-base leading-relaxed" style={{ color: "var(--text-muted)", fontFamily: "var(--font-sap-72)" }}>
+                <p key={index} className="mb-3 text-sm leading-relaxed" style={{ color: "var(--text-muted)", fontFamily: "var(--font-sap-72)" }}>
                   {paragraph}
                 </p>
               ))}
             </div>
 
             {/* Flow Card */}
-            <div className="bg-white rounded-2xl border shadow-sm p-6" style={{ borderColor: "var(--border)" }}>
-              <h2 className="text-2xl font-bold mb-6" style={{ color: "var(--text)", fontFamily: "var(--font-sap-72)" }}>
+            <div className="bg-white rounded-xl border shadow-sm p-5" style={{ borderColor: "var(--border)" }}>
+              <h2 className="text-xl font-bold mb-4" style={{ color: "var(--text)", fontFamily: "var(--font-sap-72)" }}>
                 Flow
               </h2>
-              <ol className="space-y-3">
+              <ol className="space-y-2">
                 {pageData.flow.map((step, index) => (
                   <li key={index} className="flex items-start">
                     {index === 0 ? (
-                      <span className="w-6 h-6 bg-red-500 text-white rounded-full flex items-center justify-center font-bold text-sm mr-3 flex-shrink-0" style={{ fontFamily: "var(--font-sap-72)" }}>
+                      <span className="w-5 h-5 bg-red-500 text-white rounded-full flex items-center justify-center font-bold text-xs mr-3 flex-shrink-0" style={{ fontFamily: "var(--font-sap-72)" }}>
                         P
                       </span>
                     ) : (
-                      <span className="w-6 h-6 bg-red-500 text-white rounded-full flex items-center justify-center font-bold text-sm mr-3 flex-shrink-0" style={{ fontFamily: "var(--font-sap-72)" }}>
+                      <span className="w-5 h-5 bg-red-500 text-white rounded-full flex items-center justify-center font-bold text-xs mr-3 flex-shrink-0" style={{ fontFamily: "var(--font-sap-72)" }}>
                         {index}
                       </span>
                     )}
-                    <span className="text-sm leading-relaxed" style={{ color: "var(--text-muted)", fontFamily: "var(--font-sap-72)" }}>
+                    <span className="text-xs leading-relaxed" style={{ color: "var(--text-muted)", fontFamily: "var(--font-sap-72)" }}>
                       {step}
                     </span>
                   </li>
@@ -201,15 +201,15 @@ export default function EventDrivenApplicationsPage() {
             </div>
 
             {/* Characteristics Card */}
-            <div className="bg-white rounded-2xl border shadow-sm p-6" style={{ borderColor: "var(--border)" }}>
-              <h2 className="text-2xl font-bold mb-6" style={{ color: "var(--text)", fontFamily: "var(--font-sap-72)" }}>
+            <div className="bg-white rounded-xl border shadow-sm p-5" style={{ borderColor: "var(--border)" }}>
+              <h2 className="text-xl font-bold mb-4" style={{ color: "var(--text)", fontFamily: "var(--font-sap-72)" }}>
                 Characteristics
               </h2>
-              <ul className="space-y-2">
+              <ul className="space-y-1.5">
                 {pageData.characteristics.map((characteristic, index) => (
                   <li key={index} className="flex items-start">
-                    <span className="w-1.5 h-1.5 bg-orange-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                    <span className="text-sm" style={{ color: "var(--text-muted)", fontFamily: "var(--font-sap-72)" }}>
+                    <span className="w-1 h-1 bg-orange-500 rounded-full mt-2 mr-2 flex-shrink-0"></span>
+                    <span className="text-xs" style={{ color: "var(--text-muted)", fontFamily: "var(--font-sap-72)" }}>
                       {characteristic}
                     </span>
                   </li>
@@ -218,15 +218,15 @@ export default function EventDrivenApplicationsPage() {
             </div>
 
             {/* Examples Card */}
-            <div className="bg-white rounded-2xl border shadow-sm p-6" style={{ borderColor: "var(--border)" }}>
-              <h2 className="text-2xl font-bold mb-6" style={{ color: "var(--text)", fontFamily: "var(--font-sap-72)" }}>
+            <div className="bg-white rounded-xl border shadow-sm p-5" style={{ borderColor: "var(--border)" }}>
+              <h2 className="text-xl font-bold mb-4" style={{ color: "var(--text)", fontFamily: "var(--font-sap-72)" }}>
                 Examples
               </h2>
-              <ul className="space-y-2">
+              <ul className="space-y-1.5">
                 {pageData.examples.map((example, index) => (
                   <li key={index} className="flex items-start">
-                    <span className="w-1.5 h-1.5 bg-red-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                    <span className="text-sm" style={{ color: "var(--text-muted)", fontFamily: "var(--font-sap-72)" }}>
+                    <span className="w-1 h-1 bg-red-500 rounded-full mt-2 mr-2 flex-shrink-0"></span>
+                    <span className="text-xs" style={{ color: "var(--text-muted)", fontFamily: "var(--font-sap-72)" }}>
                       {example}
                     </span>
                   </li>
@@ -235,15 +235,15 @@ export default function EventDrivenApplicationsPage() {
             </div>
 
             {/* Services & Components Card */}
-            <div className="bg-white rounded-2xl border shadow-sm p-6" style={{ borderColor: "var(--border)" }}>
-              <h2 className="text-2xl font-bold mb-6" style={{ color: "var(--text)", fontFamily: "var(--font-sap-72)" }}>
+            <div className="bg-white rounded-xl border shadow-sm p-5" style={{ borderColor: "var(--border)" }}>
+              <h2 className="text-xl font-bold mb-4" style={{ color: "var(--text)", fontFamily: "var(--font-sap-72)" }}>
                 Services & Components
               </h2>
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-wrap gap-2">
                 {pageData.servicesAndComponents.map((service, index) => (
                   <span
                     key={index}
-                    className="px-3 py-1.5 bg-red-50 text-red-700 rounded-lg font-medium text-sm"
+                    className="px-2 py-1 bg-red-50 text-red-700 rounded-md font-medium text-xs"
                     style={{ fontFamily: "var(--font-sap-72)" }}
                   >
                     {service}
@@ -255,20 +255,20 @@ export default function EventDrivenApplicationsPage() {
 
           {/* Right Column - Generate/View Card */}
           <div className="lg:col-span-1">
-            <div className="bg-white rounded-2xl border shadow-sm p-6 sticky top-8" style={{ borderColor: "var(--border)" }}>
-              <h3 className="text-xl font-bold mb-6" style={{ color: "var(--text)", fontFamily: "var(--font-sap-72)" }}>
+            <div className="bg-white rounded-xl border shadow-sm p-5 sticky top-8" style={{ borderColor: "var(--border)" }}>
+              <h3 className="text-lg font-bold mb-4" style={{ color: "var(--text)", fontFamily: "var(--font-sap-72)" }}>
                 Generate / View
               </h3>
               
               <button
                 onClick={handleOpenInDrawIO}
-                className="w-full px-6 py-3 text-white font-bold rounded-lg hover:shadow-lg transition-all duration-200 mb-6 text-base"
+                className="w-full px-4 py-2.5 text-white font-bold rounded-lg hover:shadow-lg transition-all duration-200 mb-4 text-sm"
                 style={{ background: "linear-gradient(135deg, #dc2626 0%, #ea580c 50%, #dc2626 100%)", fontFamily: "var(--font-sap-72)" }}
               >
                 {pageData.viewer.buttonLabel}
               </button>
               
-              <p className="text-sm text-center" style={{ color: "var(--text-muted)", fontFamily: "var(--font-sap-72)" }}>
+              <p className="text-xs text-center" style={{ color: "var(--text-muted)", fontFamily: "var(--font-sap-72)" }}>
                 Click to open the reference architecture diagram in draw.io
               </p>
             </div>
