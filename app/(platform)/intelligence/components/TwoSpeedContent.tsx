@@ -598,32 +598,23 @@ const industries = [
   "Banking",
   "Chemicals",
   "Consumer Products",
-  "Construction",
-  "Defense",
-  "Education",
-  "Energy",
-  "Engineering and Construction",
-  "Financial Services",
-  "Food and Beverage",
-  "Government",
+  "Defense and Security",
+  "Engineering, Construction and Operations",
   "Healthcare",
-  "High Tech",
-  "Hospitality",
+  "Higher Education and Research",
+  "Industrial Manufacturing",
   "Insurance",
   "Life Sciences",
-  "Logistics",
-  "Manufacturing",
-  "Media and Entertainment",
+  "Media",
+  "Mill Products",
   "Mining",
   "Oil and Gas",
-  "Pharmaceuticals",
   "Public Sector",
-  "Real Estate",
   "Retail",
   "Telecommunications",
-  "Transportation",
-  "Travel and Tourism",
-  "Utilities"
+  "Travel and Transportation",
+  "Utilities",
+  "Wholesale Distribution"
 ]
 
 const PROCESS_CONFIG = {
@@ -3052,6 +3043,343 @@ export default function TwoSpeedContent({ activeSubTab }: { activeSubTab: string
         drivers: ["Content Creation Tools", "Social Media Platforms", "Diverse Content"],
         businessImpact:
           "Traditional media companies will need to adapt to this new landscape by collaborating with creators, acquiring creator-led businesses, or developing their own creator platforms. This will lead to a more fragmented and diverse media landscape.",
+      },
+      // Additional trends for missing industries
+      {
+        id: "trend_056",
+        title: "Digital Transformation in Professional Services",
+        description:
+          "Professional services firms are rapidly adopting digital technologies to enhance client delivery, automate routine tasks, and improve operational efficiency through AI-powered insights and cloud-based collaboration platforms.",
+        industry: "Professional Services",
+        process: "idea-to-market",
+        impact: "High",
+        adoption: "73%",
+        growth: "+29%",
+        drivers: ["Client Expectations", "Operational Efficiency", "Competitive Pressure"],
+        businessImpact:
+          "Improved client service delivery, enhanced operational efficiency, reduced manual work, and the ability to scale services without proportional headcount increases.",
+      },
+      {
+        id: "trend_057",
+        title: "Cloud-Native Architecture Adoption",
+        description:
+          "High Technology companies are accelerating their shift towards cloud-native architectures, microservices, and containerization to improve scalability, deployment speed, and operational resilience.",
+        industry: "High Technology",
+        process: "plan-to-fulfill",
+        impact: "High",
+        adoption: "81%",
+        growth: "+34%",
+        drivers: ["Scalability Needs", "Deployment Speed", "Cost Optimization"],
+        businessImpact:
+          "Faster time-to-market, improved system reliability, reduced infrastructure costs, and enhanced ability to handle traffic spikes and growth.",
+      },
+      {
+        id: "trend_058",
+        title: "Aerospace Digital Twin Implementation",
+        description:
+          "Aerospace and Defense companies are implementing comprehensive digital twin technologies for aircraft design, manufacturing, and maintenance to improve safety, reduce costs, and accelerate innovation cycles.",
+        industry: "Aerospace and Defense",
+        process: "idea-to-market",
+        impact: "High",
+        adoption: "67%",
+        growth: "+41%",
+        drivers: ["Safety Requirements", "Cost Reduction", "Innovation Speed"],
+        businessImpact:
+          "Enhanced safety through predictive maintenance, reduced development costs, faster innovation cycles, and improved operational efficiency.",
+      },
+      {
+        id: "trend_059",
+        title: "Precision Agriculture Technology",
+        description:
+          "Agribusiness companies are adopting precision agriculture technologies including IoT sensors, AI-driven analytics, and automated farming equipment to optimize crop yields and resource utilization.",
+        industry: "Agribusiness",
+        process: "plan-to-fulfill",
+        impact: "Medium",
+        adoption: "58%",
+        growth: "+36%",
+        drivers: ["Food Security", "Resource Optimization", "Climate Challenges"],
+        businessImpact:
+          "Improved crop yields, reduced resource waste, enhanced sustainability, and better adaptation to climate change impacts.",
+      },
+      {
+        id: "trend_060",
+        title: "Connected Vehicle Ecosystem Development",
+        description:
+          "Automotive manufacturers are developing comprehensive connected vehicle ecosystems that integrate with smart city infrastructure, mobile apps, and cloud services to enhance driver experience and safety.",
+        industry: "Automotive",
+        process: "idea-to-market",
+        impact: "High",
+        adoption: "72%",
+        growth: "+28%",
+        drivers: ["Consumer Demand", "Safety Requirements", "Competitive Advantage"],
+        businessImpact:
+          "Enhanced vehicle safety, improved customer experience, new revenue streams from data services, and stronger brand differentiation.",
+      },
+      {
+        id: "trend_061",
+        title: "Digital Banking Transformation",
+        description:
+          "Banking institutions are undergoing comprehensive digital transformation to meet evolving customer expectations, improve operational efficiency, and compete with fintech disruptors through modern technology platforms.",
+        industry: "Banking",
+        process: "lead-to-cash",
+        impact: "High",
+        adoption: "79%",
+        growth: "+31%",
+        drivers: ["Customer Expectations", "Fintech Competition", "Regulatory Requirements"],
+        businessImpact:
+          "Improved customer satisfaction, reduced operational costs, enhanced compliance capabilities, and faster product development cycles.",
+      },
+      {
+        id: "trend_062",
+        title: "Chemical Industry Sustainability Initiatives",
+        description:
+          "Chemical companies are implementing comprehensive sustainability programs including green chemistry, circular economy principles, and carbon reduction strategies to meet regulatory requirements and customer demands.",
+        industry: "Chemicals",
+        process: "governance",
+        impact: "Medium",
+        adoption: "65%",
+        growth: "+38%",
+        drivers: ["Regulatory Pressure", "Customer Demands", "Cost Savings"],
+        businessImpact:
+          "Improved regulatory compliance, enhanced brand reputation, reduced environmental impact, and potential cost savings through efficiency gains.",
+      },
+      {
+        id: "trend_063",
+        title: "Consumer Products Personalization",
+        description:
+          "Consumer Products companies are leveraging AI and data analytics to deliver personalized products and experiences, from customized formulations to targeted marketing campaigns.",
+        industry: "Consumer Products",
+        process: "lead-to-cash",
+        impact: "Medium",
+        adoption: "71%",
+        growth: "+25%",
+        drivers: ["Consumer Expectations", "Data Availability", "Competitive Pressure"],
+        businessImpact:
+          "Improved customer engagement, increased conversion rates, enhanced brand loyalty, and better inventory management through demand forecasting.",
+      },
+      {
+        id: "trend_064",
+        title: "Defense Cybersecurity Modernization",
+        description:
+          "Defense and Security organizations are modernizing their cybersecurity infrastructure to protect against increasingly sophisticated threats through AI-powered threat detection and zero-trust architectures.",
+        industry: "Defense and Security",
+        process: "governance",
+        impact: "High",
+        adoption: "83%",
+        growth: "+27%",
+        drivers: ["Threat Evolution", "Regulatory Requirements", "Technology Advances"],
+        businessImpact:
+          "Enhanced threat detection capabilities, improved compliance with security standards, reduced risk of data breaches, and stronger overall security posture.",
+      },
+      {
+        id: "trend_065",
+        title: "Construction Digitalization",
+        description:
+          "Engineering, Construction and Operations companies are adopting digital technologies including BIM, IoT sensors, and AI-powered project management to improve efficiency, safety, and project outcomes.",
+        industry: "Engineering, Construction and Operations",
+        process: "plan-to-fulfill",
+        impact: "Medium",
+        adoption: "62%",
+        growth: "+33%",
+        drivers: ["Efficiency Needs", "Safety Requirements", "Cost Pressure"],
+        businessImpact:
+          "Improved project efficiency, enhanced safety outcomes, reduced costs, and better collaboration across project stakeholders.",
+      },
+      {
+        id: "trend_066",
+        title: "Higher Education Digital Learning",
+        description:
+          "Higher Education and Research institutions are expanding their digital learning capabilities through online platforms, AI-powered tutoring, and immersive technologies to improve accessibility and learning outcomes.",
+        industry: "Higher Education and Research",
+        process: "recruit-to-retire",
+        impact: "Medium",
+        adoption: "69%",
+        growth: "+22%",
+        drivers: ["Student Expectations", "Accessibility Needs", "Cost Pressures"],
+        businessImpact:
+          "Improved student access and engagement, reduced operational costs, enhanced learning outcomes, and expanded global reach.",
+      },
+      {
+        id: "trend_067",
+        title: "Industrial Manufacturing IoT Integration",
+        description:
+          "Industrial Manufacturing companies are integrating IoT sensors and AI analytics throughout their operations to enable predictive maintenance, quality control, and supply chain optimization.",
+        industry: "Industrial Manufacturing",
+        process: "plan-to-fulfill",
+        impact: "High",
+        adoption: "76%",
+        growth: "+29%",
+        drivers: ["Operational Efficiency", "Quality Requirements", "Cost Reduction"],
+        businessImpact:
+          "Reduced unplanned downtime, improved product quality, enhanced supply chain visibility, and optimized resource utilization.",
+      },
+      {
+        id: "trend_068",
+        title: "Insurance Digital Claims Processing",
+        description:
+          "Insurance companies are implementing AI-powered digital claims processing systems to improve accuracy, reduce processing times, and enhance customer experience through automated workflows.",
+        industry: "Insurance",
+        process: "lead-to-cash",
+        impact: "Medium",
+        adoption: "68%",
+        growth: "+31%",
+        drivers: ["Customer Expectations", "Cost Reduction", "Fraud Prevention"],
+        businessImpact:
+          "Faster claims processing, improved customer satisfaction, reduced operational costs, and enhanced fraud detection capabilities.",
+      },
+      {
+        id: "trend_069",
+        title: "Life Sciences Digital Health Integration",
+        description:
+          "Life Sciences companies are integrating digital health technologies including wearables, mobile apps, and AI analytics to enhance clinical trials and improve patient outcomes.",
+        industry: "Life Sciences",
+        process: "idea-to-market",
+        impact: "High",
+        adoption: "74%",
+        growth: "+35%",
+        drivers: ["Regulatory Requirements", "Patient Outcomes", "Competitive Advantage"],
+        businessImpact:
+          "Improved clinical trial efficiency, enhanced patient engagement, faster drug development, and better real-world evidence collection.",
+      },
+      {
+        id: "trend_070",
+        title: "Media Content Personalization",
+        description:
+          "Media companies are leveraging AI and machine learning to deliver personalized content recommendations, advertising, and user experiences across their platforms.",
+        industry: "Media",
+        process: "lead-to-cash",
+        impact: "Medium",
+        adoption: "77%",
+        growth: "+24%",
+        drivers: ["User Engagement", "Advertising Revenue", "Competitive Pressure"],
+        businessImpact:
+          "Increased user engagement and retention, improved advertising effectiveness, enhanced content discovery, and better monetization opportunities.",
+      },
+      {
+        id: "trend_071",
+        title: "Mill Products Process Optimization",
+        description:
+          "Mill Products companies are implementing advanced process optimization technologies including AI-powered quality control and predictive maintenance to improve efficiency and product quality.",
+        industry: "Mill Products",
+        process: "plan-to-fulfill",
+        impact: "Medium",
+        adoption: "64%",
+        growth: "+28%",
+        drivers: ["Efficiency Needs", "Quality Requirements", "Cost Pressure"],
+        businessImpact:
+          "Improved process efficiency, enhanced product quality, reduced waste, and optimized resource utilization.",
+      },
+      {
+        id: "trend_072",
+        title: "Mining Automation and Safety",
+        description:
+          "Mining companies are implementing autonomous vehicles, AI-powered safety systems, and digital twin technologies to improve safety, efficiency, and environmental compliance.",
+        industry: "Mining",
+        process: "plan-to-fulfill",
+        impact: "High",
+        adoption: "71%",
+        growth: "+32%",
+        drivers: ["Safety Requirements", "Efficiency Needs", "Environmental Compliance"],
+        businessImpact:
+          "Enhanced worker safety, improved operational efficiency, reduced environmental impact, and better compliance with regulations.",
+      },
+      {
+        id: "trend_073",
+        title: "Oil and Gas Digital Transformation",
+        description:
+          "Oil and Gas companies are undergoing comprehensive digital transformation to improve operational efficiency, reduce costs, and enhance safety through IoT, AI, and cloud technologies.",
+        industry: "Oil and Gas",
+        process: "plan-to-fulfill",
+        impact: "High",
+        adoption: "73%",
+        growth: "+26%",
+        drivers: ["Cost Pressure", "Safety Requirements", "Efficiency Needs"],
+        businessImpact:
+          "Improved operational efficiency, enhanced safety outcomes, reduced costs, and better asset management and maintenance.",
+      },
+      {
+        id: "trend_074",
+        title: "Public Sector Digital Services",
+        description:
+          "Public Sector organizations are modernizing their digital services to improve citizen experience, increase operational efficiency, and enhance transparency through cloud platforms and AI-powered automation.",
+        industry: "Public Sector",
+        process: "governance",
+        impact: "Medium",
+        adoption: "66%",
+        growth: "+19%",
+        drivers: ["Citizen Expectations", "Efficiency Needs", "Budget Constraints"],
+        businessImpact:
+          "Improved citizen satisfaction, enhanced operational efficiency, reduced costs, and increased transparency and accountability.",
+      },
+      {
+        id: "trend_075",
+        title: "Retail Omnichannel Integration",
+        description:
+          "Retail companies are implementing seamless omnichannel experiences that integrate online and offline channels to provide consistent customer experiences and improve sales performance.",
+        industry: "Retail",
+        process: "lead-to-cash",
+        impact: "High",
+        adoption: "79%",
+        growth: "+23%",
+        drivers: ["Customer Expectations", "Competitive Pressure", "Technology Availability"],
+        businessImpact:
+          "Improved customer satisfaction, increased sales across channels, enhanced inventory management, and better customer insights.",
+      },
+      {
+        id: "trend_076",
+        title: "Telecommunications Network Modernization",
+        description:
+          "Telecommunications companies are modernizing their network infrastructure through 5G deployment, fiber expansion, and cloud-native technologies to meet growing bandwidth demands.",
+        industry: "Telecommunications",
+        process: "plan-to-fulfill",
+        impact: "High",
+        adoption: "81%",
+        growth: "+27%",
+        drivers: ["Bandwidth Demand", "Competitive Pressure", "Technology Evolution"],
+        businessImpact:
+          "Enhanced network capacity and performance, improved service quality, reduced operational costs, and new revenue opportunities.",
+      },
+      {
+        id: "trend_077",
+        title: "Travel and Transportation Digital Booking",
+        description:
+          "Travel and Transportation companies are implementing comprehensive digital booking and management platforms to improve customer experience and operational efficiency.",
+        industry: "Travel and Transportation",
+        process: "lead-to-cash",
+        impact: "Medium",
+        adoption: "75%",
+        growth: "+21%",
+        drivers: ["Customer Expectations", "Operational Efficiency", "Competitive Pressure"],
+        businessImpact:
+          "Improved customer experience, enhanced operational efficiency, increased booking conversions, and better resource utilization.",
+      },
+      {
+        id: "trend_078",
+        title: "Utilities Smart Grid Implementation",
+        description:
+          "Utilities companies are implementing smart grid technologies including IoT sensors, AI analytics, and renewable energy integration to improve reliability, efficiency, and sustainability.",
+        industry: "Utilities",
+        process: "plan-to-fulfill",
+        impact: "High",
+        adoption: "72%",
+        growth: "+29%",
+        drivers: ["Reliability Requirements", "Sustainability Goals", "Regulatory Pressure"],
+        businessImpact:
+          "Improved grid reliability and efficiency, enhanced renewable energy integration, reduced operational costs, and better customer service.",
+      },
+      {
+        id: "trend_079",
+        title: "Wholesale Distribution Digital Transformation",
+        description:
+          "Wholesale Distribution companies are implementing digital technologies to improve inventory management, enhance customer service, and optimize supply chain operations.",
+        industry: "Wholesale Distribution",
+        process: "source-to-pay",
+        impact: "Medium",
+        adoption: "67%",
+        growth: "+25%",
+        drivers: ["Efficiency Needs", "Customer Expectations", "Competitive Pressure"],
+        businessImpact:
+          "Improved inventory management, enhanced customer service, reduced operational costs, and optimized supply chain operations.",
       },
     ]
 
