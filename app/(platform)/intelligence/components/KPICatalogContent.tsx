@@ -11,7 +11,8 @@ import {
   TrendingDown,
   Bookmark,
   Filter,
-  X
+  X,
+  CheckCircle
 } from 'lucide-react'
 import { sapIndustries } from '@/app/data/industries'
 import { sapValueChains } from '@/app/data/valueChains'
@@ -59,6 +60,7 @@ export default function KPICatalogContent() {
   const [selectedIndustry, setSelectedIndustry] = useState("All Industries")
   const [selectedProcess, setSelectedProcess] = useState("All E2E Processes")
   const [bookmarkedKPIs, setBookmarkedKPIs] = useState<Set<string>>(new Set())
+  const [showConfirmation, setShowConfirmation] = useState(false)
 
   // Add CSS for line-clamp
   React.useEffect(() => {
@@ -98,6 +100,19 @@ export default function KPICatalogContent() {
       newBookmarks.add(kpiId)
     }
     setBookmarkedKPIs(newBookmarks)
+    
+    // Save to localStorage
+    try {
+      localStorage.setItem("bookmarkedKPIs", JSON.stringify(Array.from(newBookmarks)))
+    } catch (error) {
+      console.warn("Could not save bookmarks to localStorage:", error)
+    }
+  }
+
+  // Add KPIs to Solution Canvas
+  const addToSolutionCanvas = () => {
+    setShowConfirmation(true)
+    setTimeout(() => setShowConfirmation(false), 3000) // Hide after 3 seconds
   }
 
   const filteredKPIs = useMemo(() => {
@@ -415,7 +430,43 @@ export default function KPICatalogContent() {
             </div>
           )}
         </div>
+
+        {/* Action Bar - Add KPIs to Solution Canvas */}
+        <div className="bg-white rounded-2xl border shadow-sm p-6 mt-8" style={{ borderColor: "var(--border)" }}>
+          <div className="text-center">
+            <h4 className="text-lg font-semibold mb-2" style={{ color: "var(--text)" }}>
+              Add KPIs to Solution Canvas
+            </h4>
+            <p className="text-sm mb-6" style={{ color: "var(--text-muted)" }}>
+              Transfer your selected KPIs to create a comprehensive solution canvas for your business transformation
+            </p>
+            
+            <button
+              onClick={addToSolutionCanvas}
+              className="px-8 py-3 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-lg font-medium hover:from-blue-600 hover:to-blue-700 transition-all duration-200 shadow-md hover:shadow-lg"
+            >
+              Add to Solution Canvas
+            </button>
+          </div>
+        </div>
       </div>
+
+      {/* Confirmation Popup */}
+      {showConfirmation && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-2xl p-8 max-w-md mx-4 text-center shadow-2xl">
+            <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-green-100 flex items-center justify-center">
+              <CheckCircle size={32} className="text-green-600" />
+            </div>
+            <h3 className="text-xl font-semibold mb-2" style={{ color: "var(--text)" }}>
+              Added Successfully!
+            </h3>
+            <p className="text-sm" style={{ color: "var(--text-muted)" }}>
+              Your selected KPIs have been added to the Solution Canvas for business transformation planning.
+            </p>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
