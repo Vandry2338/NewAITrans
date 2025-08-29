@@ -1,6 +1,6 @@
 "use client"
 
-import type React from "react"
+import React from "react"
 
 import { useState } from "react"
 import { useICStore } from "@/lib/store"
@@ -696,10 +696,40 @@ export default function TwoSpeedContent({ activeSubTab }: { activeSubTab: string
   const [aiProcessing, setAiProcessing] = useState(false)
   const [selectedPriorities, setSelectedPriorities] = useState<{ [key: string]: string }>({})
   const [selectedPainPoints, setSelectedPainPoints] = useState<string[]>([])
+  const [bookmarkedPainPoints, setBookmarkedPainPoints] = useState<string[]>([])
   const [selectedIndustry, setSelectedIndustry] = useState("All Industries")
   const [selectedProcess, setSelectedProcess] = useState("All Processes")
   const [bookmarkedTrends, setBookmarkedTrends] = useState<string[]>([])
   const [trendPriorities, setTrendPriorities] = useState<{ [key: string]: string }>({})
+
+  const toggleBookmark = (painPointId: string) => {
+    const newBookmarks = new Set(bookmarkedPainPoints)
+    if (newBookmarks.has(painPointId)) {
+      newBookmarks.delete(painPointId)
+    } else {
+      newBookmarks.add(painPointId)
+    }
+    setBookmarkedPainPoints(Array.from(newBookmarks))
+  }
+
+  // Add CSS for line-clamp
+  React.useEffect(() => {
+    const style = document.createElement('style')
+    style.textContent = `
+      .line-clamp-3 {
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+      }
+    `
+    document.head.appendChild(style)
+    return () => {
+      if (document.head.contains(style)) {
+        document.head.removeChild(style)
+      }
+    }
+  }, [])
 
   const {
     painPoints,
@@ -3518,6 +3548,32 @@ export default function TwoSpeedContent({ activeSubTab }: { activeSubTab: string
                 </p>
               </div>
             )}
+
+            {/* Action Bar - Add Industry Trends to Solution Canvas - Full Width Horizontal Bar */}
+            <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border-t border-b py-6 mt-8 w-full" style={{ borderColor: "var(--border)" }}>
+              <div className="max-w-7xl mx-auto px-6">
+                <div className="flex items-center justify-between">
+                  <div className="flex-1">
+                    <h4 className="text-lg font-semibold mb-1" style={{ color: "var(--text)" }}>
+                      Add Industry Trends to Solution Canvas
+                    </h4>
+                    <p className="text-sm" style={{ color: "var(--text-muted)" }}>
+                      Transfer your selected industry trends to create a comprehensive solution canvas for your business transformation
+                    </p>
+                  </div>
+                  
+                  <button
+                    onClick={() => {
+                      // Add functionality for industry trends
+                      console.log("Adding industry trends to solution canvas")
+                    }}
+                    className="px-8 py-3 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-lg font-medium hover:from-blue-600 hover:to-blue-700 transition-all duration-200 shadow-md hover:shadow-lg flex-shrink-0"
+                  >
+                    Add to Solution Canvas
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
         )
 
@@ -3535,12 +3591,7 @@ export default function TwoSpeedContent({ activeSubTab }: { activeSubTab: string
               )
             )
         
-        // Debug logging
-        console.log("Selected Industry:", selectedIndustry)
-        console.log("Total Pain Points:", PAIN_POINTS_DATA.length)
-        console.log("Filtered Pain Points:", filteredPainPoints.length)
-        console.log("Utilities Pain Points:", PAIN_POINTS_DATA.filter(pp => pp.industries.includes("Utilities")).length)
-        console.log("Telecommunications Pain Points:", PAIN_POINTS_DATA.filter(pp => pp.industries.includes("Telecommunications")).length)
+
         
         const selectedCount = selectedPainPoints.length
         const totalCount = filteredPainPoints.length
@@ -3580,14 +3631,7 @@ export default function TwoSpeedContent({ activeSubTab }: { activeSubTab: string
                 </div>
               </div>
               
-              {/* Debug Info */}
-              <div className="mt-4 p-3 bg-gray-100 rounded-lg text-xs">
-                <div><strong>Selected Industry:</strong> {selectedIndustry}</div>
-                <div><strong>Total Pain Points:</strong> {PAIN_POINTS_DATA.length}</div>
-                <div><strong>Filtered Pain Points:</strong> {filteredPainPoints.length}</div>
-                <div><strong>Utilities Count:</strong> {PAIN_POINTS_DATA.filter(pp => pp.industries.includes("Utilities")).length}</div>
-                <div><strong>Telecommunications Count:</strong> {PAIN_POINTS_DATA.filter(pp => pp.industries.includes("Telecommunications")).length}</div>
-              </div>
+
             </div>
 
             {/* Pain Point Canvas Grid */}
@@ -3683,9 +3727,9 @@ export default function TwoSpeedContent({ activeSubTab }: { activeSubTab: string
                               </h3>
                             </div>
 
-                            {/* Description - flexible height */}
-                            <div className="mb-4 flex-1">
-                              <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
+                            {/* Description - fixed height with truncation */}
+                            <div className="mb-4 h-20 flex-shrink-0">
+                              <p className="text-sm leading-relaxed line-clamp-3 h-full" style={{ color: "var(--text-muted)" }}>
                                 {painPoint.description}
                               </p>
                             </div>
@@ -3773,6 +3817,32 @@ export default function TwoSpeedContent({ activeSubTab }: { activeSubTab: string
                 </div>
               </div>
             )}
+
+            {/* Action Bar - Add Pain Points to Solution Canvas - Full Width Horizontal Bar */}
+            <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border-t border-b py-6 mt-8 w-full" style={{ borderColor: "var(--border)" }}>
+              <div className="max-w-7xl mx-auto px-6">
+                <div className="flex items-center justify-between">
+                  <div className="flex-1">
+                    <h4 className="text-lg font-semibold mb-1" style={{ color: "var(--text)" }}>
+                      Add Pain Points to Solution Canvas
+                    </h4>
+                    <p className="text-sm" style={{ color: "var(--text-muted)" }}>
+                      Transfer your selected pain points to create a comprehensive solution canvas for your business transformation
+                    </p>
+                  </div>
+                  
+                  <button
+                    onClick={() => {
+                      // Add functionality for pain points
+                      console.log("Adding pain points to solution canvas")
+                    }}
+                    className="px-8 py-3 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-lg font-medium hover:from-blue-600 hover:to-blue-700 transition-all duration-200 shadow-md hover:shadow-lg flex-shrink-0"
+                  >
+                    Add to Solution Canvas
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
         )
 
@@ -3800,6 +3870,32 @@ export default function TwoSpeedContent({ activeSubTab }: { activeSubTab: string
                   </div>
                 </div>
               ))}
+            </div>
+
+            {/* Action Bar - Add Strategic Initiatives to Solution Canvas - Full Width Horizontal Bar */}
+            <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border-t border-b py-6 mt-8 w-full" style={{ borderColor: "var(--border)" }}>
+              <div className="max-w-7xl mx-auto px-6">
+                <div className="flex items-center justify-between">
+                  <div className="flex-1">
+                    <h4 className="text-lg font-semibold mb-1" style={{ color: "var(--text)" }}>
+                      Add Strategic Initiatives to Solution Canvas
+                    </h4>
+                    <p className="text-sm" style={{ color: "var(--text-muted)" }}>
+                      Transfer your selected strategic initiatives to create a comprehensive solution canvas for your business transformation
+                    </p>
+                  </div>
+                  
+                  <button
+                    onClick={() => {
+                      // Add functionality for strategic initiatives
+                      console.log("Adding strategic initiatives to solution canvas")
+                    }}
+                    className="px-8 py-3 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-lg font-medium hover:from-blue-600 hover:to-blue-700 transition-all duration-200 shadow-md hover:shadow-lg flex-shrink-0"
+                  >
+                    Add to Solution Canvas
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         )

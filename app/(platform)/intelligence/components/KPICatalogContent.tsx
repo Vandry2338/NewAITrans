@@ -430,27 +430,27 @@ export default function KPICatalogContent() {
             </div>
           )}
         </div>
+      </div>
 
-        {/* Action Bar - Add KPIs to Solution Canvas - Full Width */}
-        <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border-t border-b py-6 mt-8" style={{ borderColor: "var(--border)" }}>
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="flex items-center justify-between">
-              <div className="flex-1">
-                <h4 className="text-lg font-semibold mb-1" style={{ color: "var(--text)" }}>
-                  Add KPIs to Solution Canvas
-                </h4>
-                <p className="text-sm" style={{ color: "var(--text-muted)" }}>
-                  Transfer your selected KPIs to create a comprehensive solution canvas for your business transformation
-                </p>
-              </div>
-              
-              <button
-                onClick={addToSolutionCanvas}
-                className="px-8 py-3 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-lg font-medium hover:from-blue-600 hover:to-blue-700 transition-all duration-200 shadow-md hover:shadow-lg flex-shrink-0"
-              >
-                Add to Solution Canvas
-              </button>
+      {/* Action Bar - Add KPIs to Solution Canvas - Full Width Horizontal Bar */}
+      <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border-t border-b py-6 mt-8 w-full" style={{ borderColor: "var(--border)" }}>
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex items-center justify-between">
+            <div className="flex-1">
+              <h4 className="text-lg font-semibold mb-1" style={{ color: "var(--text)" }}>
+                Add KPIs to Solution Canvas
+              </h4>
+              <p className="text-sm" style={{ color: "var(--text-muted)" }}>
+                Transfer your selected KPIs to create a comprehensive solution canvas for your business transformation
+              </p>
             </div>
+            
+            <button
+              onClick={addToSolutionCanvas}
+              className="px-8 py-3 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-lg font-medium hover:from-blue-600 hover:to-blue-700 transition-all duration-200 shadow-md hover:shadow-lg flex-shrink-0"
+            >
+              Add to Solution Canvas
+            </button>
           </div>
         </div>
       </div>
