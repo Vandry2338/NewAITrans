@@ -25,6 +25,7 @@ import {
   TrendingUp,
   Share,
   BookmarkIcon,
+  ChevronDown,
 } from "lucide-react"
 
 const mockInitiatives = [
@@ -240,6 +241,389 @@ const PAIN_POINTS_DATA = [
     process: "gov",
     priority: "Medium",
   },
+  // Utilities Industry Pain Points
+  {
+    id: "pp_024",
+    title: "Aging Infrastructure and Grid Modernization",
+    description: "Many utility assets including power generation facilities and transmission lines are rapidly aging and insufficient to meet current and future energy demands. Modernizing legacy systems to integrate smart grids and handle increasing demands is complicated by supply chain disruptions for critical components.",
+    industries: ["Utilities"],
+    process: "a2d",
+    priority: "High",
+  },
+  {
+    id: "pp_025",
+    title: "Extreme Weather and Climate Resilience",
+    description: "The frequency and intensity of extreme weather events are increasing, leading to substantial costs due to infrastructure damage, service disruptions, and increased reactive maintenance. Building climate-resilient infrastructure is a major financial and operational burden.",
+    industries: ["Utilities"],
+    process: "a2d",
+    priority: "High",
+  },
+  {
+    id: "pp_026",
+    title: "Regulatory Complexity and Rate Case Delays",
+    description: "The process for obtaining rate case approvals to recover capital investment costs is often slow and bureaucratic, lagging behind market dynamics. This hinders utilities' ability to invest in necessary upgrades and innovations, impacting financial health and capacity to meet evolving demands.",
+    industries: ["Utilities"],
+    process: "gov",
+    priority: "High",
+  },
+  {
+    id: "pp_027",
+    title: "Cybersecurity and Critical Infrastructure Protection",
+    description: "Utilities face increasing cybersecurity threats targeting critical infrastructure, with potential for widespread service disruptions and national security implications. The convergence of IT and OT systems creates new vulnerabilities that require specialized security measures and significant investment.",
+    industries: ["Utilities"],
+    process: "gov",
+    priority: "High",
+  },
+  {
+    id: "pp_028",
+    title: "Renewable Energy Integration Challenges",
+    description: "Integrating increasing amounts of variable renewable energy sources creates grid stability and management challenges. The intermittent nature of solar and wind power requires new grid management approaches, energy storage solutions, and forecasting capabilities.",
+    industries: ["Utilities"],
+    process: "p2f",
+    priority: "High",
+  },
+  {
+    id: "pp_029",
+    title: "Workforce Aging and Skills Gap",
+    description: "The utility workforce is aging with many experienced workers approaching retirement, creating knowledge transfer challenges. Simultaneously, the industry needs new skills for digital technologies, renewable energy, and smart grid operations that are in short supply.",
+    industries: ["Utilities"],
+    process: "r2r",
+    priority: "High",
+  },
+  {
+    id: "pp_030",
+    title: "Customer Expectations and Digital Transformation",
+    description: "Customers increasingly expect digital self-service options, real-time information, and personalized experiences similar to other industries. Utilities must invest in digital platforms, mobile apps, and customer engagement technologies while maintaining reliable core services.",
+    industries: ["Utilities"],
+    process: "l2c",
+    priority: "Medium",
+  },
+  {
+    id: "pp_031",
+    title: "Energy Storage and Grid Stability",
+    description: "The need for large-scale energy storage to support renewable integration and grid stability presents technical and economic challenges. Battery storage costs, technology limitations, and integration complexities require significant investment and expertise.",
+    industries: ["Utilities"],
+    process: "p2f",
+    priority: "High",
+  },
+  {
+    id: "pp_032",
+    title: "Distributed Energy Resources Management",
+    description: "The proliferation of rooftop solar, electric vehicles, and other distributed energy resources creates new challenges for grid management, planning, and revenue models. Utilities must adapt to bidirectional power flows and prosumer customers.",
+    industries: ["Utilities"],
+    process: "p2f",
+    priority: "Medium",
+  },
+  {
+    id: "pp_033",
+    title: "Financial Constraints and Investment Needs",
+    description: "Utilities face enormous capital requirements for infrastructure modernization, renewable energy, and grid resilience while managing regulatory constraints on rate increases. Balancing investment needs with affordability concerns creates ongoing financial pressure.",
+    industries: ["Utilities"],
+    process: "fin",
+    priority: "High",
+  },
+  // Telecommunications Industry Pain Points
+  {
+    id: "pp_034",
+    title: "Privacy, Security, and Trust Challenges",
+    description: "The rapid adoption of Generative AI in telecommunications introduces new complexities in data privacy and security. Customers demand greater transparency regarding AI usage, and cyberattacks are becoming more sophisticated, placing unprecedented pressure on telcos' trust credentials.",
+    industries: ["Telecommunications"],
+    process: "gov",
+    priority: "High",
+  },
+  {
+    id: "pp_035",
+    title: "Talent, Skills, and Culture Management",
+    description: "Poor internal collaboration and missing skills are significant inhibitors to transformation. The prevalence of remote working exacerbates challenges in collaboration and upskilling, with employees anticipating major changes in HR functions.",
+    industries: ["Telecommunications"],
+    process: "r2r",
+    priority: "High",
+  },
+  {
+    id: "pp_036",
+    title: "Ineffective Technology Transformation",
+    description: "Despite high confidence in AI's potential, ensuring effective integration of emerging technologies like process automation, software-based networks, and AI remains challenging. Strategic choices regarding use case prioritization and performance measurement are crucial hurdles.",
+    industries: ["Telecommunications"],
+    process: "p2f",
+    priority: "High",
+  },
+  {
+    id: "pp_037",
+    title: "Capital Allocation and Investment Optimization",
+    description: "Telcos face immense pressure to invest heavily in new technologies like 5G and fiber optics while maintaining existing networks. The challenge lies in optimizing substantial capital expenditures to ensure adequate returns and prevent overinvestment.",
+    industries: ["Telecommunications"],
+    process: "fin",
+    priority: "High",
+  },
+  {
+    id: "pp_038",
+    title: "New Service Monetization Challenges",
+    description: "As traditional revenue streams mature, telcos struggle to effectively monetize new offerings like IoT, enterprise solutions, and cloud services. This requires different pricing strategies, sales approaches, and operational models compared to established business.",
+    industries: ["Telecommunications"],
+    process: "l2c",
+    priority: "High",
+  },
+  {
+    id: "pp_039",
+    title: "Intensifying Market Competition",
+    description: "The telecommunications market faces heightened competition from new entrants, Over-The-Top (OTT) players, and hyperscale cloud providers. This puts significant pressure on pricing, customer retention, and market share for traditional telcos.",
+    industries: ["Telecommunications"],
+    process: "l2c",
+    priority: "High",
+  },
+  {
+    id: "pp_040",
+    title: "Regulatory and Policy Uncertainty",
+    description: "Telcos operate within a heavily regulated environment where shifts in regulations can profoundly impact operations and profitability. Areas include spectrum allocation, net neutrality, data privacy, and competition laws, creating uncertainty that deters investment.",
+    industries: ["Telecommunications"],
+    process: "gov",
+    priority: "High",
+  },
+  {
+    id: "pp_041",
+    title: "Value Chain Disruption",
+    description: "Hyperscale cloud providers and satellite companies are emerging as significant threats. Telcos lag in R&D spending compared to network equipment providers, potentially limiting long-term innovation capabilities and market relevance.",
+    industries: ["Telecommunications"],
+    process: "p2f",
+    priority: "High",
+  },
+  {
+    id: "pp_042",
+    title: "Regulatory Landscape Adaptation",
+    description: "Industry leaders anticipate broadening regulatory issues including AI regulation, digital markets, and network supplier regulation. Established areas are evolving with new spectrum sharing rules and expanding pricing regulations driven by consumer protection policies.",
+    industries: ["Telecommunications"],
+    process: "gov",
+    priority: "High",
+  },
+  {
+    id: "pp_043",
+    title: "Operating Model Optimization",
+    description: "Asset-light strategies involving carving out tower, fiber, and data center assets are gaining traction, but opportunities to reconfigure operating models for greater value creation are often overlooked. Many executives believe more strategic operational restructuring is needed beyond cost elimination.",
+    industries: ["Utilities"],
+    process: "p2f",
+    priority: "Medium",
+  },
+  // Additional Finance Pain Points
+  {
+    id: "pp_044",
+    title: "Invoice Processing Delays",
+    description: "Manual processing causing extended invoice processing times, impacting cash flow and vendor relationships.",
+    industries: ["Utilities", "Telecommunications"],
+    process: "fin",
+    priority: "Critical",
+  },
+  {
+    id: "pp_045",
+    title: "Extended Payment Cycles",
+    description: "Long payment cycles straining vendor relationships and financial liquidity.",
+    industries: ["Utilities", "Telecommunications"],
+    process: "fin",
+    priority: "Critical",
+  },
+  {
+    id: "pp_046",
+    title: "Poor DSO Management",
+    description: "High Days Sales Outstanding negatively impacting working capital.",
+    industries: ["Utilities", "Telecommunications"],
+    process: "fin",
+    priority: "High",
+  },
+  {
+    id: "pp_047",
+    title: "Slow Month-End Close",
+    description: "Extended financial closing periods delaying strategic reporting.",
+    industries: ["Utilities", "Telecommunications"],
+    process: "fin",
+    priority: "High",
+  },
+  {
+    id: "pp_048",
+    title: "Budget Variance Issues",
+    description: "Frequent budget variances indicating weak forecasting accuracy.",
+    industries: ["Utilities", "Telecommunications"],
+    process: "fin",
+    priority: "Medium",
+  },
+  {
+    id: "pp_049",
+    title: "Manual Financial Closing Process",
+    description: "Financial closing involves many manual tasks that are time-consuming, error-prone, and lack real-time visibility into progress.",
+    industries: ["Utilities", "Telecommunications"],
+    process: "fin",
+    priority: "Critical",
+  },
+  {
+    id: "pp_050",
+    title: "Inter-Company Reconciliation Delays",
+    description: "Manual IC reconciliations require extensive offline coordination and add pressure to tight month-end close schedules.",
+    industries: ["Utilities", "Telecommunications"],
+    process: "fin",
+    priority: "Critical",
+  },
+  {
+    id: "pp_051",
+    title: "Payment-Invoice Matching Inefficiency",
+    description: "Difficulty matching customer payments to open AR invoices causes delays and high Days Sales Outstanding.",
+    industries: ["Utilities", "Telecommunications"],
+    process: "fin",
+    priority: "High",
+  },
+  {
+    id: "pp_052",
+    title: "Asset Depreciation Visibility Gap",
+    description: "Lack of understanding how depreciation logic works causes issues during financial closing.",
+    industries: ["Utilities", "Telecommunications"],
+    process: "fin",
+    priority: "Medium",
+  },
+  {
+    id: "pp_053",
+    title: "Cost Center Analysis Bottleneck",
+    description: "Manual analysis of cost center reports is time-consuming and delays actionable insights.",
+    industries: ["Utilities", "Telecommunications"],
+    process: "fin",
+    priority: "High",
+  },
+  {
+    id: "pp_054",
+    title: "Expense Report Processing Inefficiency",
+    description: "Hotel expenses and receipts need manual re-keying and verification, causing errors and delays.",
+    industries: ["Utilities", "Telecommunications"],
+    process: "fin",
+    priority: "High",
+  },
+  {
+    id: "pp_055",
+    title: "Journal Entry Processing Delays",
+    description: "Manual journal entry preparation and lack of mass upload capabilities delay period-end close.",
+    industries: ["Utilities", "Telecommunications"],
+    process: "fin",
+    priority: "Critical",
+  },
+  {
+    id: "pp_056",
+    title: "Supply Chain Document Processing Gap",
+    description: "Manual processing of freight documents and purchase orders causes delays and errors.",
+    industries: ["Utilities", "Telecommunications"],
+    process: "fin",
+    priority: "High",
+  },
+  // Human Resources Pain Points
+  {
+    id: "pp_057",
+    title: "Extreme Employee Turnover",
+    description: "Excessive turnover rates significantly increasing recruitment and training costs.",
+    industries: ["Utilities", "Telecommunications"],
+    process: "r2r",
+    priority: "Critical",
+  },
+  {
+    id: "pp_058",
+    title: "Extended Time-to-Fill Positions",
+    description: "Slow recruitment process negatively affecting operational continuity.",
+    industries: ["Utilities", "Telecommunications"],
+    process: "r2r",
+    priority: "Critical",
+  },
+  {
+    id: "pp_059",
+    title: "Slow Employee Onboarding",
+    description: "Prolonged onboarding impacting new hire productivity.",
+    industries: ["Utilities", "Telecommunications"],
+    process: "r2r",
+    priority: "High",
+  },
+  {
+    id: "pp_060",
+    title: "Payroll Processing Delays",
+    description: "Delayed payroll processing causing employee dissatisfaction.",
+    industries: ["Utilities", "Telecommunications"],
+    process: "r2r",
+    priority: "High",
+  },
+  // Operations Pain Points
+  {
+    id: "pp_061",
+    title: "Poor Incident Response Time",
+    description: "Slow response times impacting service level agreements and customer trust.",
+    industries: ["Utilities", "Telecommunications"],
+    process: "p2f",
+    priority: "Critical",
+  },
+  {
+    id: "pp_062",
+    title: "Manual Resource Allocation",
+    description: "Manual workforce scheduling causing staffing inefficiencies.",
+    industries: ["Utilities", "Telecommunications"],
+    process: "p2f",
+    priority: "High",
+  },
+  // Procurement Pain Points
+  {
+    id: "pp_063",
+    title: "Supplier Risk Management Gaps",
+    description: "Limited capability in proactive supplier risk monitoring.",
+    industries: ["Utilities", "Telecommunications"],
+    process: "s2p",
+    priority: "High",
+  },
+  // Technology Pain Points
+  {
+    id: "pp_064",
+    title: "Limited AI and Automation Adoption",
+    description: "Minimal use of AI capabilities limiting operational efficiency.",
+    industries: ["Utilities", "Telecommunications"],
+    process: "p2f",
+    priority: "High",
+  },
+  // Customer Pain Points
+  {
+    id: "pp_065",
+    title: "Customer Data Fragmentation",
+    description: "Siloed customer data affecting relationship management and sales growth.",
+    industries: ["Utilities", "Telecommunications"],
+    process: "l2c",
+    priority: "High",
+  },
+]
+
+// Industries for the filter
+const industries = [
+  "All Industries",
+  "High Technology",
+  "Professional Services", 
+  "Aerospace and Defense",
+  "Agribusiness",
+  "Automotive",
+  "Banking",
+  "Chemicals",
+  "Consumer Products",
+  "Construction",
+  "Defense",
+  "Education",
+  "Energy",
+  "Engineering and Construction",
+  "Financial Services",
+  "Food and Beverage",
+  "Government",
+  "Healthcare",
+  "High Tech",
+  "Hospitality",
+  "Insurance",
+  "Life Sciences",
+  "Logistics",
+  "Manufacturing",
+  "Media and Entertainment",
+  "Mining",
+  "Oil and Gas",
+  "Pharmaceuticals",
+  "Public Sector",
+  "Real Estate",
+  "Retail",
+  "Telecommunications",
+  "Transportation",
+  "Travel and Tourism",
+  "Utilities"
 ]
 
 const PROCESS_CONFIG = {
@@ -3139,8 +3523,27 @@ export default function TwoSpeedContent({ activeSubTab }: { activeSubTab: string
 
       case "pain-point-canvas":
         const processOrder = ["s2p", "l2c", "p2f", "a2d", "r2r", "i2m", "fin", "gov"]
+        
+        // Filter pain points based on selected industry
+        const filteredPainPoints = selectedIndustry === "All Industries" 
+          ? PAIN_POINTS_DATA 
+          : PAIN_POINTS_DATA.filter((painPoint) => 
+              painPoint.industries.some(ind => 
+                ind.toLowerCase() === selectedIndustry.toLowerCase() ||
+                ind.toLowerCase().includes(selectedIndustry.toLowerCase()) ||
+                selectedIndustry.toLowerCase().includes(ind.toLowerCase())
+              )
+            )
+        
+        // Debug logging
+        console.log("Selected Industry:", selectedIndustry)
+        console.log("Total Pain Points:", PAIN_POINTS_DATA.length)
+        console.log("Filtered Pain Points:", filteredPainPoints.length)
+        console.log("Utilities Pain Points:", PAIN_POINTS_DATA.filter(pp => pp.industries.includes("Utilities")).length)
+        console.log("Telecommunications Pain Points:", PAIN_POINTS_DATA.filter(pp => pp.industries.includes("Telecommunications")).length)
+        
         const selectedCount = selectedPainPoints.length
-        const totalCount = PAIN_POINTS_DATA.length
+        const totalCount = filteredPainPoints.length
 
         return (
           <div className="space-y-6">
@@ -3154,37 +3557,36 @@ export default function TwoSpeedContent({ activeSubTab }: { activeSubTab: string
               </p>
             </div>
 
-            {/* Progress Summary */}
-            <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-6 border border-blue-200">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 flex items-center justify-center">
-                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                      />
-                    </svg>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-lg" style={{ color: "var(--brand-navy-900)" }}>
-                      Assessment Progress
-                    </h4>
-                    <p className="text-sm" style={{ color: "var(--text-muted)" }}>
-                      Select pain points to prioritize for transformation
-                    </p>
-                  </div>
+            {/* Industry Filter */}
+            <div className="bg-white rounded-2xl border shadow-sm p-6" style={{ borderColor: "var(--border)" }}>
+              <div className="max-w-md mx-auto">
+                <label className="block text-sm font-medium mb-2" style={{ color: "var(--text)" }}>
+                  Industry
+                </label>
+                <div className="relative">
+                  <select
+                    value={selectedIndustry}
+                    onChange={(e) => setSelectedIndustry(e.target.value)}
+                    className="w-full px-4 py-3 border rounded-lg appearance-none bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                    style={{ borderColor: "var(--border)", color: "var(--text)" }}
+                  >
+                    {industries.map((industry) => (
+                      <option key={industry} value={industry}>
+                        {industry}
+                      </option>
+                    ))}
+                  </select>
+                  <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5 pointer-events-none" style={{ color: "var(--text-muted)" }} />
                 </div>
-                <div className="text-right">
-                  <div className="text-2xl font-bold" style={{ color: "var(--brand-navy-900)" }}>
-                    {selectedCount}/{totalCount}
-                  </div>
-                  <div className="text-sm" style={{ color: "var(--text-muted)" }}>
-                    Pain Points Selected
-                  </div>
-                </div>
+              </div>
+              
+              {/* Debug Info */}
+              <div className="mt-4 p-3 bg-gray-100 rounded-lg text-xs">
+                <div><strong>Selected Industry:</strong> {selectedIndustry}</div>
+                <div><strong>Total Pain Points:</strong> {PAIN_POINTS_DATA.length}</div>
+                <div><strong>Filtered Pain Points:</strong> {filteredPainPoints.length}</div>
+                <div><strong>Utilities Count:</strong> {PAIN_POINTS_DATA.filter(pp => pp.industries.includes("Utilities")).length}</div>
+                <div><strong>Telecommunications Count:</strong> {PAIN_POINTS_DATA.filter(pp => pp.industries.includes("Telecommunications")).length}</div>
               </div>
             </div>
 
@@ -3192,7 +3594,7 @@ export default function TwoSpeedContent({ activeSubTab }: { activeSubTab: string
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-start">
               {processOrder.map((processKey) => {
                 const processConfig = PROCESS_CONFIG[processKey]
-                const processPainPoints = PAIN_POINTS_DATA.filter((pp) => pp.process === processKey)
+                const processPainPoints = filteredPainPoints.filter((pp) => pp.process === processKey)
 
                 return (
                   <div key={processKey} className="flex flex-col h-full">
@@ -3227,7 +3629,7 @@ export default function TwoSpeedContent({ activeSubTab }: { activeSubTab: string
                         return (
                           <div
                             key={painPoint.id}
-                            className="rounded-2xl p-6 transition-all duration-200 hover:scale-105 hover:shadow-lg cursor-pointer flex flex-col h-full min-h-[280px]"
+                            className="rounded-2xl p-6 transition-all duration-200 hover:scale-105 hover:shadow-lg cursor-pointer flex flex-col"
                             style={{
                               backgroundColor: isSelected ? "rgba(59, 130, 246, 0.1)" : "rgba(255, 255, 255, 0.8)",
                               backdropFilter: "blur(10px)",
@@ -3237,10 +3639,12 @@ export default function TwoSpeedContent({ activeSubTab }: { activeSubTab: string
                               boxShadow: isSelected
                                 ? "0 8px 25px -5px rgba(59, 130, 246, 0.2)"
                                 : "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
+                              height: "400px" // Exact fixed height for all cards
                             }}
                             onClick={() => togglePainPointSelection(painPoint.id)}
                           >
-                            <div className="flex items-center justify-between mb-4">
+                            {/* Header with process label and checkbox - fixed height */}
+                            <div className="flex items-center justify-between mb-4 h-8 flex-shrink-0">
                               <span
                                 className={`px-3 py-1 rounded-lg text-xs font-medium text-white bg-gradient-to-r ${processConfig.color}`}
                               >
@@ -3269,50 +3673,59 @@ export default function TwoSpeedContent({ activeSubTab }: { activeSubTab: string
                               </div>
                             </div>
 
-                            <h3
-                              className="font-semibold text-lg mb-2 line-clamp-2 flex-shrink-0"
-                              style={{ color: "var(--text)" }}
-                            >
-                              {painPoint.title}
-                            </h3>
-
-                            <p className="text-sm mb-4 line-clamp-3 flex-grow" style={{ color: "var(--text-muted)" }}>
-                              {painPoint.description}
-                            </p>
-
-                            <div className="flex flex-wrap gap-1 mb-4 flex-shrink-0">
-                              {painPoint.industries.slice(0, 2).map((industry) => (
-                                <span
-                                  key={industry}
-                                  className="px-2 py-1 rounded text-xs font-medium bg-gray-100 text-gray-800"
-                                >
-                                  {industry.charAt(0).toUpperCase() + industry.slice(1)}
-                                </span>
-                              ))}
+                            {/* Title - flexible height */}
+                            <div className="mb-4 flex-shrink-0">
+                              <h3
+                                className="font-semibold text-lg leading-tight"
+                                style={{ color: "var(--text)" }}
+                              >
+                                {painPoint.title}
+                              </h3>
                             </div>
 
-                            <div className="flex items-center justify-between mt-auto flex-shrink-0">
-                              <div className="flex-1">
-                                <label
-                                  className="text-xs font-medium mb-1 block"
-                                  style={{ color: "var(--text-muted)" }}
-                                >
-                                  Business Impact Priority
-                                </label>
-                                <select
-                                  value={selectedPriority}
-                                  onChange={(e) => {
-                                    e.stopPropagation()
-                                    handlePriorityChange(painPoint.id, e.target.value)
-                                  }}
-                                  className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-                                  onClick={(e) => e.stopPropagation()}
-                                >
-                                  <option value="Low">Low</option>
-                                  <option value="Medium">Medium</option>
-                                  <option value="High">High</option>
-                                </select>
+                            {/* Description - flexible height */}
+                            <div className="mb-4 flex-1">
+                              <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
+                                {painPoint.description}
+                              </p>
+                            </div>
+
+                            {/* Industry tags - flexible height */}
+                            <div className="mb-4 flex-shrink-0">
+                              <div className="flex flex-wrap gap-1 items-center">
+                                {painPoint.industries.slice(0, 2).map((industry) => (
+                                  <span
+                                    key={industry}
+                                    className="px-2 py-1 rounded text-xs font-medium bg-gray-100 text-gray-800"
+                                  >
+                                    {industry.charAt(0).toUpperCase() + industry.slice(1)}
+                                  </span>
+                                ))}
                               </div>
+                            </div>
+
+                            {/* Priority selector - flexible height at bottom */}
+                            <div className="flex-shrink-0 mt-auto">
+                              <label
+                                className="text-xs font-medium mb-2 block"
+                                style={{ color: "var(--text-muted)" }}
+                              >
+                                Business Impact Priority
+                              </label>
+                              <select
+                                value={selectedPriority}
+                                onChange={(e) => {
+                                  e.stopPropagation()
+                                  handlePriorityChange(painPoint.id, e.target.value)
+                                }}
+                                className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                                onClick={(e) => e.stopPropagation()}
+                              >
+                                <option value="Low">Low</option>
+                                <option value="Medium">Medium</option>
+                                <option value="High">High</option>
+                                <option value="Critical">Critical</option>
+                              </select>
                             </div>
                           </div>
                         )
@@ -3329,8 +3742,8 @@ export default function TwoSpeedContent({ activeSubTab }: { activeSubTab: string
                 <h4 className="font-semibold text-lg mb-4" style={{ color: "var(--brand-navy-900)" }}>
                   Selected Pain Points Summary
                 </h4>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  {["High", "Medium", "Low"].map((priority) => {
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+                  {["Critical", "High", "Medium", "Low"].map((priority) => {
                     const count = selectedPainPoints.filter(
                       (id) =>
                         (selectedPriorities[id] || PAIN_POINTS_DATA.find((pp) => pp.id === id)?.priority) === priority,
@@ -3340,11 +3753,13 @@ export default function TwoSpeedContent({ activeSubTab }: { activeSubTab: string
                       <div key={priority} className="text-center p-3 bg-white rounded-lg border">
                         <div
                           className={`text-2xl font-bold ${
-                            priority === "High"
-                              ? "text-red-600"
-                              : priority === "Medium"
-                                ? "text-yellow-600"
-                                : "text-green-600"
+                            priority === "Critical"
+                              ? "text-red-800"
+                              : priority === "High"
+                                ? "text-red-600"
+                                : priority === "Medium"
+                                  ? "text-yellow-600"
+                                  : "text-green-600"
                           }`}
                         >
                           {count}

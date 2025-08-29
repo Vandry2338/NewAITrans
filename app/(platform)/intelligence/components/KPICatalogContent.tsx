@@ -112,7 +112,7 @@ export default function KPICatalogContent() {
   // Add KPIs to Solution Canvas
   const addToSolutionCanvas = () => {
     setShowConfirmation(true)
-    setTimeout(() => setShowConfirmation(false), 3000) // Hide after 3 seconds
+    // No auto-hide since we now have a back button
   }
 
   const filteredKPIs = useMemo(() => {
@@ -431,22 +431,26 @@ export default function KPICatalogContent() {
           )}
         </div>
 
-        {/* Action Bar - Add KPIs to Solution Canvas */}
-        <div className="bg-white rounded-2xl border shadow-sm p-6 mt-8" style={{ borderColor: "var(--border)" }}>
-          <div className="text-center">
-            <h4 className="text-lg font-semibold mb-2" style={{ color: "var(--text)" }}>
-              Add KPIs to Solution Canvas
-            </h4>
-            <p className="text-sm mb-6" style={{ color: "var(--text-muted)" }}>
-              Transfer your selected KPIs to create a comprehensive solution canvas for your business transformation
-            </p>
-            
-            <button
-              onClick={addToSolutionCanvas}
-              className="px-8 py-3 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-lg font-medium hover:from-blue-600 hover:to-blue-700 transition-all duration-200 shadow-md hover:shadow-lg"
-            >
-              Add to Solution Canvas
-            </button>
+        {/* Action Bar - Add KPIs to Solution Canvas - Full Width */}
+        <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border-t border-b py-6 mt-8" style={{ borderColor: "var(--border)" }}>
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="flex items-center justify-between">
+              <div className="flex-1">
+                <h4 className="text-lg font-semibold mb-1" style={{ color: "var(--text)" }}>
+                  Add KPIs to Solution Canvas
+                </h4>
+                <p className="text-sm" style={{ color: "var(--text-muted)" }}>
+                  Transfer your selected KPIs to create a comprehensive solution canvas for your business transformation
+                </p>
+              </div>
+              
+              <button
+                onClick={addToSolutionCanvas}
+                className="px-8 py-3 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-lg font-medium hover:from-blue-600 hover:to-blue-700 transition-all duration-200 shadow-md hover:shadow-lg flex-shrink-0"
+              >
+                Add to Solution Canvas
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -461,9 +465,17 @@ export default function KPICatalogContent() {
             <h3 className="text-xl font-semibold mb-2" style={{ color: "var(--text)" }}>
               Added Successfully!
             </h3>
-            <p className="text-sm" style={{ color: "var(--text-muted)" }}>
+            <p className="text-sm mb-6" style={{ color: "var(--text-muted)" }}>
               Your selected KPIs have been added to the Solution Canvas for business transformation planning.
             </p>
+            
+            {/* Back Button */}
+            <button
+              onClick={() => setShowConfirmation(false)}
+              className="px-6 py-2 bg-gray-100 text-gray-700 rounded-lg font-medium hover:bg-gray-200 transition-all duration-200"
+            >
+              Back
+            </button>
           </div>
         </div>
       )}
