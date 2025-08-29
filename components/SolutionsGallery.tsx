@@ -92,7 +92,7 @@ export function SolutionsGallery({ onNavigate, showNavigation = true, className 
     },
     {
       key: "ai-business",
-      label: "AI Business",
+      label: "AI Use Cases",
       description: "Business-focused AI solutions and use cases",
       icon: Brain,
       path: "/(platform)/gallery/ai-business",

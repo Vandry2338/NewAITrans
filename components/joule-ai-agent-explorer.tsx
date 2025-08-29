@@ -67,6 +67,28 @@ export default function JouleAiAgentExplorer() {
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: "var(--bg)" }}>
+      {/* Video Header Section */}
+      <div className="relative h-96 overflow-hidden">
+        <video
+          className="w-full h-full object-cover"
+          autoPlay
+          muted
+          loop
+          src="/videos/Joule Agents SAP Business AI Planning Agents for Improved Decision-Making  Demo.mp4"
+        />
+        {/* Video Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80 flex items-center justify-center">
+          <div className="text-center text-white max-w-4xl px-6">
+            <h1 className="text-5xl font-bold mb-4" style={{ lineHeight: "1.1" }}>
+              Joule Agents
+            </h1>
+            <p className="text-2xl mb-6 opacity-90">
+              SAP Business AI Planning Agents for Improved Decision-Making
+            </p>
+          </div>
+        </div>
+      </div>
+
       <div className="border-b" style={{ borderColor: "var(--border)" }}>
         <div className="px-8 py-6">
           <div className="max-w-6xl mx-auto">

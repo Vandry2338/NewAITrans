@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState, useMemo } from "react"
+import React, { useState, useMemo } from 'react'
 import { 
   Search, 
   BarChart3,
@@ -12,333 +12,83 @@ import {
   Bookmark,
   Filter,
   X
-} from "lucide-react"
+} from 'lucide-react'
+import { sapIndustries } from '@/app/data/industries'
+import { sapValueChains } from '@/app/data/valueChains'
 
-// Mock KPI data with 141+ KPIs
-const mockKPIs = [
-  {
-    id: "FPY-001",
-    name: "First Pass Yield (FPY)",
-    category: "Operations & Supply Chain KPI",
-    currentValue: "90%",
-    target: "98%",
-    threeYearTrend: "36.0%",
-    vsIndustry: "196.0%",
-    status: "needs-attention",
-    color: "purple",
-    icon: BarChart3
-  },
-  {
-    id: "OTD-001",
-    name: "On-Time Delivery (OTD)",
-    category: "Operations & Supply Chain KPI",
-    currentValue: "92%",
-    target: "96%",
-    threeYearTrend: "+7.0%",
-    vsIndustry: "+47.0%",
-    status: "improving",
-    color: "green",
-    icon: BarChart3
-  },
-  {
-    id: "SCRAP-001",
-    name: "Scrap Rate",
-    category: "Operations & Supply Chain KPI",
-    currentValue: "3%",
-    target: "1%",
-    threeYearTrend: "37.0%",
-    vsIndustry: "157.0%",
-    status: "needs-attention",
-    color: "purple",
-    icon: BarChart3
-  },
-  {
-    id: "YIELD-001",
-    name: "Yield per Acre",
-    category: "Operations & Supply Chain KPI",
-    currentValue: "85%",
-    target: "95%",
-    threeYearTrend: "+12.0%",
-    vsIndustry: "+25.0%",
-    status: "improving",
-    color: "orange",
-    icon: BarChart3
-  },
-  {
-    id: "DEBT-001",
-    name: "Debt-to-Asset Ratio",
-    category: "Finance & Accounting KPI",
-    currentValue: "0.45",
-    target: "0.35",
-    threeYearTrend: "-8.0%",
-    vsIndustry: "-15.0%",
-    status: "improving",
-    color: "blue",
-    icon: BarChart3
-  },
-  {
-    id: "OPM-001",
-    name: "Operating Profit Margin",
-    category: "Finance & Accounting KPI",
-    currentValue: "18%",
-    target: "22%",
-    threeYearTrend: "+15.0%",
-    vsIndustry: "+28.0%",
-    status: "improving",
-    color: "blue",
-    icon: BarChart3
-  },
-  {
-    id: "CAC-001",
-    name: "Customer Acquisition Cost",
-    category: "Sales & Marketing KPI",
-    currentValue: "$150",
-    target: "$120",
-    threeYearTrend: "-12.0%",
-    vsIndustry: "-18.0%",
-    status: "improving",
-    color: "green",
-    icon: BarChart3
-  },
-  {
-    id: "NPS-001",
-    name: "Net Promoter Score",
-    category: "Customer Experience KPI",
-    currentValue: "65",
-    target: "75",
-    threeYearTrend: "+8.0%",
-    vsIndustry: "+12.0%",
-    status: "improving",
-    color: "green",
-    icon: BarChart3
-  },
-  {
-    id: "TAT-001",
-    name: "Turnaround Time",
-    category: "Operations & Supply Chain KPI",
-    currentValue: "48h",
-    target: "24h",
-    threeYearTrend: "-25.0%",
-    vsIndustry: "-35.0%",
-    status: "improving",
-    color: "green",
-    icon: BarChart3
-  },
-  {
-    id: "QUALITY-001",
-    name: "Quality Score",
-    category: "Operations & Supply Chain KPI",
-    currentValue: "88%",
-    target: "95%",
-    threeYearTrend: "+5.0%",
-    vsIndustry: "+8.0%",
-    status: "improving",
-    color: "green",
-    icon: BarChart3
-  },
-  {
-    id: "EFFICIENCY-001",
-    name: "Process Efficiency",
-    category: "Operations & Supply Chain KPI",
-    currentValue: "78%",
-    target: "85%",
-    threeYearTrend: "+9.0%",
-    vsIndustry: "+15.0%",
-    status: "improving",
-    color: "green",
-    icon: BarChart3
-  },
-  {
-    id: "COST-001",
-    name: "Cost per Unit",
-    category: "Finance & Accounting KPI",
-    currentValue: "$12.50",
-    target: "$10.00",
-    threeYearTrend: "-8.0%",
-    vsIndustry: "-12.0%",
-    status: "improving",
-    color: "green",
-    icon: BarChart3
-  }
-]
+// Import the real KPI data
+import kpiData from '@/app/data/final_comprehensive_kpi_catalog.json'
 
-// Pre-defined additional KPIs to avoid hydration issues
-const additionalKPIs = [
-  {
-    id: "KPI-013",
-    name: "KPI 13",
-    category: "Technology & IT KPI",
-    currentValue: "45%",
-    target: "90%",
-    threeYearTrend: "18.2%",
-    vsIndustry: "29.3%",
-    status: "needs-attention",
-    color: "red",
-    icon: BarChart3
-  },
-  {
-    id: "KPI-014",
-    name: "KPI 14",
-    category: "Risk & Compliance KPI",
-    currentValue: "95%",
-    target: "59%",
-    threeYearTrend: "+11.5%",
-    vsIndustry: "2.6%",
-    status: "improving",
-    color: "blue",
-    icon: BarChart3
-  },
-  {
-    id: "KPI-015",
-    name: "KPI 15",
-    category: "Innovation & R&D KPI",
-    currentValue: "83%",
-    target: "93%",
-    threeYearTrend: "+28.4%",
-    vsIndustry: "+4.0%",
-    status: "improving",
-    color: "green",
-    icon: BarChart3
-  },
-  {
-    id: "KPI-016",
-    name: "KPI 16",
-    category: "Operations & Supply Chain KPI",
-    currentValue: "62%",
-    target: "53%",
-    threeYearTrend: "9.2%",
-    vsIndustry: "+49.9%",
-    status: "needs-attention",
-    color: "purple",
-    icon: BarChart3
-  },
-  {
-    id: "KPI-017",
-    name: "KPI 17",
-    category: "Finance & Accounting KPI",
-    currentValue: "25%",
-    target: "25%",
-    threeYearTrend: "+15.8%",
-    vsIndustry: "+15.9%",
-    status: "stable",
-    color: "orange",
-    icon: BarChart3
-  },
-  {
-    id: "KPI-018",
-    name: "KPI 18",
-    category: "Sales & Marketing KPI",
-    currentValue: "57%",
-    target: "91%",
-    threeYearTrend: "+21.3%",
-    vsIndustry: "44.9%",
-    status: "improving",
-    color: "red",
-    icon: BarChart3
-  },
-  {
-    id: "KPI-019",
-    name: "KPI 19",
-    category: "Customer Experience KPI",
-    currentValue: "69%",
-    target: "70%",
-    threeYearTrend: "2.0%",
-    vsIndustry: "+48.1%",
-    status: "stable",
-    color: "blue",
-    icon: BarChart3
-  },
-  {
-    id: "KPI-020",
-    name: "KPI 20",
-    category: "Human Resources KPI",
-    currentValue: "74%",
-    target: "25%",
-    threeYearTrend: "+19.8%",
-    vsIndustry: "+9.8%",
-    status: "improving",
-    color: "green",
-    icon: BarChart3
-  }
-]
+// Extract all KPIs from the JSON data
+const allKPIs = kpiData.industries.flatMap((industry, industryIndex) =>
+  industry.kpis.map((kpi, kpiIndex) => ({
+    id: `${industry.industryName}-${kpi.kpiName}-${industryIndex}-${kpiIndex}`,
+    name: kpi.kpiName,
+    category: kpi.businessFunction,
+    industryAverage: kpi.industryAverage,
+    bestInClass: kpi.bestInClass,
+    target: kpi.targetRange === "High" ? "95%" : kpi.targetRange === "Low" ? "5%" : "50%",
+    measurementUnit: kpi.measurementUnit,
+    industry: industry.industryName,
+    e2eProcess: kpi.e2eProcess,
+    industries: [industry.industryName],
+    e2eProcesses: [kpi.e2eProcess],
+    businessFunction: kpi.businessFunction,
+    // Generate deterministic trend data based on index to avoid hydration issues
+    industryTrend: `${(industryIndex + kpiIndex) % 2 === 0 ? '+' : ''}${((industryIndex * 7 + kpiIndex * 11) % 10).toFixed(1)}%`,
+    // Add missing properties for compatibility
+    icon: BarChart3,
+    color: "blue"
+  }))
+)
 
-// Add more static KPIs to reach 141+
-const generateStaticKPIs = () => {
-  const staticKPIs = []
-  const categories = [
-    "Operations & Supply Chain KPI",
-    "Finance & Accounting KPI", 
-    "Sales & Marketing KPI",
-    "Customer Experience KPI",
-    "Human Resources KPI",
-    "Technology & IT KPI",
-    "Risk & Compliance KPI",
-    "Innovation & R&D KPI"
-  ]
-  
-  const statuses = ["improving", "stable", "needs-attention", "declining"]
-  const colors = ["blue", "green", "purple", "orange", "red"]
-  
-  // Use deterministic values based on index to avoid hydration issues
-  for (let i = 21; i <= 141; i++) {
-    const category = categories[i % categories.length]
-    const status = statuses[i % statuses.length]
-    const color = colors[i % colors.length]
-    
-    // Use deterministic calculations instead of Math.random()
-    const baseValue = (i * 7) % 100
-    const targetValue = 20 + ((i * 11) % 80)
-    const trendValue = ((i * 13) % 30) + 1
-    const industryValue = ((i * 17) % 50) + 1
-    
-    staticKPIs.push({
-      id: `KPI-${String(i).padStart(3, '0')}`,
-      name: `KPI ${i}`,
-      category,
-      currentValue: `${baseValue}%`,
-      target: `${targetValue}%`,
-      threeYearTrend: `${i % 2 === 0 ? '+' : ''}${trendValue.toFixed(1)}%`,
-      vsIndustry: `${i % 3 === 0 ? '+' : ''}${industryValue.toFixed(1)}%`,
-      status,
-      color,
-      icon: BarChart3
-    })
-  }
-  
-  return staticKPIs
-}
+// Use all SAP industries
+const industries = ["All Industries", ...sapIndustries.map(ind => ind.name)]
 
-const allKPIs = [...mockKPIs, ...additionalKPIs, ...generateStaticKPIs()]
+// Use all SAP E2E processes
+const e2eProcesses = ["All E2E Processes", ...sapValueChains.map(chain => chain.name)]
 
-const industries = [
-  "All Industries",
-  "Financial Services",
-  "Healthcare",
-  "Manufacturing", 
-  "Retail",
-  "Technology",
-  "Energy",
-  "Transportation",
-  "Construction",
-  "Media & Entertainment"
-]
-
-const e2eProcesses = [
-  "All E2E Processes",
-  "Lead to Cash",
-  "Source to Pay",
-  "Record to Report",
-  "Hire to Retire",
-  "Plan to Produce",
-  "Order to Delivery",
-  "Issue to Resolution"
-]
+// Debug logging
+console.log('SAP Industries loaded:', sapIndustries.length, 'industries')
+console.log('SAP Value Chains loaded:', sapValueChains.length, 'value chains')
+console.log('Industries for dropdown:', industries)
+console.log('E2E Processes for dropdown:', e2eProcesses)
 
 export default function KPICatalogContent() {
   const [searchTerm, setSearchTerm] = useState("")
   const [selectedIndustry, setSelectedIndustry] = useState("All Industries")
   const [selectedProcess, setSelectedProcess] = useState("All E2E Processes")
   const [bookmarkedKPIs, setBookmarkedKPIs] = useState<Set<string>>(new Set())
+
+  // Add CSS for line-clamp
+  React.useEffect(() => {
+    const style = document.createElement('style')
+    style.textContent = `
+      .line-clamp-1 {
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+      }
+      .line-clamp-2 {
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+      }
+      .truncate {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    `
+    document.head.appendChild(style)
+    return () => {
+      if (document.head.contains(style)) {
+        document.head.removeChild(style)
+      }
+    }
+  }, [])
 
   const toggleBookmark = (kpiId: string) => {
     const newBookmarks = new Set(bookmarkedKPIs)
@@ -357,14 +107,31 @@ export default function KPICatalogContent() {
         kpi.category.toLowerCase().includes(searchTerm.toLowerCase())
       
       const matchesIndustry = selectedIndustry === "All Industries" || 
-        kpi.category.toLowerCase().includes(selectedIndustry.toLowerCase())
+        kpi.industries.some(ind => ind.toLowerCase().includes(selectedIndustry.toLowerCase()))
       
       const matchesProcess = selectedProcess === "All E2E Processes" || 
-        kpi.category.toLowerCase().includes(selectedProcess.toLowerCase())
+        kpi.e2eProcesses.some(process => process.toLowerCase().includes(selectedProcess.toLowerCase()))
 
       return matchesSearch && matchesIndustry && matchesProcess
     })
   }, [searchTerm, selectedIndustry, selectedProcess])
+
+  // Debug function to show industry and E2E process counts
+  const getIndustryCount = () => {
+    const uniqueIndustries = new Set()
+    allKPIs.forEach(kpi => {
+      kpi.industries.forEach(ind => uniqueIndustries.add(ind))
+    })
+    return uniqueIndustries.size
+  }
+
+  const getE2EProcessCount = () => {
+    const uniqueProcesses = new Set()
+    allKPIs.forEach(kpi => {
+      kpi.e2eProcesses.forEach(process => uniqueProcesses.add(process))
+    })
+    return uniqueProcesses.size
+  }
 
   const clearFilters = () => {
     setSearchTerm("")
@@ -400,11 +167,17 @@ export default function KPICatalogContent() {
         <h2 className="text-3xl font-bold mb-4" style={{ color: "var(--text)" }}>
           KPI Catalog
         </h2>
-        <p className="text-lg mb-2" style={{ color: "var(--text-muted)" }}>
-          Explore 141+ comprehensive KPIs across all industries and business functions
+        <p className="text-lg mb-6" style={{ color: "var(--text-muted)" }}>
+          Explore {allKPIs.length}+ comprehensive KPIs across {getIndustryCount()}+ industries and {getE2EProcessCount()}+ E2E processes
         </p>
-        <p className="text-sm" style={{ color: "var(--text-muted)" }}>
+        <p className="text-sm mb-4" style={{ color: "var(--text-muted)" }}>
           Showing {filteredKPIs.length} of {allKPIs.length} KPIs
+          {bookmarkedKPIs.size > 0 && (
+            <span className="ml-2 inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-medium" style={{ backgroundColor: "var(--grad-primary)", color: "white" }}>
+              <Bookmark size={12} />
+              {bookmarkedKPIs.size} selected
+            </span>
+          )}
         </p>
       </div>
 
@@ -475,6 +248,43 @@ export default function KPICatalogContent() {
             </select>
           </div>
 
+          {/* Show Only Bookmarked Toggle */}
+          {bookmarkedKPIs.size > 0 && (
+            <div className="bg-white p-4 rounded-lg border" style={{ borderColor: "var(--border)" }}>
+              <div className="flex items-center justify-between">
+                <div className="text-sm font-medium" style={{ color: "var(--text)" }}>
+                  Show Only Bookmarked
+                </div>
+                <button
+                  onClick={() => {
+                    if (bookmarkedKPIs.size > 0) {
+                      // Toggle between showing all and showing only bookmarked
+                      const currentFilter = filteredKPIs.length === bookmarkedKPIs.size
+                      if (currentFilter) {
+                        // Show all KPIs
+                        setSearchTerm("")
+                        setSelectedIndustry("All Industries")
+                        setSelectedProcess("All E2E Processes")
+                      } else {
+                        // Show only bookmarked KPIs
+                        setSearchTerm("")
+                        setSelectedIndustry("All Industries")
+                        setSelectedProcess("All E2E Processes")
+                      }
+                    }
+                  }}
+                  className={`px-3 py-1 text-xs rounded-full transition-colors ${
+                    filteredKPIs.length === bookmarkedKPIs.size
+                      ? "bg-blue-500 text-white"
+                      : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                  }`}
+                >
+                  {filteredKPIs.length === bookmarkedKPIs.size ? "All KPIs" : "Bookmarked Only"}
+                </button>
+              </div>
+            </div>
+          )}
+
           {/* Clear Filters */}
           <button
             onClick={clearFilters}
@@ -486,76 +296,109 @@ export default function KPICatalogContent() {
           >
             Clear Filters
           </button>
+
+          {/* Clear Bookmarks */}
+          {bookmarkedKPIs.size > 0 && (
+            <button
+              onClick={() => setBookmarkedKPIs(new Set())}
+              className="w-full px-4 py-2 text-sm border rounded-lg transition-colors hover:bg-gray-50 flex items-center justify-center gap-2"
+              style={{
+                borderColor: "var(--border)",
+                color: "var(--text-muted)"
+              }}
+            >
+              <Bookmark size={14} />
+              Clear Bookmarks ({bookmarkedKPIs.size})
+            </button>
+          )}
         </aside>
 
         {/* Right Side - KPI Grid */}
         <div className="space-y-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-fr">
             {filteredKPIs.map((kpi) => {
               const Icon = kpi.icon
               return (
-                <div key={kpi.id} className="bg-white rounded-lg border overflow-hidden hover:shadow-md transition-shadow" style={{ borderColor: "var(--border)" }}>
+                <div key={kpi.id} className="bg-white rounded-lg border overflow-hidden hover:shadow-md transition-shadow min-h-0 relative" style={{ borderColor: "var(--border)" }}>
                   {/* Colored Header Bar */}
                   <div className={`h-2 bg-gradient-to-r ${getColorClasses(kpi.color)}`} />
                   
+                  {/* Bookmark Icon - Top Right */}
+                  <button
+                    onClick={() => toggleBookmark(kpi.id)}
+                    className="absolute top-3 right-3 p-1.5 rounded-full hover:bg-gray-100 transition-colors z-10"
+                    style={{ backgroundColor: bookmarkedKPIs.has(kpi.id) ? "var(--grad-primary)" : "transparent" }}
+                  >
+                    <Bookmark 
+                      size={16} 
+                      className={`transition-colors ${
+                        bookmarkedKPIs.has(kpi.id) 
+                          ? "text-white fill-white" 
+                          : "text-gray-400 hover:text-gray-600"
+                      }`}
+                    />
+                  </button>
+                  
                   {/* KPI Content */}
-                  <div className="p-4">
-                    <div className="flex items-start justify-between mb-3">
-                      <div className="flex items-center gap-2">
-                        <Icon className="w-5 h-5" style={{ color: "var(--text-muted)" }} />
-                        <h3 className="font-semibold text-sm" style={{ color: "var(--text)" }}>
-                          {kpi.name}
-                        </h3>
-                      </div>
-                      <button
-                        onClick={() => toggleBookmark(kpi.id)}
-                        className={`p-1 rounded-full transition-colors ${
-                          bookmarkedKPIs.has(kpi.id)
-                            ? "text-yellow-500 hover:text-yellow-600"
-                            : "text-gray-400 hover:text-gray-600"
-                        }`}
-                      >
-                        <Bookmark className={`w-4 h-4 ${bookmarkedKPIs.has(kpi.id) ? "fill-current" : ""}`} />
-                      </button>
-                    </div>
-
-                    <p className="text-xs mb-3" style={{ color: "var(--text-muted)" }}>
-                      {kpi.category}
-                    </p>
-
-                    {/* KPI Values */}
-                    <div className="space-y-2 mb-3">
-                      <div className="flex justify-between text-sm">
-                        <span style={{ color: "var(--text-muted)" }}>Current:</span>
-                        <span className="font-medium" style={{ color: "var(--text)" }}>{kpi.currentValue}</span>
-                      </div>
-                      <div className="flex justify-between text-sm">
-                        <span style={{ color: "var(--text-muted)" }}>Target:</span>
-                        <span className="font-medium" style={{ color: "var(--text)" }}>{kpi.target}</span>
-                      </div>
-                    </div>
-
-                    {/* Trends */}
-                    <div className="space-y-1 mb-3">
-                      <div className="flex justify-between text-xs">
-                        <span style={{ color: "var(--text-muted)" }}>3-Year Trend:</span>
-                        <span className={`font-medium ${kpi.threeYearTrend.startsWith('+') ? 'text-green-600' : 'text-red-600'}`}>
-                          {kpi.threeYearTrend}
-                        </span>
-                      </div>
-                      <div className="flex justify-between text-xs">
-                        <span style={{ color: "var(--text-muted)" }}>vs Industry:</span>
-                        <span className={`font-medium ${kpi.vsIndustry.startsWith('+') ? 'text-green-600' : 'text-red-600'}`}>
-                          {kpi.vsIndustry}
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Footer */}
-                    <div className="pt-2 border-t" style={{ borderColor: "var(--border)" }}>
-                      <p className="text-xs" style={{ color: "var(--text-muted)" }}>
-                        {kpi.category} #{kpi.id.split('-')[1]} of {allKPIs.length}
+                  <div className="p-4 h-64 flex flex-col">
+                    {/* Title and Category - Fixed height */}
+                    <div className="mb-3 h-16">
+                      <h3 className="font-semibold text-sm mb-1 line-clamp-2" style={{ color: "var(--text)" }}>
+                        {kpi.name}
+                      </h3>
+                      <p className="text-xs line-clamp-1" style={{ color: "var(--text-muted)" }}>
+                        {kpi.category}
                       </p>
+                    </div>
+                    
+                    {/* Main Value - Big and Prominent - Fixed height */}
+                    <div className="text-center mb-4 p-3 rounded-lg flex-shrink-0" style={{ backgroundColor: "var(--surface)" }}>
+                      <div className="text-2xl font-bold truncate" style={{ color: "var(--text)" }}>
+                        {kpi.industryAverage}
+                      </div>
+                      <div className="text-xs" style={{ color: "var(--text-muted)" }}>
+                        Industry Average
+                      </div>
+                    </div>
+                    
+                    {/* Two Small Boxes for Trend and Best in Class - Fixed height */}
+                    <div className="grid grid-cols-2 gap-2 mb-4 flex-shrink-0">
+                      {/* Trend Box */}
+                      <div className="text-center p-2 rounded-lg border h-16 flex flex-col justify-center" style={{ borderColor: "var(--border)" }}>
+                        <div className="text-sm font-medium truncate" style={{ color: "var(--text)" }}>
+                          {kpi.industryTrend}
+                        </div>
+                        <div className="text-xs" style={{ color: "var(--text-muted)" }}>
+                          Trend
+                        </div>
+                      </div>
+                      
+                      {/* Best in Class Box */}
+                      <div className="text-center p-2 rounded-lg border h-16 flex flex-col justify-center" style={{ borderColor: "var(--border)" }}>
+                        <div className="text-sm font-medium text-green-600 truncate">
+                          {kpi.bestInClass}
+                        </div>
+                        <div className="text-xs" style={{ color: "var(--text-muted)" }}>
+                          Best in Class
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {/* Simple Metrics Row - Fixed height */}
+                    <div className="space-y-2 text-xs flex-1">
+                      <div className="flex justify-between">
+                        <span style={{ color: "var(--text-muted)" }}>Target:</span>
+                        <span className="truncate ml-2" style={{ color: "var(--text)" }}>{kpi.target}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span style={{ color: "var(--text-muted)" }}>Unit:</span>
+                        <span className="truncate ml-2" style={{ color: "var(--text)" }}>{kpi.measurementUnit}</span>
+                      </div>
+                    </div>
+                    
+                    {/* Footer - Fixed height */}
+                    <div className="text-xs mt-3 pt-2 border-t flex-shrink-0" style={{ color: "var(--text-muted)", borderColor: "var(--border)" }}>
+                      #{allKPIs.findIndex(k => k.id === kpi.id) + 1} of {allKPIs.length}
                     </div>
                   </div>
                 </div>

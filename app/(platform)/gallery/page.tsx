@@ -68,7 +68,7 @@ export default function SolutionsGalleryLandingPage() {
     },
     {
       key: "ai-business",
-      label: "AI Business",
+      label: "AI Use Cases",
       description: "Business-focused AI solutions and use cases",
       icon: Brain,
       path: "/gallery/ai-business",

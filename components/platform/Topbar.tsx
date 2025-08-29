@@ -29,25 +29,25 @@ export default function Topbar({ title }: TopbarProps) {
         borderColor: "var(--border)",
       }}
     >
-      <div className="flex items-center gap-4">
-        <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
-          <div className="h-8 w-8 rounded-md" style={{ backgroundColor: "var(--ai-royal)" }} />
-          <span className="font-semibold text-lg tracking-tight" style={{ color: "var(--ai-navy)" }}>
+      <div className="flex items-center gap-4 h-full">
+        <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity h-full">
+          <div className="h-8 w-8 rounded-md flex items-center justify-center" style={{ backgroundColor: "var(--ai-royal)" }} />
+          <span className="font-semibold text-lg tracking-tight flex items-center" style={{ color: "var(--ai-navy)" }}>
             AI Platform
           </span>
         </Link>
-        <span className="text-sm" style={{ color: "var(--text-muted)" }}>
+        <span className="text-sm flex items-center" style={{ color: "var(--text-muted)" }}>
           /
         </span>
-        <h1 className="text-xl font-semibold tracking-tight" style={{ color: "var(--text)" }}>
+        <h1 className="text-xl font-semibold tracking-tight flex items-center" style={{ color: "var(--text)" }}>
           {title}
         </h1>
       </div>
 
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-3 h-full">
         <button
           onClick={togglePresenterMode}
-          className={`px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${
+          className={`px-3 py-1.5 rounded-md text-sm font-medium transition-colors flex items-center ${
             presenterMode ? "shadow-soft" : ""
           }`}
           style={{
@@ -60,7 +60,7 @@ export default function Topbar({ title }: TopbarProps) {
         </button>
 
         <button
-          className="px-3 py-1.5 rounded-md text-sm font-medium border transition-colors"
+          className="px-3 py-1.5 rounded-md text-sm font-medium border transition-colors flex items-center"
           style={{
             borderColor: "var(--border)",
             color: "var(--text)",
@@ -71,7 +71,7 @@ export default function Topbar({ title }: TopbarProps) {
         </button>
 
         <button
-          className="px-4 py-2 rounded-md text-white font-medium shadow-soft hover:bg-opacity-90 transition-colors"
+          className="px-4 py-2 rounded-md text-white font-medium shadow-soft hover:bg-opacity-90 transition-colors flex items-center"
           style={{ background: "var(--grad-cta)" }}
         >
           New

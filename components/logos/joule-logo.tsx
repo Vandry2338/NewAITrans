@@ -7,7 +7,7 @@ interface JouleLogoProps {
   className?: string;
 }
 
-export default function JouleLogo({ width = 300, height = 120, className = "" }: JouleLogoProps) {
+export default function JouleLogo({ width = 75, height = 30, className = "" }: JouleLogoProps) {
   return (
     <div className={`flex items-center justify-center ${className}`}>
       <img 

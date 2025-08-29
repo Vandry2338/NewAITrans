@@ -114,7 +114,7 @@ const menuItems = [
         href: "/gallery/walkme",
       },
       {
-        label: "AI Business",
+        label: "AI Use Cases",
         href: "/gallery/ai-business",
       },
       // {

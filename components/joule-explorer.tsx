@@ -62,7 +62,7 @@ const JouleExplorer: React.FC = () => {
               {/* Hero Section */}
               <div className="text-center mb-16">
                 <div className="flex justify-center mb-8">
-                  <JouleLogo width={400} height={120} className="mb-4" />
+                  <JouleLogo width={75} height={30} className="mb-4" />
                 </div>
                 
                 <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed" style={{ fontFamily: 'Inter, sans-serif' }}>

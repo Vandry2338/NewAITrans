@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useRef } from "react"
-import { ChevronDownIcon, ArrowDownTrayIcon, ArrowTopRightOnSquareIcon, ArrowUpTrayIcon } from "@heroicons/react/24/outline"
+import { ChevronDownIcon, ArrowDownTrayIcon, ArrowTopRightOnSquareIcon, ArrowUpTrayIcon, PlayIcon } from "@heroicons/react/24/outline"
 
 // Page data - this would come from your data source
 const pageData = {
@@ -274,27 +274,33 @@ export default function GenAIBTPPage() {
           </div>
         </div>
 
-        {/* Video Section - Collapsible */}
+        {/* Video Section - Above Diagram */}
         <div className="mt-12">
-          <div className="bg-white rounded-xl border shadow-sm p-5" style={{ borderColor: "var(--border)" }}>
-            <div className="flex items-center justify-between mb-4">
-              <h2 className="text-xl font-bold" style={{ color: "var(--text)", fontFamily: "var(--font-sap-72)" }}>
-                Demo Video
-              </h2>
-              <button
-                onClick={() => setVideoExpanded(!videoExpanded)}
-                className="px-3 py-1.5 bg-red-50 text-red-700 rounded-lg font-medium text-sm hover:bg-red-100 transition-colors"
-                style={{ fontFamily: "var(--font-sap-72)" }}
-              >
-                {videoExpanded ? 'Collapse' : 'Expand'}
-              </button>
-            </div>
-            
-            {videoExpanded && pageData.heroVideo && (
-              <div className="mt-4">
-                <div className="relative rounded-lg overflow-hidden bg-black/20 border border-gray-200">
+          <h2 className="text-2xl font-bold mb-8 text-center" style={{ color: "var(--text)", fontFamily: "var(--font-sap-72)" }}>
+            See Generative AI on SAP BTP in Action
+          </h2>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {/* Demo Video Card */}
+            <div className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300">
+              <div className="bg-gradient-to-br from-blue-600 to-purple-800 p-6">
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="w-12 h-12 rounded-lg bg-white/20 flex items-center justify-center">
+                    <PlayIcon className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-white" style={{ fontFamily: "var(--font-sap-72)" }}>
+                      SAP BTP AI Platform
+                    </h3>
+                    <p className="text-blue-100" style={{ fontFamily: "var(--font-sap-72)" }}>
+                      Generative AI capabilities and integration
+                    </p>
+                  </div>
+                </div>
+                
+                <div className="relative rounded-lg overflow-hidden bg-black/20 border border-white/20">
                   <video 
-                    className="w-full h-64 object-cover"
+                    className="w-full h-48 object-cover"
                     controls 
                     preload="metadata"
                   >
@@ -302,11 +308,49 @@ export default function GenAIBTPPage() {
                     Your browser does not support the video tag.
                   </video>
                 </div>
-                <p className="text-xs text-center mt-2" style={{ color: "var(--text-muted)", fontFamily: "var(--font-sap-72)" }}>
-                  {pageData.title} - Demo Video
-                </p>
+                
+                <div className="mt-4 flex items-center justify-between text-sm text-blue-100">
+                  <span style={{ fontFamily: "var(--font-sap-72)" }}>Duration: 2:45</span>
+                  <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                    <span style={{ fontFamily: "var(--font-sap-72)" }}>Live Demo</span>
+                  </div>
+                </div>
               </div>
-            )}
+            </div>
+
+            {/* Additional Info Card */}
+            <div className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300">
+              <div className="bg-gradient-to-br from-purple-600 to-blue-700 p-6">
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="w-12 h-12 rounded-lg bg-white/20 flex items-center justify-center">
+                    <PlayIcon className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-white" style={{ fontFamily: "var(--font-sap-72)" }}>
+                      AI Integration Hub
+                    </h3>
+                    <p className="text-purple-100" style={{ fontFamily: "var(--font-sap-72)" }}>
+                      Connect and orchestrate AI services
+                    </p>
+                  </div>
+                </div>
+                
+                <div className="relative rounded-lg overflow-hidden bg-black/20 border border-white/20">
+                  <div className="w-full h-48 bg-gradient-to-br from-purple-500 to-blue-600 flex items-center justify-center">
+                    <PlayIcon className="w-16 h-16 text-white opacity-60" />
+                  </div>
+                </div>
+                
+                <div className="mt-4 flex items-center justify-between text-sm text-purple-100">
+                  <span style={{ fontFamily: "var(--font-sap-72)" }}>Duration: 3:30</span>
+                  <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                    <span style={{ fontFamily: "var(--font-sap-72)" }}>Coming Soon</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

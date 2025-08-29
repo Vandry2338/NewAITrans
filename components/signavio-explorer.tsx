@@ -58,7 +58,7 @@ export default function SignavioExplorer() {
         <div className="px-8 py-6">
           <div className="max-w-6xl mx-auto">
             <div className="flex justify-center mb-6">
-              <SignavioLogo width={400} height={120} />
+              <SignavioLogo width={100} height={30} />
             </div>
             <h1
               className="text-3xl font-bold tracking-tight mb-2 text-center"

@@ -1,5 +1,6 @@
 "use client"
 
+import { useState } from "react"
 import { PlayIcon, BookmarkIcon, ShareIcon, EllipsisHorizontalIcon } from "@heroicons/react/24/outline"
 import { useGalleryStore, type ReferencePackage } from "@/lib/store/gallery"
 import { useRouter } from "next/navigation"
@@ -11,6 +12,7 @@ interface SolutionTileProps {
 export default function SolutionTile({ item }: SolutionTileProps) {
   const { setSelectedItemId, industries, processes } = useGalleryStore()
   const router = useRouter()
+  const [videoExpanded, setVideoExpanded] = useState(false)
 
   const handleTileClick = () => {
     // Navigate to specific page for certain tiles
@@ -31,6 +33,37 @@ export default function SolutionTile({ item }: SolutionTileProps) {
   const getTypeGradient = (type: string) => {
     // Use premium red for all tiles
     return "linear-gradient(135deg, #dc2626 0%, #ea580c 50%, #dc2626 100%)"
+  }
+
+  // Function to render video thumbnail based on item
+  const renderVideoThumbnail = () => {
+    if (item.videoUrl) {
+      return (
+        <div className="relative w-full h-full rounded-lg overflow-hidden bg-black/20 border border-white/20">
+          <video 
+            className="w-full h-full object-cover"
+            preload="metadata"
+            muted
+          >
+            <source src={item.videoUrl} type="video/mp4" />
+          </video>
+          <div className="absolute inset-0 flex items-center justify-center bg-black/30 hover:bg-black/20 transition-colors">
+            <PlayIcon className="h-8 w-8 text-white opacity-80" />
+          </div>
+          <div className="absolute top-2 right-2 bg-red-600 text-white text-xs px-2 py-1 rounded">Demo</div>
+        </div>
+      )
+    } else {
+      // Default placeholder for items without video
+      return (
+        <div className="w-full h-full flex items-center justify-center bg-gray-50 rounded-lg">
+          <div className="text-center">
+            <PlayIcon className="h-8 w-8 text-gray-400 mx-auto mb-2" />
+            <p className="text-xs text-gray-500">Demo Available</p>
+          </div>
+        </div>
+      )
+    }
   }
 
   return (
@@ -56,12 +89,7 @@ export default function SolutionTile({ item }: SolutionTileProps) {
 
       {/* Video Thumbnail */}
       <div className="relative mb-3 aspect-video rounded-lg overflow-hidden bg-gray-100">
-        <div className="absolute inset-0 flex items-center justify-center">
-          <PlayIcon className="h-6 w-6 text-gray-400" />
-        </div>
-        {item.videoUrl && (
-          <div className="absolute top-2 right-2 bg-red-600 text-white text-xs px-2 py-1 rounded">Demo</div>
-        )}
+        {renderVideoThumbnail()}
       </div>
 
       {/* Title and Summary */}

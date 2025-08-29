@@ -6,7 +6,7 @@ interface InfosysLogoProps {
   height?: number;
 }
 
-export default function InfosysLogo({ className = "", width = 450, height = 120 }: InfosysLogoProps) {
+export default function InfosysLogo({ className = "", width = 112, height = 30 }: InfosysLogoProps) {
   return (
     <div className={className} style={{ width: width, height: height }}>
       <img 

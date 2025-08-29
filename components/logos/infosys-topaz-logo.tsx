@@ -7,7 +7,7 @@ interface InfosysTopazLogoProps {
   className?: string;
 }
 
-export default function InfosysTopazLogo({ width = 400, height = 120, className = "" }: InfosysTopazLogoProps) {
+export default function InfosysTopazLogo({ width = 100, height = 30, className = "" }: InfosysTopazLogoProps) {
   return (
     <div className={`flex items-center justify-center ${className}`}>
       <img 

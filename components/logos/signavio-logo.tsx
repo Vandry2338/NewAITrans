@@ -7,7 +7,7 @@ interface SignavioLogoProps {
   className?: string;
 }
 
-export default function SignavioLogo({ width = 400, height = 120, className = "" }: SignavioLogoProps) {
+export default function SignavioLogo({ width = 100, height = 30, className = "" }: SignavioLogoProps) {
   return (
     <div className={`flex items-center justify-center ${className}`}>
       <img 
