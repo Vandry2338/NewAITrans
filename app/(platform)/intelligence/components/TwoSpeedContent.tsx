@@ -3644,8 +3644,8 @@ export default function TwoSpeedContent({ activeSubTab }: { activeSubTab: string
                           className="px-3 py-1 rounded-lg text-xs font-medium"
                           style={{
                             background: `linear-gradient(135deg, ${processColors[process as keyof typeof processColors] || "#3b82f6"})`,
-                            color: "#ffffff",
-                            textShadow: "0 1px 2px rgba(0, 0, 0, 0.3)",
+                            color: "#000000",
+                            textShadow: "none",
                             fontWeight: "600",
                           }}
                         >
@@ -4436,8 +4436,8 @@ export default function TwoSpeedContent({ activeSubTab }: { activeSubTab: string
                           className="px-3 py-1 rounded-lg text-xs font-medium"
                           style={{
                             background: `linear-gradient(135deg, ${processColors[process as keyof typeof processColors] || "#3b82f6"})`,
-                            color: "#ffffff",
-                            textShadow: "0 1px 2px rgba(0, 0, 0, 0.3)",
+                            color: "#000000",
+                            textShadow: "none",
                             fontWeight: "600",
                           }}
                         >
