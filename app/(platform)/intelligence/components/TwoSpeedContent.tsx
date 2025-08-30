@@ -3310,37 +3310,37 @@ export default function TwoSpeedContent({ activeSubTab }: { activeSubTab: string
                   <thead>
                     <tr className="border-b" style={{ borderColor: "var(--stroke-soft)" }}>
                       <th
-                        className="text-left py-4 px-6 font-semibold text-sm"
+                        className="text-left py-3 px-4 font-semibold text-sm w-1/3"
                         style={{ color: "var(--text-default)" }}
                       >
                         Trend
                       </th>
                       <th
-                        className="text-left py-4 px-4 font-semibold text-sm"
+                        className="text-left py-3 px-2 font-semibold text-sm w-20"
                         style={{ color: "var(--text-default)" }}
                       >
                         Industry
                       </th>
                       <th
-                        className="text-left py-4 px-4 font-semibold text-sm"
+                        className="text-left py-3 px-2 font-semibold text-sm w-20"
                         style={{ color: "var(--text-default)" }}
                       >
                         Process
                       </th>
                       <th
-                        className="text-left py-4 px-4 font-semibold text-sm"
+                        className="text-left py-3 px-2 font-semibold text-sm w-24"
                         style={{ color: "var(--text-default)" }}
                       >
                         Metrics
                       </th>
                       <th
-                        className="text-left py-4 px-4 font-semibold text-sm"
+                        className="text-left py-3 px-2 font-semibold text-sm w-20"
                         style={{ color: "var(--text-default)" }}
                       >
                         Impact
                       </th>
                       <th
-                        className="text-center py-4 px-4 font-semibold text-sm"
+                        className="text-center py-3 px-2 font-semibold text-sm w-24"
                         style={{ color: "var(--text-default)" }}
                       >
                         Actions
@@ -3358,16 +3358,16 @@ export default function TwoSpeedContent({ activeSubTab }: { activeSubTab: string
                           style={{ borderColor: "var(--stroke-soft)" }}
                         >
                           {/* Trend Column */}
-                          <td className="py-6 px-6">
+                          <td className="py-4 px-4">
                             <div className="space-y-2">
                               <h3
-                                className="font-semibold text-base leading-tight"
+                                className="font-semibold text-sm leading-tight line-clamp-2"
                                 style={{ color: "var(--text-default)" }}
                               >
                                 {trend.title}
                               </h3>
                               <p
-                                className="text-sm leading-relaxed line-clamp-2"
+                                className="text-xs leading-relaxed line-clamp-3 max-w-xs"
                                 style={{ color: "var(--text-muted)" }}
                               >
                                 {trend.description}
@@ -3390,9 +3390,9 @@ export default function TwoSpeedContent({ activeSubTab }: { activeSubTab: string
                           </td>
 
                           {/* Industry Column */}
-                          <td className="py-6 px-4">
+                          <td className="py-4 px-2">
                             <span
-                              className="px-3 py-1 rounded-lg text-sm font-medium whitespace-nowrap inline-block"
+                              className="px-2 py-1 rounded-lg text-xs font-medium whitespace-nowrap inline-block"
                               style={{
                                 backgroundColor: "var(--surface-elev-2)",
                                 color: "var(--text-default)",
@@ -3403,9 +3403,9 @@ export default function TwoSpeedContent({ activeSubTab }: { activeSubTab: string
                           </td>
 
                           {/* Process Column */}
-                          <td className="py-6 px-4">
+                          <td className="py-4 px-2">
                             <span
-                              className="px-3 py-1 rounded-lg text-sm font-medium text-white whitespace-nowrap inline-block"
+                              className="px-2 py-1 rounded-lg text-xs font-medium text-white whitespace-nowrap inline-block"
                               style={{
                                 background: processColors[trend.process as keyof typeof processColors]
                                   ? `linear-gradient(135deg, ${
@@ -3431,14 +3431,14 @@ export default function TwoSpeedContent({ activeSubTab }: { activeSubTab: string
                                                   ? "#14b8a6, #0d9488"
                                                   : processColors[trend.process as keyof typeof processColors].includes(
                                                         "indigo",
-                                                      )
+                                                    )
                                                     ? "#6366f1, #4f46e5"
                                                     : "#6b7280, #4b5563"
                                     })`
                                   : "linear-gradient(135deg, #6b7280, #4b5563)",
                               }}
                             >
-                              {/* Use shorter process labels */}
+                              {/* Use shorter process labels with finance-treasury-risk abbreviation */}
                               {trend.process === "idea-to-market"
                                 ? "I2M"
                                 : trend.process === "lead-to-cash"
@@ -3453,6 +3453,8 @@ export default function TwoSpeedContent({ activeSubTab }: { activeSubTab: string
                                           ? "R2R"
                                           : trend.process === "finance-record-to-report"
                                             ? "F2R"
+                                          : trend.process === "finance-treasury-risk"
+                                            ? "FTR"
                                             : trend.process === "governance"
                                               ? "GOV"
                                               : trend.process.toUpperCase()}
@@ -3460,21 +3462,21 @@ export default function TwoSpeedContent({ activeSubTab }: { activeSubTab: string
                           </td>
 
                           {/* Metrics Column */}
-                          <td className="py-6 px-4">
-                            <div className="space-y-2">
-                              <div className="flex items-center gap-2">
+                          <td className="py-4 px-2">
+                            <div className="space-y-1">
+                              <div className="flex items-center gap-1">
                                 <span className="text-xs font-medium" style={{ color: "var(--text-muted)" }}>
-                                  Adoption:
+                                  A:
                                 </span>
-                                <span className="px-2 py-1 rounded text-xs font-medium bg-green-100 text-green-800">
+                                <span className="px-1 py-0.5 rounded text-xs font-medium bg-green-100 text-green-800">
                                   {trend.adoption}
                                 </span>
                               </div>
-                              <div className="flex items-center gap-2">
+                              <div className="flex items-center gap-1">
                                 <span className="text-xs font-medium" style={{ color: "var(--text-muted)" }}>
-                                  Growth:
+                                  G:
                                 </span>
-                                <span className="px-2 py-1 rounded text-xs font-medium bg-blue-100 text-blue-800">
+                                <span className="px-1 py-0.5 rounded text-xs font-medium bg-blue-100 text-blue-800">
                                   {trend.growth}
                                 </span>
                               </div>
@@ -3482,9 +3484,9 @@ export default function TwoSpeedContent({ activeSubTab }: { activeSubTab: string
                           </td>
 
                           {/* Impact Column */}
-                          <td className="py-6 px-4">
+                          <td className="py-4 px-2">
                             <span
-                              className={`px-3 py-1 rounded-lg text-sm font-medium ${
+                              className={`px-2 py-1 rounded-lg text-xs font-medium ${
                                 trend.impact === "High"
                                   ? "bg-red-100 text-red-800"
                                   : trend.impact === "Medium"
@@ -3497,11 +3499,11 @@ export default function TwoSpeedContent({ activeSubTab }: { activeSubTab: string
                           </td>
 
                           {/* Actions Column */}
-                          <td className="py-6 px-4">
-                            <div className="flex items-center justify-center gap-2">
+                          <td className="py-4 px-2">
+                            <div className="flex items-center justify-center gap-1">
                               <button
                                 onClick={(e) => toggleTrendBookmark(trend.id, e)}
-                                className={`p-2 rounded-lg transition-all duration-200 ${
+                                className={`p-1.5 rounded-lg transition-all duration-200 ${
                                   isBookmarked
                                     ? "bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-md"
                                     : "hover:bg-gray-100"
@@ -3509,21 +3511,21 @@ export default function TwoSpeedContent({ activeSubTab }: { activeSubTab: string
                                 title={isBookmarked ? "Remove bookmark" : "Add bookmark"}
                               >
                                 <BookmarkIcon
-                                  className={`h-4 w-4 ${isBookmarked ? "fill-current" : ""}`}
+                                  className={`h-3 w-3 ${isBookmarked ? "fill-current" : ""}`}
                                   style={{ color: isBookmarked ? "white" : "var(--text-muted)" }}
                                 />
                               </button>
                               <button
-                                className="p-2 rounded-lg hover:bg-gray-100 transition-colors"
+                                className="p-1.5 rounded-lg hover:bg-gray-100 transition-colors"
                                 title="Share trend"
                               >
-                                <Share className="h-4 w-4" style={{ color: "var(--text-muted)" }} />
+                                <Share className="h-3 w-3" style={{ color: "var(--text-muted)" }} />
                               </button>
                               <button
-                                className="p-2 rounded-lg hover:bg-gray-100 transition-colors"
+                                className="p-1.5 rounded-lg hover:bg-gray-100 transition-colors"
                                 title="Download trend data"
                               >
-                                <Download className="h-4 w-4" style={{ color: "var(--text-muted)" }} />
+                                <Download className="h-3 w-3" style={{ color: "var(--text-muted)" }} />
                               </button>
                             </div>
                           </td>
