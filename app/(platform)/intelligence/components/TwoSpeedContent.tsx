@@ -3409,43 +3409,307 @@ export default function TwoSpeedContent({ activeSubTab }: { activeSubTab: string
       },
     ]
 
-    // Strategic Initiatives Data - Placeholder structure matching the image
+    // Strategic Initiatives Data - Telstra T25 Strategic Initiatives
     const strategicInitiativesData = [
       {
-        id: "init_001",
-        title: "Digital Transformation in Learning",
-        description: "Schools and universities are investing in digital platforms, online learning, and educational technology to enhance access and efficiency",
-        industry: "Education",
+        id: "TLS-01",
+        title: "Extend 5G to ~95% population",
+        description: "T25 commits to ~95% 5G population coverage and major regional buildout by FY25. Expand National Mobile Coverage and 5G Reach to maintain leadership in coverage.",
+        industry: "Telecommunications",
+        year: "2025",
+        process: "plan-to-fulfill",
+        status: "Fast Lane",
+        tags: ["5G", "Coverage", "Mobility", "Growth"],
+        kpis: "5G Population Coverage: 95%",
+        source: "Telstra T25 Strategy - Network expansion and 5G leadership",
+        kpiDetails: {
+          name: "5G Population Coverage",
+          target: "95%",
+          unit: "%",
+          direction: "HigherIsBetter",
+          current: "~85%",
+          timeframe: "FY21-FY25"
+        }
+      },
+      {
+        id: "TLS-02",
+        title: "Expand regional footprint (+100k km²)",
+        description: "Increase 4G/5G footprint with ~100,000 km² of new regional coverage. Add about 100,000 km² of new 4G/5G coverage in regional Australia.",
+        industry: "Telecommunications",
+        year: "2025",
+        process: "plan-to-fulfill",
+        status: "Fast Lane",
+        tags: ["Regional", "Coverage", "Mobility"],
+        kpis: "Coverage Area Added: 100k km²",
+        source: "Telstra T25 Strategy - Regional expansion program",
+        kpiDetails: {
+          name: "Coverage Area Added",
+          target: "100,000",
+          unit: "km²",
+          direction: "HigherIsBetter",
+          current: "0",
+          timeframe: "FY22-FY25"
+        }
+      },
+      {
+        id: "TLS-03",
+        title: "3G switch-off & spectrum refarm",
+        description: "Shut 3G and refarm spectrum to boost 4G/5G capacity and reliability. Upgrade 4G coverage to 100% of network footprint by FY24.",
+        industry: "Telecommunications",
         year: "2024",
+        process: "plan-to-fulfill",
+        status: "Core",
+        tags: ["Spectrum", "Modernisation", "Capacity"],
+        kpis: "Busy-Hour Downlink Throughput: Higher",
+        source: "Telstra Network Modernization - 3G shutdown program",
+        kpiDetails: {
+          name: "Busy-Hour Downlink Throughput",
+          target: "Increased",
+          unit: "Mbps",
+          direction: "HigherIsBetter",
+          current: "Baseline",
+          timeframe: "2024-2025"
+        }
+      },
+      {
+        id: "TLS-04",
+        title: "Metro densification for capacity",
+        description: "Increase metro capacity with additional sites and densification. Double metro cell sites to increase 5G network capacity targeting ~80% of all mobile traffic on 5G.",
+        industry: "Telecommunications",
+        year: "2025",
+        process: "plan-to-fulfill",
+        status: "Fast Lane",
+        tags: ["5G", "Capacity", "Quality"],
+        kpis: "Busy-Hour Uplink Throughput: Higher",
+        source: "Telstra T25 Strategy - Metro capacity enhancement",
+        kpiDetails: {
+          name: "Busy-Hour Uplink Throughput",
+          target: "Increased",
+          unit: "Mbps",
+          direction: "HigherIsBetter",
+          current: "Baseline",
+          timeframe: "FY22-FY25"
+        }
+      },
+      {
+        id: "TLS-05",
+        title: "Predictive service & digitised care",
+        description: "Lift customer experience via predictive issue resolution and digital journeys. Use AI and analytics to predict and resolve issues before they affect customers.",
+        industry: "Telecommunications",
+        year: "2025",
+        process: "lead-to-cash",
+        status: "Fast Lane",
+        tags: ["CX", "Automation", "Digital"],
+        kpis: "Complaint Rate: Lower per 1k Customers",
+        source: "Telstra T25 Strategy - Customer experience transformation",
+        kpiDetails: {
+          name: "Complaint Rate per 1k Customers",
+          target: "Reduced",
+          unit: "rate",
+          direction: "LowerIsBetter",
+          current: "Baseline",
+          timeframe: "FY22-FY25"
+        }
+      },
+      {
+        id: "TLS-06",
+        title: "Grow Telstra Plus loyalty",
+        description: "Expand Telstra Plus to ~6m members to deepen engagement and retention. Having reached 3.5 million members by 2021, targeting 6 million by FY25.",
+        industry: "Telecommunications",
+        year: "2025",
+        process: "lead-to-cash",
+        status: "Fast Lane",
+        tags: ["Loyalty", "Retention", "Growth"],
+        kpis: "Churn Rate: Lower %",
+        source: "Telstra T25 Strategy - Customer loyalty program expansion",
+        kpiDetails: {
+          name: "Churn Rate",
+          target: "Reduced",
+          unit: "%",
+          direction: "LowerIsBetter",
+          current: "Baseline",
+          timeframe: "FY22-FY25"
+        }
+      },
+      {
+        id: "TLS-07",
+        title: "Net fixed cost-out (T25)",
+        description: "Deliver further net fixed cost reductions under T25. Remove a further A$500 million of net fixed costs from FY23 to FY25 on top of A$2.7 billion from T22.",
+        industry: "Telecommunications",
+        year: "2025",
+        process: "governance",
+        status: "Core",
+        tags: ["Cost", "Efficiency", "Simplification"],
+        kpis: "Operating Margin: Higher %",
+        source: "Telstra T25 Strategy - Cost optimization program",
+        kpiDetails: {
+          name: "Operating Margin",
+          target: "Increased",
+          unit: "%",
+          direction: "HigherIsBetter",
+          current: "Baseline",
+          timeframe: "FY23-FY25"
+        }
+      },
+      {
+        id: "TLS-08",
+        title: "Capital returns (dividend + buy-backs)",
+        description: "Maximise fully-franked dividend and supplement with on-market buy-backs. Target mid-single-digit growth in underlying EBITDA and high-teens CAGR in EPS.",
+        industry: "Telecommunications",
+        year: "2025",
+        process: "governance",
+        status: "Fast Lane",
+        tags: ["Capital", "Dividend", "Value"],
+        kpis: "Revenue Growth Rate: Higher %",
+        source: "Telstra T25 Strategy - Financial performance targets",
+        kpiDetails: {
+          name: "Revenue Growth Rate",
+          target: "Mid-single digit",
+          unit: "%",
+          direction: "HigherIsBetter",
+          current: "Baseline",
+          timeframe: "FY22-FY25"
+        }
+      },
+      {
+        id: "TLS-09",
+        title: "Towers growth & utilisation",
+        description: "Increase access to towers: ~250 new towers and ~700 additional tenancies. Expand Telstra's towers footprint to increase coverage and monetize passive assets.",
+        industry: "Telecommunications",
+        year: "2025",
+        process: "plan-to-fulfill",
+        status: "Core",
+        tags: ["Infra", "Towers", "Coverage"],
+        kpis: "Dropped Call Rate: Lower %",
+        source: "Telstra T25 Strategy - Infrastructure expansion",
+        kpiDetails: {
+          name: "Dropped Call Rate",
+          target: "Reduced",
+          unit: "%",
+          direction: "LowerIsBetter",
+          current: "Baseline",
+          timeframe: "FY22-FY25"
+        }
+      },
+      {
+        id: "TLS-10",
+        title: "Corporate restructure (InfraCo/Amplitel)",
+        description: "Complete legal restructure to separate infrastructure and services for flexibility and value. Establish Telstra Group holding company with four main subsidiaries.",
+        industry: "Telecommunications",
+        year: "2022",
+        process: "governance",
+        status: "Core",
+        tags: ["Structure", "InfraCo", "Amplitel"],
+        kpis: "Operating Margin: Higher %",
+        source: "Telstra T25 Strategy - Organizational transformation",
+        kpiDetails: {
+          name: "Operating Margin",
+          target: "Improved",
+          unit: "%",
+          direction: "HigherIsBetter",
+          current: "Baseline",
+          timeframe: "2022"
+        }
+      },
+      {
+        id: "TLS-11",
+        title: "LEO backhaul at scale (OneWeb)",
+        description: "Roll out world-leading LEO backhaul to harden remote sites and extend service reach. Largest deployment of LEO backhaul technology for network resilience.",
+        industry: "Telecommunications",
+        year: "2026",
+        process: "plan-to-fulfill",
+        status: "Fast Lane",
+        tags: ["Satellite", "LEO", "Backhaul", "Resilience"],
+        kpis: "Network Uptime & Availability: Higher %",
+        source: "Telstra-OneWeb Partnership - LEO backhaul deployment",
+        kpiDetails: {
+          name: "Network Uptime & Availability",
+          target: "Increased",
+          unit: "%",
+          direction: "HigherIsBetter",
+          current: "Baseline",
+          timeframe: "2024-2026"
+        }
+      },
+      {
+        id: "TLS-12",
+        title: "Direct-to-device satellite (Starlink)",
+        description: "Introduce satellite text to mobile (D2D) to improve reach beyond cellular footprint. Leverage SpaceX Starlink technology for extended coverage.",
+        industry: "Telecommunications",
+        year: "2027",
+        process: "idea-to-market",
+        status: "Core",
+        tags: ["Satellite", "Coverage", "Innovation"],
+        kpis: "Call Setup Success Rate: Higher %",
+        source: "Telstra-SpaceX Partnership - Satellite-to-mobile integration",
+        kpiDetails: {
+          name: "Call Setup Success Rate (CSSR)",
+          target: "Improved",
+          unit: "%",
+          direction: "HigherIsBetter",
+          current: "Baseline",
+          timeframe: "2025-2027"
+        }
+      },
+      {
+        id: "TLS-13",
+        title: "Enterprise solutions (Purple) & verticalisation",
+        description: "Scale Telstra Purple and industry-aligned enterprise offers in cloud, cybersecurity, IoT, and other tech domains. Provide one-stop shop for IT & telecom solutions.",
+        industry: "Telecommunications",
+        year: "2025",
+        process: "lead-to-cash",
+        status: "Fast Lane",
+        tags: ["Enterprise", "Services", "Security", "Cloud"],
+        kpis: "Service Order Fallout Rate: Lower %",
+        source: "Telstra T25 Strategy - Enterprise services expansion",
+        kpiDetails: {
+          name: "Service Order Fallout Rate",
+          target: "Reduced",
+          unit: "%",
+          direction: "LowerIsBetter",
+          current: "Baseline",
+          timeframe: "FY22-FY25"
+        }
+      },
+      {
+        id: "TLS-14",
+        title: "International expansion (Digicel Pacific)",
+        description: "Own and grow Digicel Pacific to expand footprint and diversify revenue. Acquired for ~US$1.6-1.85 billion to expand international presence in South Pacific.",
+        industry: "Telecommunications",
+        year: "2025",
         process: "idea-to-market",
         status: "Fast Lane",
-        tags: ["Service Delivery", "Access & Efficiency"],
-        kpis: "2 KPIs",
-        source: "Deloitte Education Industry Report - Virtual classrooms and data analytics implementation",
+        tags: ["International", "Growth", "M&A"],
+        kpis: "Revenue Growth Rate: Higher %",
+        source: "Telstra T25 Strategy - International expansion",
+        kpiDetails: {
+          name: "Revenue Growth Rate",
+          target: "Increased",
+          unit: "%",
+          direction: "HigherIsBetter",
+          current: "Baseline",
+          timeframe: "2022-2025"
+        }
       },
       {
-        id: "init_002",
-        title: "Student Success & Engagement Programs",
-        description: "Implementing mentorship programs, mental health support, and data-driven early warning systems will improve student retention and graduation rates",
-        industry: "Education",
-        year: "2024",
-        process: "recruit-to-retire",
+        id: "TLS-15",
+        title: "Customer experience targets (NPS, Once-and-Done)",
+        description: "Lift strategic and episode NPS and achieve high 'Once-and-Done' rates. Target NPS increase of 25 points across all customer segments by FY25.",
+        industry: "Telecommunications",
+        year: "2025",
+        process: "lead-to-cash",
         status: "Fast Lane",
-        tags: ["Student Support", "Student Success"],
-        kpis: "2 KPIs",
-        source: "Deloitte Education Industry Report - Boosting graduation rates through engagement",
-      },
-      {
-        id: "init_003",
-        title: "Workforce-Aligned Curriculum",
-        description: "Aligning curricula with rapidly evolving workforce needs will ensure graduates' skills match labor market demand",
-        industry: "Education",
-        year: "2024",
-        process: "recruit-to-retire",
-        status: "Core",
-        tags: ["Curriculum Development", "Market Relevance"],
-        kpis: "2 KPIs",
-        source: "Deloitte Education Industry Report - Updating academic programs for workforce alignment",
+        tags: ["CX", "NPS", "Care"],
+        kpis: "First Call Resolution: Higher %",
+        source: "Telstra T25 Strategy - Customer experience excellence",
+        kpiDetails: {
+          name: "First Call Resolution (FCR)",
+          target: "Increased",
+          unit: "%",
+          direction: "HigherIsBetter",
+          current: "Baseline",
+          timeframe: "FY22-FY25"
+        }
       },
     ]
 
@@ -4580,13 +4844,50 @@ export default function TwoSpeedContent({ activeSubTab }: { activeSubTab: string
                     </div>
 
                     {/* KPIs and Source */}
-                    <div className="space-y-2">
+                    <div className="space-y-3">
+                      {/* KPI Details */}
+                      {initiative.kpiDetails && (
+                        <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-3 rounded-lg border border-blue-200">
+                          <div className="flex items-center justify-between mb-2">
+                            <span className="text-xs font-semibold text-blue-800">Primary KPI</span>
+                            <span className={`px-2 py-1 rounded-full text-xs font-medium ${
+                              initiative.kpiDetails.direction === "HigherIsBetter" 
+                                ? "bg-green-100 text-green-800" 
+                                : "bg-red-100 text-red-800"
+                            }`}>
+                              {initiative.kpiDetails.direction === "HigherIsBetter" ? "↑ Higher Better" : "↓ Lower Better"}
+                            </span>
+                          </div>
+                          <div className="space-y-1">
+                            <div className="flex justify-between text-xs">
+                              <span className="font-medium" style={{ color: "var(--text-default)" }}>
+                                {initiative.kpiDetails.name}
+                              </span>
+                            </div>
+                            <div className="flex justify-between text-xs">
+                              <span style={{ color: "var(--text-muted)" }}>Target:</span>
+                              <span className="font-semibold" style={{ color: "var(--text-default)" }}>
+                                {initiative.kpiDetails.target} {initiative.kpiDetails.unit}
+                              </span>
+                            </div>
+                            <div className="flex justify-between text-xs">
+                              <span style={{ color: "var(--text-muted)" }}>Timeframe:</span>
+                              <span style={{ color: "var(--text-muted)" }}>
+                                {initiative.kpiDetails.timeframe}
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                      
+                      {/* Industry and Year */}
                       <div className="flex items-center justify-between text-sm">
-                        <span className="text-blue-600 font-medium">{initiative.kpis || "0 KPIs"}</span>
                         <span className="text-xs" style={{ color: "var(--text-muted)" }}>
                           {initiative.industry}, {initiative.year}
                         </span>
                       </div>
+                      
+                      {/* Source */}
                       {initiative.source && (
                         <p className="text-xs" style={{ color: "var(--text-muted)" }}>
                           {initiative.source}
