@@ -26,6 +26,7 @@ import {
   Share,
   BookmarkIcon,
   ChevronDown,
+  CheckCircle,
 } from "lucide-react"
 
 const mockInitiatives = [
@@ -701,6 +702,8 @@ export default function TwoSpeedContent({ activeSubTab }: { activeSubTab: string
   const [selectedProcess, setSelectedProcess] = useState("All Processes")
   const [bookmarkedTrends, setBookmarkedTrends] = useState<string[]>([])
   const [trendPriorities, setTrendPriorities] = useState<{ [key: string]: string }>({})
+  const [bookmarkedInitiatives, setBookmarkedInitiatives] = useState<string[]>([])
+  const [initiativePriorities, setInitiativePriorities] = useState<{ [key: string]: string }>({})
 
   const toggleBookmark = (painPointId: string) => {
     const newBookmarks = new Set(bookmarkedPainPoints)
@@ -710,6 +713,20 @@ export default function TwoSpeedContent({ activeSubTab }: { activeSubTab: string
       newBookmarks.add(painPointId)
     }
     setBookmarkedPainPoints(Array.from(newBookmarks))
+  }
+
+  const toggleInitiativeBookmark = (initiativeId: string, e?: React.MouseEvent) => {
+    if (e) {
+      e.stopPropagation()
+    }
+    setBookmarkedInitiatives((prev) => (prev.includes(initiativeId) ? prev.filter((id) => id !== initiativeId) : [...prev, initiativeId]))
+  }
+
+  const handleInitiativePriorityChange = (initiativeId: string, priority: string) => {
+    setInitiativePriorities((prev) => ({
+      ...prev,
+      [initiativeId]: priority,
+    }))
   }
 
   // Add CSS for line-clamp
@@ -3392,12 +3409,58 @@ export default function TwoSpeedContent({ activeSubTab }: { activeSubTab: string
       },
     ]
 
+    // Strategic Initiatives Data - Placeholder structure matching the image
+    const strategicInitiativesData = [
+      {
+        id: "init_001",
+        title: "Digital Transformation in Learning",
+        description: "Schools and universities are investing in digital platforms, online learning, and educational technology to enhance access and efficiency",
+        industry: "Education",
+        year: "2024",
+        process: "idea-to-market",
+        status: "Fast Lane",
+        tags: ["Service Delivery", "Access & Efficiency"],
+        kpis: "2 KPIs",
+        source: "Deloitte Education Industry Report - Virtual classrooms and data analytics implementation",
+      },
+      {
+        id: "init_002",
+        title: "Student Success & Engagement Programs",
+        description: "Implementing mentorship programs, mental health support, and data-driven early warning systems will improve student retention and graduation rates",
+        industry: "Education",
+        year: "2024",
+        process: "recruit-to-retire",
+        status: "Fast Lane",
+        tags: ["Student Support", "Student Success"],
+        kpis: "2 KPIs",
+        source: "Deloitte Education Industry Report - Boosting graduation rates through engagement",
+      },
+      {
+        id: "init_003",
+        title: "Workforce-Aligned Curriculum",
+        description: "Aligning curricula with rapidly evolving workforce needs will ensure graduates' skills match labor market demand",
+        industry: "Education",
+        year: "2024",
+        process: "recruit-to-retire",
+        status: "Core",
+        tags: ["Curriculum Development", "Market Relevance"],
+        kpis: "2 KPIs",
+        source: "Deloitte Education Industry Report - Updating academic programs for workforce alignment",
+      },
+    ]
+
     const allIndustries = ["All Industries", ...Array.from(new Set(industryTrendsData.map((trend) => trend.industry)))]
     const allProcesses = ["All Processes", ...Array.from(new Set(industryTrendsData.map((trend) => trend.process)))]
 
     const filteredTrends = industryTrendsData.filter((trend) => {
       const industryMatch = selectedIndustry === "All Industries" || trend.industry === selectedIndustry
       const processMatch = selectedProcess === "All Processes" || trend.process === selectedProcess
+      return industryMatch && processMatch
+    })
+
+    const filteredInitiatives = strategicInitiativesData.filter((initiative) => {
+      const industryMatch = selectedIndustry === "All Industries" || initiative.industry === selectedIndustry
+      const processMatch = selectedProcess === "All Processes" || initiative.process === selectedProcess
       return industryMatch && processMatch
     })
 
@@ -4189,27 +4252,325 @@ export default function TwoSpeedContent({ activeSubTab }: { activeSubTab: string
       case "strategic-initiatives":
         return (
           <div className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {mockInitiatives.map((initiative) => (
-                <div key={initiative.id} className="premium-card p-4 space-y-3">
-                  <h4 className="font-semibold mb-2" style={{ color: "var(--brand-navy-900)" }}>
-                    {initiative.title}
-                  </h4>
-                  <p className="text-sm mb-3" style={{ color: "var(--text-primary)" }}>
-                    {initiative.description}
-                  </p>
-                  <div className="flex justify-between items-center text-sm">
-                    <span
-                      className={`px-2 py-1 rounded-full ${
-                        initiative.speed === "fast" ? "bg-orange-100 text-orange-800" : "bg-blue-100 text-blue-800"
-                      }`}
-                    >
-                      {initiative.speed === "fast" ? "Fast Lane" : "Core"}
-                    </span>
-                    <span style={{ color: "var(--text-primary)" }}>{initiative.timeline}</span>
+            {/* Overview Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+              <div className="premium-card p-4">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-blue-500 to-blue-600 flex items-center justify-center">
+                    <CheckCircle className="w-5 h-5 text-white" />
+                  </div>
+                  <div>
+                    <p className="text-2xl font-bold" style={{ color: "var(--text-default)" }}>
+                      {bookmarkedInitiatives.length}
+                    </p>
+                    <p className="text-sm" style={{ color: "var(--text-muted)" }}>
+                      Selected
+                    </p>
                   </div>
                 </div>
-              ))}
+              </div>
+
+              <div className="premium-card p-4">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-green-500 to-green-600 flex items-center justify-center">
+                    <Target className="w-5 h-5 text-white" />
+                  </div>
+                  <div>
+                    <p className="text-2xl font-bold" style={{ color: "var(--text-default)" }}>
+                      {strategicInitiativesData.length}
+                    </p>
+                    <p className="text-sm" style={{ color: "var(--text-muted)" }}>
+                      Available
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="premium-card p-4">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-orange-500 to-orange-600 flex items-center justify-center">
+                    <Users className="w-5 h-5 text-white" />
+                  </div>
+                  <div>
+                    <p className="text-2xl font-bold" style={{ color: "var(--text-default)" }}>
+                      {allIndustries.length - 1}
+                    </p>
+                    <p className="text-sm" style={{ color: "var(--text-muted)" }}>
+                      Industries
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="premium-card p-4">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-purple-500 to-purple-600 flex items-center justify-center">
+                    <Settings className="w-5 h-5 text-white" />
+                  </div>
+                  <div>
+                    <p className="text-2xl font-bold" style={{ color: "var(--text-default)" }}>
+                      {bookmarkedInitiatives.length > 0 ? Math.round((bookmarkedInitiatives.length / strategicInitiativesData.length) * 100) : 0}
+                    </p>
+                    <p className="text-sm" style={{ color: "var(--text-muted)" }}>
+                      % Selected
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Filters */}
+            <div className="premium-card p-4">
+              <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
+                <div>
+                  <h2 className="text-xl font-bold mb-2" style={{ color: "var(--text-default)" }}>
+                    Strategic Initiatives Analysis
+                  </h2>
+                  <p className="text-sm" style={{ color: "var(--text-muted)" }}>
+                    Filter by industry and process to explore relevant strategic initiatives
+                  </p>
+                </div>
+
+                <div className="flex gap-3">
+                  <select
+                    value={selectedIndustry}
+                    onChange={(e) => setSelectedIndustry(e.target.value)}
+                    className="px-4 py-2 rounded-lg border text-sm font-medium min-w-[180px]"
+                    style={{
+                      backgroundColor: "var(--surface-elev-1)",
+                      borderColor: "var(--stroke-soft)",
+                      color: "var(--text-default)",
+                    }}
+                  >
+                    {allIndustries.map((industry) => (
+                      <option key={industry} value={industry}>
+                        {industry}
+                      </option>
+                    ))}
+                  </select>
+
+                  <select
+                    value={selectedProcess}
+                    onChange={(e) => setSelectedProcess(e.target.value)}
+                    className="px-4 py-2 rounded-lg border text-sm font-medium min-w-[180px]"
+                    style={{
+                      backgroundColor: "var(--surface-elev-1)",
+                      borderColor: "var(--stroke-soft)",
+                      color: "var(--text-default)",
+                    }}
+                  >
+                    {allProcesses.map((process) => (
+                      <option key={process} value={process}>
+                        {process}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            {/* Bookmarked Initiatives Summary */}
+            {bookmarkedInitiatives.length > 0 && (
+              <div className="premium-card p-6 space-y-4 animate-in slide-in-from-top duration-500">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-lg bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center">
+                      <BookmarkIcon className="w-4 h-4 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-semibold" style={{ color: "var(--text-default)" }}>
+                        Selected Initiatives ({bookmarkedInitiatives.length})
+                      </h3>
+                      <p className="text-sm" style={{ color: "var(--text-muted)" }}>
+                        Manage priority and group by process
+                      </p>
+                    </div>
+                  </div>
+                  <button
+                    onClick={() => setBookmarkedInitiatives([])}
+                    className="px-3 py-1 text-xs rounded-lg bg-red-100 text-red-700 hover:bg-red-200 transition-colors"
+                  >
+                    Clear All
+                  </button>
+                </div>
+
+                {/* Group by process */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {Object.entries(
+                    bookmarkedInitiatives.reduce(
+                      (acc, initiativeId) => {
+                        const initiative = strategicInitiativesData.find((i) => i.id === initiativeId)
+                        if (initiative) {
+                          if (!acc[initiative.process]) acc[initiative.process] = []
+                          acc[initiative.process].push(initiative)
+                        }
+                        return acc
+                      },
+                      {} as Record<string, typeof strategicInitiativesData>,
+                    ),
+                  ).map(([process, initiatives]) => (
+                    <div key={process} className="space-y-3">
+                      <div className="flex items-center gap-2">
+                        <span
+                          className="px-3 py-1 rounded-lg text-xs font-medium text-white"
+                          style={{
+                            background: `linear-gradient(135deg, ${processColors[process as keyof typeof processColors] || "#3b82f6"})`,
+                          }}
+                        >
+                          {process.replace(/-/g, " ").replace(/\b\w/g, (l) => l.toUpperCase())}
+                        </span>
+                        <span className="text-sm font-medium" style={{ color: "var(--text-default)" }}>
+                          ({initiatives.length})
+                        </span>
+                      </div>
+
+                      <div className="space-y-2">
+                        {initiatives.map((initiative) => (
+                          <div
+                            key={initiative.id}
+                            className="p-3 rounded-lg border transition-all duration-200 hover:shadow-md animate-in fade-in duration-300"
+                            style={{
+                              backgroundColor: "var(--surface-elev-1)",
+                              borderColor: "var(--stroke-soft)",
+                            }}
+                          >
+                            <div className="flex items-start justify-between gap-3">
+                              <div className="flex-1 min-w-0">
+                                <h4
+                                  className="font-medium text-sm line-clamp-2 mb-1"
+                                  style={{ color: "var(--text-default)" }}
+                                >
+                                  {initiative.title}
+                                </h4>
+                                <p className="text-xs mb-2" style={{ color: "var(--text-muted)" }}>
+                                  {initiative.industry} • {initiative.status}
+                                </p>
+                                <select
+                                  value={initiativePriorities[initiative.id] || "Medium"}
+                                  onChange={(e) => handleInitiativePriorityChange(initiative.id, e.target.value)}
+                                  className="w-full px-2 py-1 text-xs border rounded focus:outline-none focus:ring-1 focus:ring-blue-500"
+                                  style={{
+                                    backgroundColor: "var(--surface-elev-2)",
+                                    borderColor: "var(--stroke-soft)",
+                                    color: "var(--text-default)",
+                                  }}
+                                >
+                                  <option value="High">High Priority</option>
+                                  <option value="Medium">Medium Priority</option>
+                                  <option value="Low">Low Priority</option>
+                                </select>
+                              </div>
+                              <button
+                                onClick={(e) => toggleInitiativeBookmark(initiative.id, e)}
+                                className="p-1 rounded hover:bg-red-100 transition-colors"
+                              >
+                                <X className="w-3 h-3 text-red-500" />
+                              </button>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Strategic Initiatives Grid - Tile Layout */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {filteredInitiatives.map((initiative) => {
+                const isBookmarked = bookmarkedInitiatives.includes(initiative.id)
+
+                return (
+                  <div
+                    key={initiative.id}
+                    className="premium-card p-6 space-y-4 transition-all duration-200 hover:scale-105 hover:shadow-lg cursor-pointer"
+                    style={{
+                      backgroundColor: isBookmarked ? "rgba(59, 130, 246, 0.1)" : "rgba(255, 255, 255, 0.8)",
+                      backdropFilter: "blur(10px)",
+                      border: isBookmarked
+                        ? "1px solid rgba(59, 130, 246, 0.3)"
+                        : "1px solid rgba(255, 255, 255, 0.2)",
+                      boxShadow: isBookmarked
+                        ? "0 8px 25px -5px rgba(59, 130, 246, 0.2)"
+                        : "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
+                    }}
+                    onClick={() => toggleInitiativeBookmark(initiative.id)}
+                  >
+                    {/* Header with Icon and Status */}
+                    <div className="flex items-center justify-between">
+                      <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-blue-500 to-blue-600 flex items-center justify-center">
+                        <Target className="w-5 h-5 text-white" />
+                      </div>
+                      <span
+                        className={`px-3 py-1 rounded-full text-xs font-medium ${
+                          initiative.status === "Fast Lane" ? "bg-green-100 text-green-800" : "bg-gray-100 text-gray-800"
+                        }`}
+                      >
+                        {initiative.status}
+                      </span>
+                    </div>
+
+                    {/* Title and Description */}
+                    <div>
+                      <h3 className="font-semibold text-lg mb-2 line-clamp-2" style={{ color: "var(--text-default)" }}>
+                        {initiative.title}
+                      </h3>
+                      <p className="text-sm leading-relaxed line-clamp-3" style={{ color: "var(--text-muted)" }}>
+                        {initiative.description}
+                      </p>
+                    </div>
+
+                    {/* Tags */}
+                    <div className="flex flex-wrap gap-2">
+                      {initiative.tags?.slice(0, 2).map((tag, idx) => (
+                        <span
+                          key={idx}
+                          className="px-2 py-1 rounded-md text-xs font-medium"
+                          style={{
+                            backgroundColor: "var(--surface-elev-2)",
+                            color: "var(--text-muted)",
+                          }}
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+
+                    {/* KPIs and Source */}
+                    <div className="space-y-2">
+                      <div className="flex items-center justify-between text-sm">
+                        <span className="text-blue-600 font-medium">{initiative.kpis || "0 KPIs"}</span>
+                        <span className="text-xs" style={{ color: "var(--text-muted)" }}>
+                          {initiative.industry}, {initiative.year}
+                        </span>
+                      </div>
+                      {initiative.source && (
+                        <p className="text-xs" style={{ color: "var(--text-muted)" }}>
+                          {initiative.source}
+                        </p>
+                      )}
+                    </div>
+
+                    {/* Bookmark Indicator */}
+                    <div className="flex justify-end">
+                      <div
+                        className={`w-6 h-6 rounded-full flex items-center justify-center transition-all duration-200 ${
+                          isBookmarked
+                            ? "bg-gradient-to-r from-blue-500 to-purple-600 text-white"
+                            : "bg-gray-100"
+                        }`}
+                      >
+                        {isBookmarked ? (
+                          <BookmarkIcon className="w-3 h-3" />
+                        ) : (
+                          <BookmarkIcon className="w-3 h-3" style={{ color: "var(--text-muted)" }} />
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                )
+              })}
             </div>
 
             {/* Action Bar - Add Strategic Initiatives to Solution Canvas - Full Width Horizontal Bar */}
