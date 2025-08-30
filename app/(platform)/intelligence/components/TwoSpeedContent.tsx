@@ -4767,7 +4767,7 @@ export default function TwoSpeedContent({ activeSubTab }: { activeSubTab: string
                 return (
                   <div
                     key={initiative.id}
-                    className="premium-card p-6 h-96 flex flex-col transition-all duration-200 hover:shadow-lg cursor-pointer"
+                    className="premium-card p-4 h-80 flex flex-col transition-all duration-200 hover:shadow-lg cursor-pointer"
                     style={{
                       backgroundColor: isBookmarked ? "rgba(59, 130, 246, 0.05)" : "var(--surface-elev-1)",
                       border: isBookmarked
@@ -4779,10 +4779,13 @@ export default function TwoSpeedContent({ activeSubTab }: { activeSubTab: string
                     }}
                     onClick={() => toggleInitiativeBookmark(initiative.id)}
                   >
-                    {/* Header with Status Only - Fixed at top */}
-                    <div className="flex items-center justify-end flex-shrink-0">
+                    {/* Header with Title (left) and Status (right) */}
+                    <div className="flex items-start justify-between mb-3">
+                      <h3 className="font-semibold text-sm leading-tight flex-1 mr-3 line-clamp-2" style={{ color: "var(--text-default)" }}>
+                        {initiative.title}
+                      </h3>
                       <span
-                        className={`px-2 py-1 rounded-full text-xs font-medium ${
+                        className={`px-2 py-1 rounded-full text-xs font-medium flex-shrink-0 ${
                           initiative.status === "Fast Lane" ? "bg-gradient-to-r from-green-500 to-green-600 text-white" : "bg-gradient-to-r from-gray-500 to-gray-600 text-white"
                         }`}
                       >
@@ -4790,18 +4793,15 @@ export default function TwoSpeedContent({ activeSubTab }: { activeSubTab: string
                       </span>
                     </div>
 
-                    {/* Title and Description - Fixed height */}
-                    <div className="flex-shrink-0 mb-4">
-                      <h3 className="font-semibold text-base mb-3 line-clamp-2 leading-tight h-12 flex items-center" style={{ color: "var(--text-default)" }}>
-                        {initiative.title}
-                      </h3>
-                      <p className="text-sm leading-relaxed line-clamp-3 h-16" style={{ color: "var(--text-muted)" }}>
+                    {/* Description - Compact */}
+                    <div className="mb-3 flex-shrink-0">
+                      <p className="text-xs leading-relaxed line-clamp-2 h-8" style={{ color: "var(--text-muted)" }}>
                         {initiative.description}
                       </p>
                     </div>
 
-                    {/* Tags - Fixed height */}
-                    <div className="flex flex-wrap gap-2 flex-shrink-0 mb-4 h-10">
+                    {/* Tags - Compact */}
+                    <div className="flex flex-wrap gap-1 mb-3 flex-shrink-0">
                       {initiative.tags?.slice(0, 2).map((tag, idx) => (
                         <span
                           key={idx}
@@ -4816,68 +4816,58 @@ export default function TwoSpeedContent({ activeSubTab }: { activeSubTab: string
                       ))}
                     </div>
 
-                    {/* KPIs and Source - Flexible height, fills remaining space */}
-                    <div className="flex-1 flex flex-col justify-between">
-                      {/* KPI Details */}
-                      {initiative.kpiDetails && (
-                        <div className="bg-gradient-to-r from-blue-500 to-blue-600 p-4 rounded-lg text-white mb-4">
-                          <div className="flex items-center justify-between mb-3">
-                            <span className="text-sm font-semibold text-white">Primary KPI</span>
-                            <span className={`px-3 py-1 rounded-full text-xs font-medium ${
-                              initiative.kpiDetails.direction === "HigherIsBetter" 
-                                ? "bg-white text-blue-600" 
-                                : "bg-red-100 text-red-800"
-                            }`}>
-                              {initiative.kpiDetails.direction === "HigherIsBetter" ? "↑ Higher Better" : "↓ Lower Better"}
+                    {/* KPI Section - Compact */}
+                    {initiative.kpiDetails && (
+                      <div className="bg-gradient-to-r from-blue-500 to-blue-600 p-3 rounded-lg text-white mb-3 flex-shrink-0">
+                        <div className="flex items-center justify-between mb-2">
+                          <span className="text-xs font-semibold text-white">Primary KPI</span>
+                          <span className={`px-2 py-1 rounded-full text-xs font-medium ${
+                            initiative.kpiDetails.direction === "HigherIsBetter" 
+                              ? "bg-white text-blue-600" 
+                              : "bg-red-100 text-red-800"
+                          }`}>
+                            {initiative.kpiDetails.direction === "HigherIsBetter" ? "↑ Higher" : "↓ Lower"}
+                          </span>
+                        </div>
+                        <div className="space-y-1">
+                          <div className="text-xs text-white font-medium">
+                            {initiative.kpiDetails.name}
+                          </div>
+                          <div className="flex justify-between text-xs">
+                            <span className="text-white opacity-80">Target:</span>
+                            <span className="font-semibold text-white">
+                              {initiative.kpiDetails.target} {initiative.kpiDetails.unit}
                             </span>
                           </div>
-                          <div className="space-y-2">
-                            <div className="flex justify-between text-sm">
-                              <span className="font-medium text-white">
-                                {initiative.kpiDetails.name}
-                              </span>
-                            </div>
-                            <div className="flex justify-between text-sm">
-                              <span className="text-white opacity-80">Target:</span>
-                              <span className="font-semibold text-white">
-                                {initiative.kpiDetails.target} {initiative.kpiDetails.unit}
-                              </span>
-                            </div>
-                            <div className="flex justify-between text-sm">
-                              <span className="text-white opacity-80">Timeframe:</span>
-                              <span className="text-white opacity-80">
-                                {initiative.kpiDetails.timeframe}
-                              </span>
-                            </div>
-                          </div>
                         </div>
-                      )}
-                      
-                      {/* Industry and Year - Fixed at bottom */}
-                      <div className="flex items-center justify-between text-sm flex-shrink-0">
-                        <span className="text-xs" style={{ color: "var(--text-muted)" }}>
+                      </div>
+                    )}
+                    
+                    {/* Footer - Fixed at bottom */}
+                    <div className="mt-auto pt-2 border-t border-gray-200 flex-shrink-0">
+                      <div className="flex items-center justify-between text-xs">
+                        <span style={{ color: "var(--text-muted)" }}>
                           {initiative.industry} • {initiative.year}
                         </span>
-                        <span className="text-xs" style={{ color: "var(--text-muted)" }}>
-                          {initiative.source}
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Bookmark Indicator */}
-                    <div className="flex justify-end">
-                      <div
-                        className={`w-6 h-6 rounded-full flex items-center justify-center transition-all duration-200 ${
-                          isBookmarked
-                            ? "bg-gradient-to-r from-blue-500 to-purple-600 text-white"
-                            : "bg-gray-100"
-                        }`}
-                      >
-                        {isBookmarked ? (
-                          <BookmarkIcon className="w-3 h-3" />
-                        ) : (
-                          <BookmarkIcon className="w-3 h-3" style={{ color: "var(--text-muted)" }} />
-                        )}
+                        <div className="flex items-center gap-2">
+                          <span className="text-xs" style={{ color: "var(--text-muted)" }}>
+                            {initiative.source}
+                          </span>
+                          {/* Bookmark Indicator */}
+                          <div
+                            className={`w-5 h-5 rounded-full flex items-center justify-center transition-all duration-200 ${
+                              isBookmarked
+                                ? "bg-gradient-to-r from-blue-500 to-purple-600 text-white"
+                                : "bg-gray-100"
+                            }`}
+                          >
+                            {isBookmarked ? (
+                              <BookmarkIcon className="w-3 h-3" />
+                            ) : (
+                              <BookmarkIcon className="w-3 h-3" style={{ color: "var(--text-muted)" }} />
+                            )}
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
