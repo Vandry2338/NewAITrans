@@ -599,32 +599,23 @@ const industries = [
   "Banking",
   "Chemicals",
   "Consumer Products",
-  "Construction",
-  "Defense",
-  "Education",
-  "Energy",
-  "Engineering and Construction",
-  "Financial Services",
-  "Food and Beverage",
-  "Government",
+  "Defense and Security",
+  "Engineering, Construction and Operations",
   "Healthcare",
-  "High Tech",
-  "Hospitality",
+  "Higher Education and Research",
+  "Industrial Manufacturing",
   "Insurance",
   "Life Sciences",
-  "Logistics",
-  "Manufacturing",
-  "Media and Entertainment",
+  "Media",
+  "Mill Products",
   "Mining",
   "Oil and Gas",
-  "Pharmaceuticals",
   "Public Sector",
-  "Real Estate",
   "Retail",
   "Telecommunications",
-  "Transportation",
-  "Travel and Tourism",
-  "Utilities"
+  "Travel and Transportation",
+  "Utilities",
+  "Wholesale Distribution"
 ]
 
 const PROCESS_CONFIG = {
@@ -3408,6 +3399,7 @@ export default function TwoSpeedContent({ activeSubTab }: { activeSubTab: string
         businessImpact:
           "Improved inventory management, enhanced customer service, reduced operational costs, and optimized supply chain operations.",
       },
+
     ]
 
     // Strategic Initiatives Data - Telstra T25 Strategic Initiatives
@@ -3712,6 +3704,7 @@ export default function TwoSpeedContent({ activeSubTab }: { activeSubTab: string
           timeframe: "FY22-FY25"
         }
       },
+
     ]
 
     const allIndustries = ["All Industries", ...Array.from(new Set(industryTrendsData.map((trend) => trend.industry)))]
@@ -4767,49 +4760,48 @@ export default function TwoSpeedContent({ activeSubTab }: { activeSubTab: string
             )}
 
             {/* Strategic Initiatives Grid - Tile Layout */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
               {filteredInitiatives.map((initiative) => {
                 const isBookmarked = bookmarkedInitiatives.includes(initiative.id)
 
                 return (
                   <div
                     key={initiative.id}
-                    className="premium-card p-6 space-y-4 transition-all duration-200 hover:scale-105 hover:shadow-lg cursor-pointer"
+                    className="premium-card p-4 h-80 flex flex-col transition-all duration-200 hover:shadow-lg cursor-pointer"
                     style={{
-                      backgroundColor: isBookmarked ? "rgba(59, 130, 246, 0.1)" : "rgba(255, 255, 255, 0.8)",
-                      backdropFilter: "blur(10px)",
+                      backgroundColor: isBookmarked ? "rgba(59, 130, 246, 0.05)" : "var(--surface-elev-1)",
                       border: isBookmarked
                         ? "1px solid rgba(59, 130, 246, 0.3)"
-                        : "1px solid rgba(255, 255, 255, 0.2)",
+                        : "1px solid var(--border)",
                       boxShadow: isBookmarked
-                        ? "0 8px 25px -5px rgba(59, 130, 246, 0.2)"
-                        : "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
+                        ? "0 4px 20px -5px rgba(59, 130, 246, 0.2)"
+                        : "0 2px 4px -1px rgba(0, 0, 0, 0.1)",
                     }}
                     onClick={() => toggleInitiativeBookmark(initiative.id)}
                   >
-                    {/* Header with Status Only */}
-                    <div className="flex items-center justify-end">
+                    {/* Header with Status Only - Fixed at top */}
+                    <div className="flex items-center justify-end flex-shrink-0">
                       <span
-                        className={`px-3 py-1 rounded-full text-xs font-medium ${
-                          initiative.status === "Fast Lane" ? "bg-green-100 text-green-800" : "bg-gray-100 text-gray-800"
+                        className={`px-2 py-1 rounded-full text-xs font-medium ${
+                          initiative.status === "Fast Lane" ? "bg-gradient-to-r from-green-500 to-green-600 text-white" : "bg-gradient-to-r from-gray-500 to-gray-600 text-white"
                         }`}
                       >
                         {initiative.status}
                       </span>
                     </div>
 
-                    {/* Title and Description */}
-                    <div>
-                      <h3 className="font-semibold text-lg mb-2 line-clamp-2" style={{ color: "var(--text-default)" }}>
+                    {/* Title and Description - Fixed height */}
+                    <div className="flex-shrink-0 mb-3">
+                      <h3 className="font-semibold text-sm mb-2 line-clamp-2 leading-tight h-10 flex items-center" style={{ color: "var(--text-default)" }}>
                         {initiative.title}
                       </h3>
-                      <p className="text-sm leading-relaxed line-clamp-3" style={{ color: "var(--text-muted)" }}>
+                      <p className="text-xs leading-relaxed line-clamp-3 h-12" style={{ color: "var(--text-muted)" }}>
                         {initiative.description}
                       </p>
                     </div>
 
-                    {/* Tags */}
-                    <div className="flex flex-wrap gap-2">
+                    {/* Tags - Fixed height */}
+                    <div className="flex flex-wrap gap-2 flex-shrink-0 mb-3 h-8">
                       {initiative.tags?.slice(0, 2).map((tag, idx) => (
                         <span
                           key={idx}
@@ -4824,16 +4816,16 @@ export default function TwoSpeedContent({ activeSubTab }: { activeSubTab: string
                       ))}
                     </div>
 
-                    {/* KPIs and Source */}
-                    <div className="space-y-3">
+                    {/* KPIs and Source - Flexible height, fills remaining space */}
+                    <div className="flex-1 flex flex-col justify-between">
                       {/* KPI Details */}
                       {initiative.kpiDetails && (
-                        <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-3 rounded-lg border border-blue-200">
+                        <div className="bg-gradient-to-r from-blue-500 to-blue-600 p-3 rounded-lg text-white mb-3">
                           <div className="flex items-center justify-between mb-2">
-                            <span className="text-xs font-semibold text-blue-800">Primary KPI</span>
+                            <span className="text-xs font-semibold text-white">Primary KPI</span>
                             <span className={`px-2 py-1 rounded-full text-xs font-medium ${
                               initiative.kpiDetails.direction === "HigherIsBetter" 
-                                ? "bg-green-100 text-green-800" 
+                                ? "bg-white text-blue-600" 
                                 : "bg-red-100 text-red-800"
                             }`}>
                               {initiative.kpiDetails.direction === "HigherIsBetter" ? "↑ Higher Better" : "↓ Lower Better"}
@@ -4841,19 +4833,19 @@ export default function TwoSpeedContent({ activeSubTab }: { activeSubTab: string
                           </div>
                           <div className="space-y-1">
                             <div className="flex justify-between text-xs">
-                              <span className="font-medium" style={{ color: "var(--text-default)" }}>
+                              <span className="font-medium text-white">
                                 {initiative.kpiDetails.name}
                               </span>
                             </div>
                             <div className="flex justify-between text-xs">
-                              <span style={{ color: "var(--text-muted)" }}>Target:</span>
-                              <span className="font-semibold" style={{ color: "var(--text-default)" }}>
+                              <span className="text-white opacity-80">Target:</span>
+                              <span className="font-semibold text-white">
                                 {initiative.kpiDetails.target} {initiative.kpiDetails.unit}
                               </span>
                             </div>
                             <div className="flex justify-between text-xs">
-                              <span style={{ color: "var(--text-muted)" }}>Timeframe:</span>
-                              <span style={{ color: "var(--text-muted)" }}>
+                              <span className="text-white opacity-80">Timeframe:</span>
+                              <span className="text-white opacity-80">
                                 {initiative.kpiDetails.timeframe}
                               </span>
                             </div>
@@ -4861,19 +4853,15 @@ export default function TwoSpeedContent({ activeSubTab }: { activeSubTab: string
                         </div>
                       )}
                       
-                      {/* Industry and Year */}
-                      <div className="flex items-center justify-between text-sm">
+                      {/* Industry and Year - Fixed at bottom */}
+                      <div className="flex items-center justify-between text-sm flex-shrink-0">
                         <span className="text-xs" style={{ color: "var(--text-muted)" }}>
-                          {initiative.industry}, {initiative.year}
+                          {initiative.industry} • {initiative.year}
+                        </span>
+                        <span className="text-xs" style={{ color: "var(--text-muted)" }}>
+                          {initiative.source}
                         </span>
                       </div>
-                      
-                      {/* Source */}
-                      {initiative.source && (
-                        <p className="text-xs" style={{ color: "var(--text-muted)" }}>
-                          {initiative.source}
-                        </p>
-                      )}
                     </div>
 
                     {/* Bookmark Indicator */}
