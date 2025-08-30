@@ -5139,11 +5139,11 @@ export default function TwoSpeedContent({ activeSubTab }: { activeSubTab: string
         return (
           <div className="space-y-6">
             <div className="text-center mb-8">
-              <h3 className="text-2xl font-bold mb-4" style={{ color: "var(--brand-navy-900)" }}>
+              <h3 className="text-2xl font-bold mb-4" style={{ color: "var(--text)", fontFamily: "SAP 72" }}>
                 Requirements Gathering
               </h3>
-              <p className="text-lg" style={{ color: "var(--text-primary)" }}>
-                Discovery, KPIs, and strategy—then auto-generate your Vision pack
+              <p className="text-lg" style={{ color: "var(--text-muted)" }}>
+                Systematic approach to requirements collection and analysis
               </p>
             </div>
 
@@ -5159,9 +5159,10 @@ export default function TwoSpeedContent({ activeSubTab }: { activeSubTab: string
                   </p>
                 </div>
                 <button
-                  className="px-6 py-3 rounded-lg text-white font-semibold hover:opacity-90 transition-opacity"
+                  className="px-6 py-3 rounded-lg text-white font-semibold hover:opacity-90 transition-opacity flex items-center gap-2"
                   style={{ background: "var(--grad-primary)" }}
                 >
+                  <Plus className="w-4 h-4" />
                   Run Agent
                 </button>
               </div>
@@ -5170,85 +5171,153 @@ export default function TwoSpeedContent({ activeSubTab }: { activeSubTab: string
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 {/* Surveys */}
                 <div className="p-6 rounded-xl border" style={{ backgroundColor: "var(--surface)", borderColor: "var(--border)" }}>
-                  <h3 className="font-bold text-lg mb-3" style={{ color: "var(--text)" }}>
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="w-12 h-12 rounded-lg flex items-center justify-center" style={{ background: "linear-gradient(135deg, #3B82F6, #1D4ED8)" }}>
+                      <BarChart3 className="w-6 h-6 text-white" />
+                    </div>
+                  </div>
+                  <h3 className="font-bold text-lg mb-3" style={{ color: "var(--text)", fontFamily: "SAP 72" }}>
                     Surveys (Native)
                   </h3>
                   <p className="text-sm mb-4" style={{ color: "var(--text-muted)" }}>
                     Design → Distribute → Analyze & Map
                   </p>
-                  <p className="text-sm mb-4" style={{ color: "var(--text-muted)" }}>
-                    Build custom surveys with AI assistance for comprehensive requirements gathering
+                  <p className="text-sm mb-6" style={{ color: "var(--text-muted)" }}>
+                    Build custom surveys with AI Draft, Preview, and Save. Full analytics with theme clustering.
                   </p>
-                  <div className="flex justify-between text-sm">
-                    <span style={{ color: "var(--text-muted)" }}>Responses:</span>
-                    <span style={{ color: "var(--text)" }}>3</span>
+                  
+                  <div className="grid grid-cols-2 gap-4 mb-6">
+                    <div className="text-center">
+                      <div className="text-2xl font-bold mb-1" style={{ color: "var(--grad-primary)" }}>3</div>
+                      <div className="text-xs" style={{ color: "var(--text-muted)" }}>Surveys</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-2xl font-bold mb-1" style={{ color: "var(--grad-primary)" }}>127</div>
+                      <div className="text-xs" style={{ color: "var(--text-muted)" }}>Responses</div>
+                    </div>
                   </div>
-                  <div className="flex justify-between text-sm">
-                    <span style={{ color: "var(--text-muted)" }}>Completion:</span>
-                    <span style={{ color: "var(--text)" }}>127</span>
+                  
+                  <div className="flex gap-3">
+                    <button className="flex-1 px-4 py-2 rounded-lg text-white font-medium text-sm hover:opacity-90 transition-opacity" style={{ background: "var(--grad-primary)" }}>
+                      Open Surveys
+                    </button>
+                    <button className="flex-1 px-4 py-2 rounded-lg border font-medium text-sm hover:bg-gray-50 transition-colors" style={{ borderColor: "var(--border)", color: "var(--text)" }}>
+                      Run Agent
+                    </button>
                   </div>
                 </div>
 
                 {/* Executive Interviews */}
                 <div className="p-6 rounded-xl border" style={{ backgroundColor: "var(--surface)", borderColor: "var(--border)" }}>
-                  <h3 className="font-bold text-lg mb-3" style={{ color: "var(--text)" }}>
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="w-12 h-12 rounded-lg flex items-center justify-center" style={{ background: "linear-gradient(135deg, #10B981, #059669)" }}>
+                      <Mic className="w-6 h-6 text-white" />
+                    </div>
+                  </div>
+                  <h3 className="font-bold text-lg mb-3" style={{ color: "var(--text)", fontFamily: "SAP 72" }}>
                     Executive Interviews
                   </h3>
                   <p className="text-sm mb-4" style={{ color: "var(--text-muted)" }}>
                     Prepare → Run → Summarize → Synthesize
                   </p>
-                  <p className="text-sm mb-4" style={{ color: "var(--text-muted)" }}>
-                    4-step workspace for conducting structured executive interviews
+                  <p className="text-sm mb-6" style={{ color: "var(--text-muted)" }}>
+                    4-step workspace with question generation, transcription, and fragment extraction.
                   </p>
-                  <div className="flex justify-between text-sm">
-                    <span style={{ color: "var(--text-muted)" }}>Interviews:</span>
-                    <span style={{ color: "var(--text)" }}>12/20</span>
+                  
+                  <div className="grid grid-cols-2 gap-4 mb-6">
+                    <div className="text-center">
+                      <div className="text-2xl font-bold mb-1" style={{ color: "var(--grad-primary)" }}>12/20</div>
+                      <div className="text-xs" style={{ color: "var(--text-muted)" }}>Leaders</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-2xl font-bold mb-1" style={{ color: "var(--grad-primary)" }}>4/5</div>
+                      <div className="text-xs" style={{ color: "var(--text-muted)" }}>Units</div>
+                    </div>
                   </div>
-                  <div className="flex justify-between text-sm">
-                    <span style={{ color: "var(--text-muted)" }}>Coverage:</span>
-                    <span style={{ color: "var(--text)" }}>92%</span>
+                  
+                  <div className="flex gap-3">
+                    <button className="flex-1 px-4 py-2 rounded-lg text-white font-medium text-sm hover:opacity-90 transition-opacity" style={{ background: "var(--grad-primary)" }}>
+                      Open Interviews
+                    </button>
+                    <button className="flex-1 px-4 py-2 rounded-lg border font-medium text-sm hover:bg-gray-50 transition-colors" style={{ borderColor: "var(--border)", color: "var(--text)" }}>
+                      Generate Kit
+                    </button>
                   </div>
                 </div>
 
                 {/* Stakeholder Mapping */}
                 <div className="p-6 rounded-xl border" style={{ backgroundColor: "var(--surface)", borderColor: "var(--border)" }}>
-                  <h3 className="font-bold text-lg mb-3" style={{ color: "var(--text)" }}>
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="w-12 h-12 rounded-lg flex items-center justify-center" style={{ background: "linear-gradient(135deg, #8B5CF6, #7C3AED)" }}>
+                      <Users className="w-6 h-6 text-white" />
+                    </div>
+                  </div>
+                  <h3 className="font-bold text-lg mb-3" style={{ color: "var(--text)", fontFamily: "SAP 72" }}>
                     Stakeholder Mapping
                   </h3>
                   <p className="text-sm mb-4" style={{ color: "var(--text-muted)" }}>
                     RACI + Influence Analysis
                   </p>
-                  <p className="text-sm mb-4" style={{ color: "var(--text-muted)" }}>
-                    Agent proposes stakeholders and maps their roles and influence
+                  <p className="text-sm mb-6" style={{ color: "var(--text-muted)" }}>
+                    Agent proposes stakeholders from financials and filings; refine with RACI analysis.
                   </p>
-                  <div className="flex justify-between text-sm">
-                    <span style={{ color: "var(--text-muted)" }}>Stakeholders:</span>
-                    <span style={{ color: "var(--text)" }}>18</span>
+                  
+                  <div className="grid grid-cols-2 gap-4 mb-6">
+                    <div className="text-center">
+                      <div className="text-2xl font-bold mb-1" style={{ color: "var(--grad-primary)" }}>18</div>
+                      <div className="text-xs" style={{ color: "var(--text-muted)" }}>Stakeholders</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-2xl font-bold mb-1" style={{ color: "#10B981" }}>92%</div>
+                      <div className="text-xs" style={{ color: "var(--text-muted)" }}>Mapped</div>
+                    </div>
                   </div>
-                  <div className="flex justify-between text-sm">
-                    <span style={{ color: "var(--text-muted)" }}>Coverage:</span>
-                    <span style={{ color: "var(--text)" }}>92%</span>
+                  
+                  <div className="flex gap-3">
+                    <button className="flex-1 px-4 py-2 rounded-lg text-white font-medium text-sm hover:opacity-90 transition-opacity" style={{ background: "var(--grad-primary)" }}>
+                      Open Stakeholder
+                    </button>
+                    <button className="flex-1 px-4 py-2 rounded-lg border font-medium text-sm hover:bg-gray-50 transition-colors" style={{ borderColor: "var(--border)", color: "var(--text)" }}>
+                      Run Discovery
+                    </button>
                   </div>
                 </div>
 
                 {/* Workshop Mode */}
                 <div className="p-6 rounded-xl border" style={{ backgroundColor: "var(--surface)", borderColor: "var(--border)" }}>
-                  <h3 className="font-bold text-lg mb-3" style={{ color: "var(--text)" }}>
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="w-12 h-12 rounded-lg flex items-center justify-center" style={{ background: "linear-gradient(135deg, #F59E0B, #D97706)" }}>
+                      <Target className="w-6 h-6 text-white" />
+                    </div>
+                  </div>
+                  <h3 className="font-bold text-lg mb-3" style={{ color: "var(--text)", fontFamily: "SAP 72" }}>
                     Workshop Mode
                   </h3>
                   <p className="text-sm mb-4" style={{ color: "var(--text-muted)" }}>
                     North Star Board
                   </p>
-                  <p className="text-sm mb-4" style={{ color: "var(--text-muted)" }}>
-                    Premium sticky-wall experience for collaborative requirements workshops
+                  <p className="text-sm mb-6" style={{ color: "var(--text-muted)" }}>
+                    Premium sticky-wall experience to capture North Star fragments during workshops.
                   </p>
-                  <div className="flex justify-between text-sm">
-                    <span style={{ color: "var(--text-muted)" }}>Workshops:</span>
-                    <span style={{ color: "var(--text)" }}>24</span>
+                  
+                  <div className="grid grid-cols-2 gap-4 mb-6">
+                    <div className="text-center">
+                      <div className="text-2xl font-bold mb-1" style={{ color: "var(--grad-primary)" }}>24</div>
+                      <div className="text-xs" style={{ color: "var(--text-muted)" }}>Fragments</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-2xl font-bold mb-1" style={{ color: "#10B981" }}>85%</div>
+                      <div className="text-xs" style={{ color: "var(--text-muted)" }}>Complete</div>
+                    </div>
                   </div>
-                  <div className="flex justify-between text-sm">
-                    <span style={{ color: "var(--text-muted)" }}>Success:</span>
-                    <span style={{ color: "var(--text)" }}>85%</span>
+                  
+                  <div className="flex gap-3">
+                    <button className="flex-1 px-4 py-2 rounded-lg text-white font-medium text-sm hover:opacity-90 transition-opacity" style={{ background: "var(--grad-primary)" }}>
+                      Open Workshop
+                    </button>
+                    <button className="flex-1 px-4 py-2 rounded-lg border font-medium text-sm hover:bg-gray-50 transition-colors" style={{ borderColor: "var(--border)", color: "var(--text)" }}>
+                      Run Agent
+                    </button>
                   </div>
                 </div>
               </div>

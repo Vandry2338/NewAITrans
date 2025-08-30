@@ -8,11 +8,11 @@ export default function TransactionalDataFlowsPage() {
         {/* Header */}
         <div className="mb-8">
           <Link 
-            href="/gallery/industry/telecommunications"
+            href="/gallery/industry/telecommunications/solution-business-cloud-deployment"
             className="inline-flex items-center text-sm font-medium text-blue-600 hover:text-blue-500 mb-4"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
-            Back to Telecommunications
+            Back to Solution Business Cloud Deployment
           </Link>
           <h1 className="text-3xl font-bold" style={{ color: "var(--text)", fontFamily: "SAP 72" }}>
             Solution Data Flow Diagram
