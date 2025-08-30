@@ -777,153 +777,42 @@ export default function IndustryDetailPage() {
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {/* Solution Business for Cloud Deployment */}
-                    <div className="rounded-xl p-6 border transition-all duration-300 hover:scale-105 hover:shadow-xl"
-                      style={{
-                        backgroundColor: "white",
-                        borderColor: "rgba(0, 0, 0, 0.1)",
-                        boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)",
-                      }}
-                    >
-                      <div className="flex items-start justify-between mb-4">
-                        <div className="flex items-center space-x-2">
-                          <div className="w-8 h-8 rounded-lg flex items-center justify-center"
-                            style={{ background: "var(--grad-primary)" }}
-                          >
-                            <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                              <path fillRule="evenodd" d="M11.49 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                            </svg>
-                          </div>
-                          <span className="text-xs px-3 py-1 rounded-full font-medium" style={{ backgroundColor: "rgba(0, 0, 0, 0.05)", color: "var(--text-muted)" }}>Solution Variant</span>
-                        </div>
-                      </div>
-                      <h4 className="font-semibold text-base mb-3" style={{ color: "var(--text)", fontFamily: "SAP 72" }}>Solution Business for Cloud Deployment</h4>
-                      <p className="text-sm mb-4 leading-relaxed" style={{ color: "var(--text-muted)" }}>The Solution Business scenario allows to sell complex solutions of bundled items in one integrated process.</p>
-                      
-                      <div className="flex items-center space-x-2 text-sm mb-4" style={{ color: "var(--text-muted)" }}>
-                        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                          <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z" />
-                        </svg>
-                        <span className="font-medium">5 Architecture Views</span>
-                      </div>
-
-                      {/* Architecture View Tiles */}
-                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                        {/* Solution Value Flow Diagram */}
-                        <Link href="/gallery/industry/telecommunications/architecture-views/solution-value-flow" className="block">
-                          <div className="rounded-lg p-4 border transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-pointer"
-                            style={{
-                              backgroundColor: "rgba(0, 0, 0, 0.02)",
-                              borderColor: "rgba(0, 0, 0, 0.1)",
-                            }}
-                          >
-                            <div className="flex items-center justify-center w-10 h-10 rounded-lg mb-3 mx-auto"
+                    <Link href="/gallery/industry/telecommunications/solution-business-cloud-deployment" className="block">
+                      <div className="rounded-xl p-6 border transition-all duration-300 hover:scale-105 hover:shadow-xl cursor-pointer"
+                        style={{
+                          backgroundColor: "white",
+                          borderColor: "rgba(0, 0, 0, 0.1)",
+                          boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)",
+                        }}
+                      >
+                        <div className="flex items-start justify-between mb-4">
+                          <div className="flex items-center space-x-2">
+                            <div className="w-8 h-8 rounded-lg flex items-center justify-center"
                               style={{ background: "var(--grad-primary)" }}
                             >
-                              <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                <path fillRule="evenodd" d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                              </svg>
-                            </div>
-                            <h5 className="text-sm font-semibold mb-2 text-center" style={{ color: "var(--text)", fontFamily: "SAP 72" }}>Solution Value Flow Diagram</h5>
-                            <div className="text-xs mb-2 text-center font-medium" style={{ color: "var(--grad-primary)" }}>Solution Process</div>
-                            <p className="text-xs leading-relaxed text-center" style={{ color: "var(--text-muted)" }}>
-                              Business activities contributing to the business process variant
-                            </p>
-                          </div>
-                        </Link>
-
-                        {/* Solution Component Diagram */}
-                        <Link href="/gallery/industry/telecommunications/architecture-views/solution-components" className="block">
-                          <div className="rounded-lg p-4 border transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-pointer"
-                            style={{
-                              backgroundColor: "rgba(0, 0, 0, 0.02)",
-                              borderColor: "rgba(0, 0, 0, 0.1)",
-                            }}
-                          >
-                            <div className="flex items-center justify-center w-10 h-10 rounded-lg mb-3 mx-auto"
-                              style={{ background: "var(--grad-primary)" }}
-                            >
-                              <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                <path fillRule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z" clipRule="evenodd" />
-                              </svg>
-                            </div>
-                            <h5 className="text-sm font-semibold mb-2 text-center" style={{ color: "var(--text)", fontFamily: "SAP 72" }}>Solution Component Diagram</h5>
-                            <div className="text-xs mb-2 text-center font-medium" style={{ color: "var(--grad-primary)" }}>Solution Components</div>
-                            <p className="text-xs leading-relaxed text-center" style={{ color: "var(--text-muted)" }}>
-                              Components needed to implement the business process variant
-                            </p>
-                          </div>
-                        </Link>
-
-                        {/* Transactional Data Flows */}
-                        <Link href="/gallery/industry/telecommunications/architecture-views/transactional-data-flows" className="block">
-                          <div className="rounded-lg p-4 border transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-pointer"
-                            style={{
-                              backgroundColor: "rgba(0, 0, 0, 0.02)",
-                              borderColor: "rgba(0, 0, 0, 0.1)",
-                            }}
-                          >
-                            <div className="flex items-center justify-center w-10 h-10 rounded-lg mb-3 mx-auto"
-                              style={{ background: "var(--grad-primary)" }}
-                            >
-                              <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                <path fillRule="evenodd" d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                              </svg>
-                            </div>
-                            <h5 className="text-sm font-semibold mb-2 text-center" style={{ color: "var(--text)", fontFamily: "SAP 72" }}>Transactional Data Flows</h5>
-                            <div className="text-xs mb-2 text-center font-medium" style={{ color: "var(--grad-primary)" }}>Data Flow Diagram</div>
-                            <p className="text-xs leading-relaxed text-center" style={{ color: "var(--text-muted)" }}>
-                              Key flows of transactional data in the business process
-                            </p>
-                          </div>
-                        </Link>
-
-                        {/* Master Data Flows */}
-                        <Link href="/gallery/industry/telecommunications/architecture-views/master-data-flows" className="block">
-                          <div className="rounded-lg p-4 border transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-pointer"
-                            style={{
-                              backgroundColor: "rgba(0, 0, 0, 0.02)",
-                              borderColor: "rgba(0, 0, 0, 0.1)",
-                            }}
-                          >
-                            <div className="flex items-center justify-center w-10 h-10 rounded-lg mb-3 mx-auto"
-                              style={{ background: "var(--grad-primary)" }}
-                            >
-                              <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                <path fillRule="evenodd" d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                              </svg>
-                            </div>
-                            <h5 className="text-sm font-semibold mb-2 text-center" style={{ color: "var(--text)", fontFamily: "SAP 72" }}>Master Data Flows</h5>
-                            <div className="text-xs mb-2 text-center font-medium" style={{ color: "var(--grad-primary)" }}>Data Flow Diagram</div>
-                            <p className="text-xs leading-relaxed text-center" style={{ color: "var(--text-muted)" }}>
-                              Key flows of master and configuration data
-                            </p>
-                          </div>
-                        </Link>
-
-                        {/* Solution Process Flow */}
-                        <Link href="/gallery/industry/telecommunications/architecture-views/solution-process-flow" className="block">
-                          <div className="rounded-lg p-4 border transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-pointer"
-                            style={{
-                              backgroundColor: "rgba(0, 0, 0, 0.02)",
-                              borderColor: "rgba(0, 0, 0, 0.1)",
-                            }}
-                          >
-                            <div className="flex items-center justify-center w-10 h-10 rounded-lg mb-3 mx-auto"
-                              style={{ background: "var(--grad-primary)" }}
-                            >
-                              <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                              <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
                                 <path fillRule="evenodd" d="M11.49 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
                               </svg>
                             </div>
-                            <h5 className="text-sm font-semibold mb-2 text-center" style={{ color: "var(--text)", fontFamily: "SAP 72" }}>Solution Process Flow</h5>
-                            <div className="text-xs mb-2 text-center font-medium" style={{ color: "var(--grad-primary)" }}>Process Flow</div>
-                            <p className="text-xs leading-relaxed text-center" style={{ color: "var(--text-muted)" }}>
-                              Overview process flow with sub-processes
-                            </p>
+                            <span className="text-xs px-3 py-1 rounded-full font-medium" style={{ backgroundColor: "rgba(0, 0, 0, 0.05)", color: "var(--text-muted)" }}>Solution Variant</span>
                           </div>
-                        </Link>
+                          <div className="flex items-center space-x-2">
+                            <svg className="w-4 h-4" style={{ color: "var(--text-muted)" }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                            </svg>
+                          </div>
+                        </div>
+                        <h4 className="font-semibold text-base mb-3" style={{ color: "var(--text)", fontFamily: "SAP 72" }}>Solution Business for Cloud Deployment</h4>
+                        <p className="text-sm mb-4 leading-relaxed" style={{ color: "var(--text-muted)" }}>The Solution Business scenario allows to sell complex solutions of bundled items in one integrated process.</p>
+                        
+                        <div className="flex items-center space-x-2 text-sm" style={{ color: "var(--text-muted)" }}>
+                          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z" />
+                          </svg>
+                          <span className="font-medium">5 Architecture Views</span>
+                        </div>
                       </div>
-                    </div>
+                    </Link>
 
 
 
