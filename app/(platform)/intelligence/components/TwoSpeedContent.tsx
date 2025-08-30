@@ -4760,14 +4760,14 @@ export default function TwoSpeedContent({ activeSubTab }: { activeSubTab: string
             )}
 
             {/* Strategic Initiatives Grid - Tile Layout */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {filteredInitiatives.map((initiative) => {
                 const isBookmarked = bookmarkedInitiatives.includes(initiative.id)
 
                 return (
                   <div
                     key={initiative.id}
-                    className="premium-card p-4 h-80 flex flex-col transition-all duration-200 hover:shadow-lg cursor-pointer"
+                    className="premium-card p-6 h-96 flex flex-col transition-all duration-200 hover:shadow-lg cursor-pointer"
                     style={{
                       backgroundColor: isBookmarked ? "rgba(59, 130, 246, 0.05)" : "var(--surface-elev-1)",
                       border: isBookmarked
@@ -4791,17 +4791,17 @@ export default function TwoSpeedContent({ activeSubTab }: { activeSubTab: string
                     </div>
 
                     {/* Title and Description - Fixed height */}
-                    <div className="flex-shrink-0 mb-3">
-                      <h3 className="font-semibold text-sm mb-2 line-clamp-2 leading-tight h-10 flex items-center" style={{ color: "var(--text-default)" }}>
+                    <div className="flex-shrink-0 mb-4">
+                      <h3 className="font-semibold text-base mb-3 line-clamp-2 leading-tight h-12 flex items-center" style={{ color: "var(--text-default)" }}>
                         {initiative.title}
                       </h3>
-                      <p className="text-xs leading-relaxed line-clamp-3 h-12" style={{ color: "var(--text-muted)" }}>
+                      <p className="text-sm leading-relaxed line-clamp-3 h-16" style={{ color: "var(--text-muted)" }}>
                         {initiative.description}
                       </p>
                     </div>
 
                     {/* Tags - Fixed height */}
-                    <div className="flex flex-wrap gap-2 flex-shrink-0 mb-3 h-8">
+                    <div className="flex flex-wrap gap-2 flex-shrink-0 mb-4 h-10">
                       {initiative.tags?.slice(0, 2).map((tag, idx) => (
                         <span
                           key={idx}
@@ -4820,10 +4820,10 @@ export default function TwoSpeedContent({ activeSubTab }: { activeSubTab: string
                     <div className="flex-1 flex flex-col justify-between">
                       {/* KPI Details */}
                       {initiative.kpiDetails && (
-                        <div className="bg-gradient-to-r from-blue-500 to-blue-600 p-3 rounded-lg text-white mb-3">
-                          <div className="flex items-center justify-between mb-2">
-                            <span className="text-xs font-semibold text-white">Primary KPI</span>
-                            <span className={`px-2 py-1 rounded-full text-xs font-medium ${
+                        <div className="bg-gradient-to-r from-blue-500 to-blue-600 p-4 rounded-lg text-white mb-4">
+                          <div className="flex items-center justify-between mb-3">
+                            <span className="text-sm font-semibold text-white">Primary KPI</span>
+                            <span className={`px-3 py-1 rounded-full text-xs font-medium ${
                               initiative.kpiDetails.direction === "HigherIsBetter" 
                                 ? "bg-white text-blue-600" 
                                 : "bg-red-100 text-red-800"
@@ -4831,19 +4831,19 @@ export default function TwoSpeedContent({ activeSubTab }: { activeSubTab: string
                               {initiative.kpiDetails.direction === "HigherIsBetter" ? "↑ Higher Better" : "↓ Lower Better"}
                             </span>
                           </div>
-                          <div className="space-y-1">
-                            <div className="flex justify-between text-xs">
+                          <div className="space-y-2">
+                            <div className="flex justify-between text-sm">
                               <span className="font-medium text-white">
                                 {initiative.kpiDetails.name}
                               </span>
                             </div>
-                            <div className="flex justify-between text-xs">
+                            <div className="flex justify-between text-sm">
                               <span className="text-white opacity-80">Target:</span>
                               <span className="font-semibold text-white">
                                 {initiative.kpiDetails.target} {initiative.kpiDetails.unit}
                               </span>
                             </div>
-                            <div className="flex justify-between text-xs">
+                            <div className="flex justify-between text-sm">
                               <span className="text-white opacity-80">Timeframe:</span>
                               <span className="text-white opacity-80">
                                 {initiative.kpiDetails.timeframe}
