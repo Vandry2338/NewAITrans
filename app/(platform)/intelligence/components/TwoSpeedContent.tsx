@@ -3641,12 +3641,33 @@ export default function TwoSpeedContent({ activeSubTab }: { activeSubTab: string
                     <div key={process} className="space-y-3">
                       <div className="flex items-center gap-2">
                         <span
-                          className="px-3 py-1 rounded-lg text-xs font-medium text-white"
+                          className="px-3 py-1 rounded-lg text-xs font-medium"
                           style={{
                             background: `linear-gradient(135deg, ${processColors[process as keyof typeof processColors] || "#3b82f6"})`,
+                            color: "#ffffff",
+                            textShadow: "0 1px 2px rgba(0, 0, 0, 0.3)",
+                            fontWeight: "600",
                           }}
                         >
-                          {process.replace(/-/g, " ").replace(/\b\w/g, (l) => l.toUpperCase())}
+                          {process === "idea-to-market"
+                            ? "I2M"
+                            : process === "lead-to-cash"
+                              ? "L2C"
+                              : process === "plan-to-fulfill"
+                                ? "P2F"
+                                : process === "source-to-pay"
+                                  ? "S2P"
+                                  : process === "acquire-to-decommission"
+                                    ? "A2D"
+                                    : process === "recruit-to-retire"
+                                      ? "R2R"
+                                      : process === "finance-record-to-report"
+                                        ? "F2R"
+                                        : process === "finance-treasury-risk"
+                                          ? "FTR"
+                                          : process === "governance"
+                                            ? "GOV"
+                                            : process.replace(/-/g, " ").replace(/\b\w/g, (l) => l.toUpperCase())}
                         </span>
                         <span className="text-sm font-medium" style={{ color: "var(--text-default)" }}>
                           ({trends.length})
@@ -4412,12 +4433,33 @@ export default function TwoSpeedContent({ activeSubTab }: { activeSubTab: string
                     <div key={process} className="space-y-3">
                       <div className="flex items-center gap-2">
                         <span
-                          className="px-3 py-1 rounded-lg text-xs font-medium text-white"
+                          className="px-3 py-1 rounded-lg text-xs font-medium"
                           style={{
                             background: `linear-gradient(135deg, ${processColors[process as keyof typeof processColors] || "#3b82f6"})`,
+                            color: "#ffffff",
+                            textShadow: "0 1px 2px rgba(0, 0, 0, 0.3)",
+                            fontWeight: "600",
                           }}
                         >
-                          {process.replace(/-/g, " ").replace(/\b\w/g, (l) => l.toUpperCase())}
+                          {process === "idea-to-market"
+                            ? "I2M"
+                            : process === "lead-to-cash"
+                              ? "L2C"
+                              : process === "plan-to-fulfill"
+                                ? "P2F"
+                                : process === "source-to-pay"
+                                  ? "S2P"
+                                  : process === "acquire-to-decommission"
+                                    ? "A2D"
+                                    : process === "recruit-to-retire"
+                                      ? "R2R"
+                                      : process === "finance-record-to-report"
+                                        ? "F2R"
+                                        : process === "finance-treasury-risk"
+                                          ? "FTR"
+                                          : process === "governance"
+                                            ? "GOV"
+                                            : process.replace(/-/g, " ").replace(/\b\w/g, (l) => l.toUpperCase())}
                         </span>
                         <span className="text-sm font-medium" style={{ color: "var(--text-default)" }}>
                           ({initiatives.length})
