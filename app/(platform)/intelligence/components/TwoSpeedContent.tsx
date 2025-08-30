@@ -4938,134 +4938,197 @@ export default function TwoSpeedContent({ activeSubTab }: { activeSubTab: string
         return (
           <div className="space-y-6">
             <div className="text-center mb-8">
-              <h3 className="text-2xl font-bold mb-4" style={{ color: "var(--brand-navy-900)" }}>
-                Solution Canvas
-              </h3>
+              <h1 className="text-3xl font-bold mb-4" style={{ color: "var(--brand-navy-900)" }}>
+                See everything. Decide faster.
+              </h1>
               <p className="text-lg" style={{ color: "var(--text-primary)" }}>
-                Design and evaluate solution approaches for identified pain points and strategic initiatives
+                AI analyzes every data point and cross-references it with your knowledge graph, proven practices, and market benchmarks. Agents keep watch and update this canvas continuously—so it's never out of date.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              {/* Solution Options */}
-              <div className="space-y-6">
-                <h4 className="font-semibold text-lg" style={{ color: "var(--brand-navy-900)" }}>
-                  Solution Options
-                </h4>
+            {/* Customer Canvas Grid */}
+            <div className="space-y-3">
+              
+              {/* Top Row - Pain Points (Ultra Compact) */}
+              <div className="bg-gradient-to-r from-red-600 to-red-500 p-3 border-2 rounded-lg shadow-lg" style={{ borderColor: "var(--stroke-soft)", fontFamily: "SAP 72" }}>
+                <div className="flex justify-between items-center mb-2">
+                  <h2 className="text-lg font-bold text-white">PAIN POINTS</h2>
+                  <span className="bg-white text-red-600 px-2 py-1 text-xs font-bold rounded">HURTING CX & COST</span>
+                </div>
                 
-                <div className="space-y-4">
-                  <div className="premium-card p-4">
-                    <div className="flex items-center gap-3 mb-3">
-                      <div className="w-8 h-8 rounded-lg bg-blue-100 flex items-center justify-center">
-                        <span className="text-blue-600 font-bold">1</span>
-                      </div>
-                      <h5 className="font-semibold" style={{ color: "var(--brand-navy-900)" }}>
-                        AI-Powered Automation
-                      </h5>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 text-xs text-white">
+                  <div className="space-y-1">
+                    <div className="flex items-start space-x-1">
+                      <span className="text-sm">•</span>
+                      <span><strong>Order fallout & slow installs</strong></span>
                     </div>
-                    <p className="text-sm mb-3" style={{ color: "var(--text-primary)" }}>
-                      Implement intelligent automation for manual processes using AI and machine learning.
-                    </p>
-                    <div className="flex gap-2">
-                      <span className="px-2 py-1 text-xs rounded-full bg-green-100 text-green-800">High Impact</span>
-                      <span className="px-2 py-1 text-xs rounded-full bg-blue-100 text-blue-800">Fast Lane</span>
+                    <div className="flex items-start space-x-1">
+                      <span className="text-sm">•</span>
+                      <span><strong>Congestion hotspots</strong> at peak</span>
                     </div>
                   </div>
-
-                  <div className="premium-card p-4">
-                    <div className="flex items-center gap-3 mb-3">
-                      <div className="w-8 h-8 rounded-lg bg-green-100 flex items-center justify-center">
-                        <span className="text-green-600 font-bold">2</span>
-                      </div>
-                      <h5 className="font-semibold" style={{ color: "var(--brand-navy-900)" }}>
-                        Cloud Migration
-                      </h5>
+                  
+                  <div className="space-y-1">
+                    <div className="flex items-start space-x-1">
+                      <span className="text-sm">•</span>
+                      <span><strong>Reactive fault handling</strong></span>
                     </div>
-                    <p className="text-sm mb-3" style={{ color: "var(--text-primary)" }}>
-                      Modernize infrastructure by migrating legacy systems to cloud platforms.
-                    </p>
-                    <div className="flex gap-2">
-                      <span className="px-2 py-1 text-xs rounded-full bg-orange-100 text-orange-800">Medium Impact</span>
-                      <span className="px-2 py-1 text-xs rounded-full bg-blue-100 text-blue-800">Core</span>
+                    <div className="flex items-start space-x-1">
+                      <span className="text-sm">•</span>
+                      <span><strong>Billing disputes</strong> & rating errors</span>
                     </div>
                   </div>
-
-                  <div className="premium-card p-4">
-                    <div className="flex items-center gap-3 mb-3">
-                      <div className="w-8 h-8 rounded-lg bg-purple-100 flex items-center justify-center">
-                        <span className="text-purple-600 font-bold">3</span>
-                      </div>
-                      <h5 className="font-semibold" style={{ color: "var(--brand-navy-900)" }}>
-                        Process Redesign
-                      </h5>
+                  
+                  <div className="space-y-1">
+                    <div className="flex items-start space-x-1">
+                      <span className="text-sm">•</span>
+                      <span><strong>Porting & SIM-swap friction</strong></span>
                     </div>
-                    <p className="text-sm mb-3" style={{ color: "var(--text-primary)" }}>
-                      Redesign business processes to eliminate inefficiencies and improve customer experience.
-                    </p>
-                    <div className="flex gap-2">
-                      <span className="px-2 py-1 text-xs rounded-full bg-yellow-100 text-yellow-800">Medium Impact</span>
-                      <span className="px-2 py-1 text-xs rounded-full bg-green-100 text-green-800">Fast Lane</span>
+                    <div className="flex items-start space-x-1">
+                      <span className="text-sm">•</span>
+                      <span><strong>Legacy OSS/BSS fragmentation</strong></span>
+                    </div>
+                  </div>
+                  
+                  <div className="space-y-1">
+                    <div className="flex items-start space-x-1">
+                      <span className="text-sm">•</span>
+                      <span><strong>Churn in price-sensitive cohorts</strong></span>
+                    </div>
+                    <div className="flex items-start space-x-1">
+                      <span className="text-sm">•</span>
+                      <span><strong>Network capacity constraints</strong></span>
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* Evaluation Matrix */}
-              <div className="space-y-6">
-                <h4 className="font-semibold text-lg" style={{ color: "var(--brand-navy-900)" }}>
-                  Evaluation Matrix
-                </h4>
+              {/* Middle Row - Core Content Grid */}
+              <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
                 
-                <div className="premium-card p-4">
-                  <div className="overflow-x-auto">
-                    <table className="w-full text-sm">
-                      <thead>
-                        <tr className="border-b" style={{ borderColor: "var(--border)" }}>
-                          <th className="text-left py-2" style={{ color: "var(--text)" }}>Solution</th>
-                          <th className="text-left py-2" style={{ color: "var(--text)" }}>ROI</th>
-                          <th className="text-left py-2" style={{ color: "var(--text)" }}>Complexity</th>
-                          <th className="text-left py-2" style={{ color: "var(--text)" }}>Timeline</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr className="border-b" style={{ borderColor: "var(--border)" }}>
-                          <td className="py-2" style={{ color: "var(--text)" }}>AI Automation</td>
-                          <td className="py-2 text-green-600 font-medium">High</td>
-                          <td className="py-2 text-orange-600 font-medium">Medium</td>
-                          <td className="py-2" style={{ color: "var(--text)" }}>6-12 months</td>
-                        </tr>
-                        <tr className="border-b" style={{ borderColor: "var(--border)" }}>
-                          <td className="py-2" style={{ color: "var(--text)" }}>Cloud Migration</td>
-                          <td className="py-2 text-blue-600 font-medium">Medium</td>
-                          <td className="py-2 text-red-600 font-medium">High</td>
-                          <td className="py-2" style={{ color: "var(--text)" }}>12-18 months</td>
-                        </tr>
-                        <tr className="border-b" style={{ borderColor: "var(--border)" }}>
-                          <td className="py-2" style={{ color: "var(--text)" }}>Process Redesign</td>
-                          <td className="py-2 text-green-600 font-medium">High</td>
-                          <td className="py-2 text-green-600 font-medium">Low</td>
-                          <td className="py-2" style={{ color: "var(--text)" }}>3-6 months</td>
-                        </tr>
-                      </tbody>
-                    </table>
+                {/* Left - Core Findings & Priorities (3/4 of middle space) */}
+                <div className="lg:col-span-3 bg-gradient-to-br from-slate-50 to-white border-2 rounded-lg p-4 shadow-lg" style={{ borderColor: "var(--stroke-soft)", fontFamily: "SAP 72" }}>
+                  <h2 className="text-base font-bold mb-3 bg-gradient-to-r from-blue-600 to-blue-500 text-white px-3 py-2 inline-block rounded">CORE FINDINGS & PRIORITIES</h2>
+                  
+                  <div className="space-y-2 text-xs">
+                    <div className="border-l-4 border-blue-500 pl-2 bg-blue-50 p-2 rounded-r">
+                      <h3 className="font-bold text-blue-700 text-xs">1. Win on lived network experience</h3>
+                      <p className="text-xs text-gray-600">[E2E: Network Access/Capacity] [KPIs: CSSR, Dropped Call Rate, BH Throughput, MTTR]</p>
+                      <p className="text-xs">Biggest mover of NPS and churn; densification + 3G refarm + regional build extend advantage.</p>
+                    </div>
+
+                    <div className="border-l-4 border-green-500 pl-2 bg-green-50 p-2 rounded-r">
+                      <h3 className="font-bold text-green-700 text-xs">2. Make fulfilment touchless</h3>
+                      <p className="text-xs text-gray-600">[E2E: Lead-to-Activate] [KPIs: Fallout Rate, Activation Success, eSIM Share, MNP Time]</p>
+                      <p className="text-xs">Order fallout and long installs are the fastest cost-to-serve and CX fix.</p>
+                    </div>
+
+                    <div className="border-l-4 border-purple-500 pl-2 bg-purple-50 p-2 rounded-r">
+                      <h3 className="font-bold text-purple-700 text-xs">3. Shift assurance from reactive to predictive</h3>
+                      <p className="text-xs text-gray-600">[E2E: Assurance/Care] [KPIs: Proactive Detection, MTTR, FCR, Complaint Rate]</p>
+                      <p className="text-xs">AIOps + synthetic probes reduce outages noticed by customers before ops.</p>
+                    </div>
+
+                    <div className="border-l-4 border-orange-500 pl-2 bg-orange-50 p-2 rounded-r">
+                      <h3 className="font-bold text-orange-700 text-xs">4. Protect revenue with billing integrity</h3>
+                      <p className="text-xs text-gray-600">[E2E: Billing & Collections] [KPIs: Mediation, Rating Accuracy, Dispute Rate, Dunning Recovery]</p>
+                      <p className="text-xs">Clean usage → clean invoices; fewer disputes; stronger cash.</p>
+                    </div>
+
+                    <div className="border-l-4 border-red-500 pl-2 bg-red-50 p-2 rounded-r">
+                      <h3 className="font-bold text-red-700 text-xs">5. Defend loyalty while opening B2B growth</h3>
+                      <p className="text-xs text-gray-600">[E2E: Market & Sell] [KPIs: Churn, CRR, ARPU, Slice SLA, Partner Settlement]</p>
+                      <p className="text-xs">Telstra Plus to 6M reduces churn; slices/private 5G grow B2B with SLA proof.</p>
+                    </div>
                   </div>
+
+
                 </div>
 
-                <div className="premium-card p-4">
-                  <h5 className="font-semibold mb-3" style={{ color: "var(--brand-navy-900)" }}>
-                    Recommendation
-                  </h5>
-                  <p className="text-sm mb-3" style={{ color: "var(--text-primary)" }}>
-                    Based on the evaluation, <strong>Process Redesign</strong> offers the best balance of high impact, 
-                    low complexity, and fast implementation timeline.
-                  </p>
-                  <button className="w-full px-4 py-2 rounded-lg font-medium transition-colors"
-                    style={{
-                      background: "var(--grad-cta)",
-                      color: "white",
-                    }}>
-                    Create Solution Roadmap
-                  </button>
+                {/* Right - Industry Trends & Strategic Initiatives (1/4 of middle space) */}
+                <div className="lg:col-span-1 space-y-3">
+                  {/* Industry Trends */}
+                  <div className="bg-gradient-to-br from-amber-400 to-yellow-400 p-3 border-2 rounded-lg shadow-lg" style={{ borderColor: "var(--stroke-soft)", fontFamily: "SAP 72" }}>
+                    <h2 className="text-sm font-bold mb-2 text-amber-900">INDUSTRY TRENDS</h2>
+                    <div className="space-y-1 text-xs text-amber-900">
+                      <div className="flex items-start space-x-1">
+                        <span className="text-xs">•</span>
+                        <span><strong>5G SA & slicing</strong> → SLA-based B2B</span>
+                      </div>
+                      <div className="flex items-start space-x-1">
+                        <span className="text-xs">•</span>
+                        <span><strong>Metro densification</strong> + spectrum refarm</span>
+                      </div>
+                      <div className="flex items-start space-x-1">
+                        <span className="text-xs">•</span>
+                        <span><strong>eSIM & digital onboarding</strong> → lower fallout</span>
+                      </div>
+                      <div className="flex items-start space-x-1">
+                        <span className="text-xs">•</span>
+                        <span><strong>AI-driven assurance</strong> (AIOps, probes)</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Strategic Initiatives */}
+                  <div className="bg-gradient-to-br from-blue-500 to-blue-600 p-3 border-2 rounded-lg shadow-lg" style={{ borderColor: "var(--stroke-soft)", fontFamily: "SAP 72" }}>
+                    <h2 className="text-sm font-bold mb-2 text-white">STRATEGIC INITIATIVES</h2>
+                    <div className="space-y-1 text-xs text-white">
+                      <div className="flex items-start space-x-1">
+                        <span className="text-xs">•</span>
+                        <span><strong>5G to 95% pop</strong> + regional coverage</span>
+                      </div>
+                      <div className="flex items-start space-x-1">
+                        <span className="text-xs">•</span>
+                        <span><strong>3G switch-off</strong> + metro densification</span>
+                      </div>
+                      <div className="flex items-start space-x-1">
+                        <span className="text-xs">•</span>
+                        <span><strong>Predictive service</strong> → NPS improvement</span>
+                      </div>
+                      <div className="flex items-start space-x-1">
+                        <span className="text-xs">•</span>
+                        <span><strong>Telstra Plus → 6M</strong> (loyalty lever)</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Bottom Row - KPI Scorecard (Horizontal Stretch, Thinner) */}
+              <div className="bg-white border-2 rounded-lg p-4 shadow-sm" style={{ borderColor: "var(--stroke-soft)" }}>
+                <h2 className="text-xl font-bold mb-3">KPI SCORECARD</h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4 text-sm">
+                  
+                  <div className="border-l-4 border-green-600 pl-3">
+                    <h4 className="font-bold text-green-600 mb-1 text-xs">North-Star CX/Growth</h4>
+                    <p className="text-xs"><strong>Churn ↓</strong>, <strong>NPS ↑</strong>, <strong>ARPU ↑</strong></p>
+                  </div>
+
+                  <div className="border-l-4 border-blue-600 pl-3">
+                    <h4 className="font-bold text-blue-600 mb-1 text-xs">Network Quality</h4>
+                    <p className="text-xs"><strong>CSSR ↑</strong>, <strong>Dropped Call Rate ↓</strong>, <strong>BH Throughput ↑</strong></p>
+                  </div>
+
+                  <div className="border-l-4 border-purple-600 pl-3">
+                    <h4 className="font-bold text-purple-600 mb-1 text-xs">Assurance & Care</h4>
+                    <p className="text-xs"><strong>Proactive Detection ↑</strong>, <strong>MTTR ↓</strong>, <strong>FCR ↑</strong></p>
+                  </div>
+
+                  <div className="border-l-4 border-orange-600 pl-3">
+                    <h4 className="font-bold text-orange-600 mb-1 text-xs">Fulfilment</h4>
+                    <p className="text-xs"><strong>Fallout Rate ↓</strong>, <strong>Activation Success ↑</strong>, <strong>eSIM Share ↑</strong></p>
+                  </div>
+
+                  <div className="border-l-4 border-red-600 pl-3">
+                    <h4 className="font-bold text-red-600 mb-1 text-xs">Billing & RA</h4>
+                    <p className="text-xs"><strong>Mediation ↑</strong>, <strong>Rating Accuracy ↑</strong>, <strong>Disputes ↓</strong></p>
+                  </div>
+
+                  <div className="border-l-4 border-gray-600 pl-3">
+                    <h4 className="font-bold text-gray-600 mb-1 text-xs">Financial</h4>
+                    <p className="text-xs"><strong>Margin ↑</strong>, <strong>Growth ↑</strong>, <strong>CAPEX ↔</strong></p>
+                  </div>
                 </div>
               </div>
             </div>
