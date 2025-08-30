@@ -704,6 +704,7 @@ export default function TwoSpeedContent({ activeSubTab }: { activeSubTab: string
   const [trendPriorities, setTrendPriorities] = useState<{ [key: string]: string }>({})
   const [bookmarkedInitiatives, setBookmarkedInitiatives] = useState<string[]>([])
   const [initiativePriorities, setInitiativePriorities] = useState<{ [key: string]: string }>({})
+  const [showAddConfirmation, setShowAddConfirmation] = useState(false)
 
   const toggleBookmark = (painPointId: string) => {
     const newBookmarks = new Set(bookmarkedPainPoints)
@@ -4578,10 +4579,10 @@ export default function TwoSpeedContent({ activeSubTab }: { activeSubTab: string
                   </div>
                   <div>
                     <p className="text-2xl font-bold" style={{ color: "var(--text-default)" }}>
-                      {allIndustries.length - 1}
+                      {allProcesses.length - 1}
                     </p>
                     <p className="text-sm" style={{ color: "var(--text-muted)" }}>
-                      Industries
+                      E2E Processes
                     </p>
                   </div>
                 </div>
@@ -4612,28 +4613,11 @@ export default function TwoSpeedContent({ activeSubTab }: { activeSubTab: string
                     Strategic Initiatives Analysis
                   </h2>
                   <p className="text-sm" style={{ color: "var(--text-muted)" }}>
-                    Filter by industry and process to explore relevant strategic initiatives
+                    Filter by E2E process to explore relevant strategic initiatives
                   </p>
                 </div>
 
                 <div className="flex gap-3">
-                  <select
-                    value={selectedIndustry}
-                    onChange={(e) => setSelectedIndustry(e.target.value)}
-                    className="px-4 py-2 rounded-lg border text-sm font-medium min-w-[180px]"
-                    style={{
-                      backgroundColor: "var(--surface-elev-1)",
-                      borderColor: "var(--stroke-soft)",
-                      color: "var(--text-default)",
-                    }}
-                  >
-                    {allIndustries.map((industry) => (
-                      <option key={industry} value={industry}>
-                        {industry}
-                      </option>
-                    ))}
-                  </select>
-
                   <select
                     value={selectedProcess}
                     onChange={(e) => setSelectedProcess(e.target.value)}
@@ -4803,11 +4787,8 @@ export default function TwoSpeedContent({ activeSubTab }: { activeSubTab: string
                     }}
                     onClick={() => toggleInitiativeBookmark(initiative.id)}
                   >
-                    {/* Header with Icon and Status */}
-                    <div className="flex items-center justify-between">
-                      <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-blue-500 to-blue-600 flex items-center justify-center">
-                        <Target className="w-5 h-5 text-white" />
-                      </div>
+                    {/* Header with Status Only */}
+                    <div className="flex items-center justify-end">
                       <span
                         className={`px-3 py-1 rounded-full text-xs font-medium ${
                           initiative.status === "Fast Lane" ? "bg-green-100 text-green-800" : "bg-gray-100 text-gray-800"
@@ -4931,16 +4912,47 @@ export default function TwoSpeedContent({ activeSubTab }: { activeSubTab: string
                   
                   <button
                     onClick={() => {
-                      // Add functionality for strategic initiatives
-                      console.log("Adding strategic initiatives to solution canvas")
+                      if (bookmarkedInitiatives.length > 0) {
+                        setShowAddConfirmation(true)
+                      }
                     }}
-                    className="px-8 py-3 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-lg font-medium hover:from-blue-600 hover:to-blue-700 transition-all duration-200 shadow-md hover:shadow-lg flex-shrink-0"
+                    disabled={bookmarkedInitiatives.length === 0}
+                    className={`px-8 py-3 rounded-lg font-medium transition-all duration-200 shadow-md hover:shadow-lg flex-shrink-0 ${
+                      bookmarkedInitiatives.length > 0
+                        ? "bg-gradient-to-r from-blue-500 to-blue-600 text-white hover:from-blue-600 hover:to-blue-700"
+                        : "bg-gray-300 text-gray-500 cursor-not-allowed"
+                    }`}
                   >
                     Add to Solution Canvas
                   </button>
                 </div>
               </div>
             </div>
+
+            {/* Add to Solution Canvas Confirmation Popup */}
+            {showAddConfirmation && (
+              <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+                <div className="bg-white rounded-2xl p-8 max-w-md w-full mx-4 shadow-2xl">
+                  <div className="text-center">
+                    <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <CheckCircle className="w-8 h-8 text-white" />
+                    </div>
+                    <h3 className="text-xl font-bold mb-2" style={{ color: "var(--text-default)" }}>
+                      Added Successfully!
+                    </h3>
+                    <p className="text-sm mb-6" style={{ color: "var(--text-muted)" }}>
+                      {bookmarkedInitiatives.length} strategic initiative{bookmarkedInitiatives.length !== 1 ? 's' : ''} have been added to your Solution Canvas.
+                    </p>
+                    <button
+                      onClick={() => setShowAddConfirmation(false)}
+                      className="px-6 py-3 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-lg font-medium hover:from-blue-600 hover:to-blue-700 transition-all duration-200 shadow-md hover:shadow-lg"
+                    >
+                      Back
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         )
 
